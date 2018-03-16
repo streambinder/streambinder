@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url(font-awesome.min.css);
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300");
 /* Reset */
 
@@ -157,6 +157,10 @@ a:before {
 
 a:hover {
 	color: #ff7496;
+}
+
+a:active, a:hover, a:focus, a:focus-within, a:visited, button:active, button:hover, button:focus, button:focus-within, button:visited {
+	outline: none !important;
 }
 
 strong, b {
@@ -771,4 +775,20 @@ body.is-loading #main {
 
 body.is-ie #wrapper {
 	height: 100%;
+}
+
+/*
+ * SweetAlert2 customizations
+ */
+
+.swal2-container {
+	padding: 0 !important;
+}
+
+.swal2-content {
+	padding-bottom: 15px !important;
+}
+
+.swal2-content a {
+	font-size: 1.5em;
 }

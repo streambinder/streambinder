@@ -24,10 +24,12 @@
 				<p>Systems Engineer</p>
 			</header>
 			<footer>
+				<br>
 				<ul class="icons">
 					<li><a href="https://www.linkedin.com/in/davide-pucci" target="_blank" class="fa-linkedin">LinkedIn</a></li>
 					<li><a href="https://github.com/streambinder" target="_blank" class="fa-github">Github</a></li>
 					<li><a href="mailto:&#x70;&#x6f;&#x73;&#x74;&#x61;&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#x65;&#x70;&#x75;&#x63;&#x63;&#x69;&#x2e;&#x69;&#x74;" class="fa-at">E-mail</a></li>
+					<li><a href="#" onclick="cvDownload()" class="fa-arrow-down">CV</a></li>
 				</ul>
 			</footer>
 		</section>
@@ -44,7 +46,17 @@
 
 	<!-- Scripts -->
 	<!--[if lte IE 8]><script src="assets/js/respond.min.js"></script><![endif]-->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@latest/dist/sweetalert2.all.min.js"></script>
 	<script>
+		function cvDownload() {
+			return swal({
+				html: '<p>Curriculum Vitæ download.<br>Please choose a language variant:</p>' +
+					'<a href="https://github.com/streambinder/curriculum-vitae/releases/download/2018-03-12/en.pdf" target="_blank">en</a> / ' +
+					'<a href="https://github.com/streambinder/curriculum-vitae/releases/download/2018-03-12/it.pdf" target="_blank">it</a> <br>',
+				showConfirmButton: false,
+				showCloseButton: true
+			});
+		}
 		if ('addEventListener' in window) {
 			window.addEventListener('load', function() {
 				document.body.className = document.body.className.replace(/\bis-loading\b/, '');
