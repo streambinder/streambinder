@@ -792,3 +792,11 @@ body.is-ie #wrapper {
 .swal2-content a {
 	font-size: 1.5em;
 }
+
+/*
+ * FontAwesome
+ */
+
+.fa-cv:before {
+	content: "CV";
+}
