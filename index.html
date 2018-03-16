@@ -47,14 +47,22 @@
 	<!-- Scripts -->
 	<!--[if lte IE 8]><script src="assets/js/respond.min.js"></script><![endif]-->
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@latest/dist/sweetalert2.all.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	<script>
 		function cvDownload() {
-			return swal({
-				html: '<p>Curriculum Vitæ download.<br>Please choose a language variant:</p>' +
-					'<a href="https://github.com/streambinder/curriculum-vitae/releases/download/2018-03-12/en.pdf" target="_blank">en</a> / ' +
-					'<a href="https://github.com/streambinder/curriculum-vitae/releases/download/2018-03-12/it.pdf" target="_blank">it</a> <br>',
-				showConfirmButton: false,
-				showCloseButton: true
+			$.ajax({
+				type: 'GET',
+				url: 'https://api.github.com/repos/streambinder/curriculum-vitae/releases',
+				dataType: 'json',
+				success: function(response) {
+					return swal({
+						html: '<p>Curriculum Vitæ download.<br>Please choose a language variant:</p>' +
+							'<a href="' + response[0]['html_url'].replace('/tag/', '/download/') + '/en.pdf" target="_blank">en</a> / ' +
+							'<a href="' + response[0]['html_url'].replace('/tag/', '/download/') + '/it.pdf" target="_blank">it</a> <br>',
+						showConfirmButton: false,
+						showCloseButton: true
+					});
+				}
 			});
 		}
 		if ('addEventListener' in window) {
