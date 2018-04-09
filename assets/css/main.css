@@ -519,10 +519,11 @@ ul.icons li a:before {
 	left: 0;
 	width: inherit;
 	height: inherit;
-	font-size: 1.85rem;
+	font-size: 1.35rem;
 	line-height: inherit;
 	text-align: center;
 	text-indent: 0;
+	letter-spacing: 0px;
 }
 
 ul.icons li a:hover {
