@@ -59,8 +59,8 @@
 				success: function(response) {
 					return swal({
 						html: '<table><tbody><tr>' +
-							'<td><a class="flag flag-gbr" href="' + response[0]['html_url'].replace('/tag/', '/download/') + '/en.pdf" target="_blank"></a></td>' +
-							'<td><a class="flag flag-ita" href="' + response[0]['html_url'].replace('/tag/', '/download/') + '/it.pdf" target="_blank"></a></td>' +
+							'<td><a class="flag flag-gbr" href="' + response[0]['html_url'].replace('/tag/', '/download/') + '/en.pdf" download></a></td>' +
+							'<td><a class="flag flag-ita" href="' + response[0]['html_url'].replace('/tag/', '/download/') + '/it.pdf" download></a></td>' +
 							'</tr></tbody></table>',
 						showConfirmButton: false,
 						showCloseButton: true,
