@@ -786,9 +786,9 @@ body.is-ie #wrapper {
 }
 
 .swal2-popup {
-	height: 10em;
+	height: 125px;
 	max-width: 100%;
-	min-width: 27em;
+	min-width: 300px;
 	width: min-content !important;
 }
 
