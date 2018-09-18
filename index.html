@@ -31,7 +31,7 @@
 					<li><a href="https://www.linkedin.com/in/davide-pucci" target="_blank" class="fa-linkedin">LinkedIn</a></li>
 					<li><a href="https://github.com/streambinder" target="_blank" class="fa-github">Github</a></li>
 					<li><a href="mailto:&#x70;&#x6f;&#x73;&#x74;&#x61;&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#x65;&#x70;&#x75;&#x63;&#x63;&#x69;&#x2e;&#x69;&#x74;" class="fa-at">E-mail</a></li>
-					<li><a href="#" onclick="cvDownload()" class="fa-cv">CV</a></li>
+					<li><a href="#" onclick="cvDownload()" class="fa-cv rotate-on-click">CV</a></li>
 				</ul>
 			</footer>
 		</section>
@@ -52,12 +52,15 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	<script>
 		function cvDownload() {
+			var loadingEl = $('li>a.rotate-on-click');
+			loadingEl.toggleClass("rotating");
 			$.ajax({
 				type: 'GET',
 				url: 'https://api.github.com/repos/streambinder/curriculum-vitae/releases',
 				dataType: 'json',
 				success: function(response) {
-					return swal({
+					loadingEl.toggleClass("rotating-stop");
+					swal({
 						html: '<table><tbody><tr>' +
 							'<td><a class="flag flag-gbr" href="' + response[0]['html_url'].replace('/tag/', '/download/') + '/en.pdf" download></a></td>' +
 							'<td><a class="flag flag-ita" href="' + response[0]['html_url'].replace('/tag/', '/download/') + '/it.pdf" download></a></td>' +
