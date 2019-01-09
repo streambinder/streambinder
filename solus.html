@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="title" content="EOPKG Ashtray | Davide Pucci">
+		<meta name="description" content="EOPKG ashtray is a custom private EOPKG repository, which holds all the packages not included by default in Solus repository. This means it's actually built to be used only on Solus-project systems (or, at least, on the ones using eopkg / pisi package-manager.">
+		<meta name="theme-color" content="#28DFF5">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="EOPKG Ashtray | Davide Pucci">
+		<meta property="og:description" content="EOPKG ashtray is a custom private EOPKG repository, which holds all the packages not included by default in Solus repository. This means it's actually built to be used only on Solus-project systems (or, at least, on the ones using eopkg / pisi package-manager.">
+
+		<title>EOPKG Ashtray | Davide Pucci</title>
+
+		<link rel="shortcut icon" type="image/png" href="https://davidepucci.it/favicon.ico">
+		
+		<style>
+			@import url('https://fonts.googleapis.com/css?family=Cutive+Mono|Raleway');
+			body {
+				font-family: 'Raleway', sans-serif;
+				background-image: url('https://davidepucci.it/assets/css/images/overlay.png'), -moz-linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35)), url('https://davidepucci.it/images/bg.jpg');
+				background-image: url('https://davidepucci.it/assets/css/images/overlay.png'), -webkit-linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35)), url('https://davidepucci.it/images/bg.jpg');
+				background-image: url('https://davidepucci.it/assets/css/images/overlay.png'), -ms-linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35)), url('https://davidepucci.it/images/bg.jpg');
+				background-image: url('https://davidepucci.it/assets/css/images/overlay.png'), linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35)), url('https://davidepucci.it/images/bg.jpg');
+				background-repeat: repeat, no-repeat, no-repeat;
+				background-size: 100px 100px, cover, cover;
+				background-position: top left, center center, bottom center;
+				background-attachment: fixed, fixed, fixed;
+				color: #FFF;
+				text-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+			}
+			h1 {
+				font-size: 3em;
+			}
+			h4 {
+				font-size: 1.5em;
+			}
+			a {
+				color: inherit;
+				font-weight: bold;
+				text-decoration: none;
+			}
+			p {
+				line-height: 1.6em;
+			}
+			span.code, pre {
+				font-family: 'Cutive Mono', monospace;
+				font-size: 1.2em;
+			}
+			pre {
+				font-weight: bold;
+				text-shadow: none;
+				padding: 30px 50px;
+				background-color: rgba(0, 0, 0, .75);
+				border-radius: 5px;
+				overflow: scroll;
+			}
+			pre:before {
+				content: "#";
+				color: rgba(255,255,255,.5);
+				font-size: 1.25em;
+				position: absolute;
+				left: 20px;
+			}
+			pre::-webkit-scrollbar {
+				display: none;
+			}
+			section.center {
+				max-width: 90%;
+				position: absolute;
+				top: 40%;
+				left: 50%;
+				text-align: center;
+				transform: translate(-50%, -50%);
+			}
+			section>div.header {
+				margin-bottom: 6em;
+			}
+			@media (max-width : 1110px) {
+				h1 {
+					font-size: 2em;
+				}
+				h4 {
+					font-size: 1.25em;
+				}
+				section.center {
+					top: 50%;
+				}
+				section>div.header {
+					margin-bottom: 3em;
+				}
+				pre {
+					padding: 30px;
+				}
+				pre:before {
+					display: none;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<section class="center">
+			<div class="header">
+				<h1>EOPKG Ashtray</h1>
+				<p>
+					EOPKG ashtray is a custom private EOPKG repository, which holds all the packages not included by default in Solus repository. <br>
+					This means it's actually built to be used only on <a href="https://solus-project.com" target="_blank">Solus-project</a> systems (or, at least, on the ones using <span class="code">eopkg</span> / <span class="code">pisi</span> package-manager.
+				</p>
+			</div>
+			
+			<div class="content">
+				<h4>Installation</h4>
+				<p>
+					The installation instructions are actually very straightforward:
+				</p>
+				<pre>eopkg add-repo streambinder https://solus.davidepucci.it/eopkg-index.xml.xz</pre>
+			</div>
+		<section>
+	</body>
+</html>
