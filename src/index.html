@@ -5,14 +5,14 @@
 
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	
+
 	<!--[if lte IE 8]><script src="assets/js/html5shiv.js"></script><![endif]-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
 	<link rel="stylesheet" href="assets/css/flags.min.css" />
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-	
+
 	<noscript>
 		<link rel="stylesheet" href="/assets/css/noscript.css" />
 	</noscript>
@@ -43,9 +43,7 @@
 
 		<section id="main">
 			<header>
-				<span class="avatar"><img
-						src="/assets/images/avatar.jpg"
-						alt="Davide Pucci"></span>
+				<span class="avatar"><img src="/assets/images/avatar.jpg" alt="Davide Pucci"></span>
 				<h1 name="Davide Pucci"></h1>
 				<p caption="System and Software Engineer"></p>
 			</header>
@@ -83,14 +81,14 @@
 			loadingEl.toggleClass("rotating");
 			$.ajax({
 				type: 'GET',
-				url: 'https://api.github.com/repos/streambinder/curriculum-vitae/releases',
+				url: 'https://api.github.com/repos/streambinder/resume/releases',
 				dataType: 'json',
 				success: function (response) {
 					loadingEl.toggleClass("rotating-stop");
 					Swal.fire({
 						html: '<table><tbody><tr>' +
-							'<td><a class="flag flag-gbr" href="' + response[0]['html_url'].replace('/tag/', '/download/') + '/custom.en.pdf" download></a></td>' +
-							'<td><a class="flag flag-ita" href="' + response[0]['html_url'].replace('/tag/', '/download/') + '/custom.it.pdf" download></a></td>' +
+							'<td><a class="flag flag-gbr" href="' + response[0]['html_url'].replace('/tag/', '/download/') + '/personal_en.pdf" download></a></td>' +
+							'<td><a class="flag flag-ita" href="' + response[0]['html_url'].replace('/tag/', '/download/') + '/personal_it.pdf" download></a></td>' +
 							'</tr></tbody></table>',
 						showConfirmButton: false,
 						showCloseButton: true,
