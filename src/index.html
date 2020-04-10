@@ -1,21 +1,15 @@
 <html>
 
 <head>
+	<!-- title -->
 	<title>Davide Pucci</title>
 
+	<!-- metas -->
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<!--[if lte IE 8]><script src="assets/js/html5shiv.js"></script><![endif]-->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
-	<link rel="stylesheet" href="assets/css/flags.min.css" />
+	<!-- styles -->
 	<link rel="stylesheet" href="assets/css/main.css" />
-	<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-
-	<noscript>
-		<link rel="stylesheet" href="/assets/css/noscript.css" />
-	</noscript>
 
 	<!-- favicon -->
 	<link rel="apple-touch-icon" sizes="57x57" href="/assets/favicon/apple-icon-57x57.png">
@@ -35,77 +29,47 @@
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="/assets/favicon/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
-
 </head>
 
-<body class="is-loading">
-	<div id="wrapper">
 
-		<section id="main">
-			<header>
-				<span class="avatar"><img src="/assets/images/avatar.jpg" alt="Davide Pucci"></span>
-				<h1 name="Davide Pucci"></h1>
-				<p caption="System and Software Engineer"></p>
-			</header>
-			<footer>
-				<br>
-				<ul class="icons">
-					<li><a href="https://www.linkedin.com/in/davide-pucci" target="_blank"
-							class="fa-linkedin">LinkedIn</a></li>
-					<li><a href="https://github.com/streambinder" target="_blank" class="fa-github">Github</a></li>
-					<li><a href="mailto:&#x70;&#x6f;&#x73;&#x74;&#x61;&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#x65;&#x70;&#x75;&#x63;&#x63;&#x69;&#x2e;&#x69;&#x74;"
-							class="fa-at">E-mail</a></li>
-					<li><a href="#" onclick="cvDownload()" class="fa-cv rotate-on-click">CV</a></li>
-				</ul>
-			</footer>
-		</section>
+<body>
+	<nav>
+		<a href="/doc">
+			<i style="color: #F3F3F3" class="fas fa-feather"></i>
+			<span class="tip leftip">Documentation</span>
+		</a>
+	</nav>
 
-		<!-- Footer -->
-		<footer id="footer">
-			<ul class="copyright">
-				<li>&copy; Davide Pucci</li>
-				<li>HTML5 UP</li>
-			</ul>
-		</footer>
-
-	</div>
-
-	<!-- Scripts -->
-	<!--[if lte IE 8]><script src="assets/js/respond.min.js"></script><![endif]-->
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.5.0/dist/sweetalert2.all.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-	<script>
-		function cvDownload() {
-			var loadingEl = $('li>a.rotate-on-click');
-			loadingEl.toggleClass("rotating");
-			$.ajax({
-				type: 'GET',
-				url: 'https://api.github.com/repos/streambinder/resume/releases',
-				dataType: 'json',
-				success: function (response) {
-					loadingEl.toggleClass("rotating-stop");
-					Swal.fire({
-						html: '<table><tbody><tr>' +
-							'<td><a class="flag flag-gbr" href="' + response[0]['html_url'].replace('/tag/', '/download/') + '/personal_en.pdf" download></a></td>' +
-							'<td><a class="flag flag-ita" href="' + response[0]['html_url'].replace('/tag/', '/download/') + '/personal_it.pdf" download></a></td>' +
-							'</tr></tbody></table>',
-						showConfirmButton: false,
-						showCloseButton: true,
-						animation: false,
-						customClass: 'animated slideInDown'
-					});
-				}
-			});
-		}
-		if ('addEventListener' in window) {
-			window.addEventListener('load', function () {
-				document.body.className = document.body.className.replace(/\bis-loading\b/, '');
-			});
-			document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
-		}
-	</script>
-
+	<main class="one-man-show">
+		<span class="title">Davide Pucci</span>
+		<span class="subtitle">Network Engineer</span>
+		<ul>
+			<li>
+				<a href="https://url.davidepucci.it/linkedin">
+					<i style="color: #0077b5" class="fab fa-3x fa-linkedin"></i>
+					<span class="tip">LinkedIn</span>
+				</a>
+			</li>
+			<li>
+				<a href="https://url.davidepucci.it/github">
+					<i style="color: #F3F3F3" class="fab fa-3x fa-github-square"></i>
+					<span class="tip">GitHub</span>
+				</a>
+			</li>
+			<li>
+				<a href="https://url.davidepucci.it/email">
+					<i style="color: #E74C3C" class="fas fa-3x fa-envelope-square"></i>
+					<span class="tip">Email</span>
+				</a>
+			</li>
+			<li>
+				<a href="https://url.davidepucci.it/resume">
+					<i style="color: #16A085" class="fas fa-3x fa-check-square"></i>
+					<span class="tip">Resume</span>
+				</a>
+			</li>
+		</ul>
+	</main>
 </body>
 
 </html>
