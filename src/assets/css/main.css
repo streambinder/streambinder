@@ -37,11 +37,12 @@ section {
 
 /* AMP */
 
-html:not([amp4ads]), html:not([amp4ads]) body {
-	height: calc(100vh - 61px) !important;
+html:not([amp4ads]) {
+	min-height: calc(100vh - 61px) !important;
 }
 
 html:not([amp4ads]) body {
+	min-height: calc(100vh /100 * 80) !important;
 	margin-top: 20px !important;
 }
 
@@ -49,8 +50,8 @@ html:not([amp4ads]) body {
 
 nav {
 	position: absolute;
-	top: 20px;
-	right: 20px;
+	top: 0;
+	right: 0;
 	z-index: 10;
 }
 
@@ -222,12 +223,12 @@ span.separator::after {
 	main.one-man-show {
 		min-width: 500px;
 	}
-	main.one-man-show>span.title {
+	main.one-man-show>h1.title {
 		font-size: 3.25em;
 	}
 	main.one-man-show>span.subtitle {
 		font-size: 2em;
-		letter-spacing: 5.25px;
+		letter-spacing: 5px;
 	}
 	/* generic page*/
 	main.page {
