@@ -76,13 +76,13 @@ main.one-man-show>h1, main.one-man-show>span {
 
 main.one-man-show>h1.title {
 	font-weight: bold;
-	font-size: 2em;
+	font-size: 1.75em;
 	text-transform: uppercase;
 	margin-bottom: 10px;
 }
 
 main.one-man-show>span.subtitle {
-	letter-spacing: 6px;
+	letter-spacing: 3.75px;
 }
 
 main.one-man-show>ul {
