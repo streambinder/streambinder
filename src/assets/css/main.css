@@ -39,8 +39,8 @@ section {
 
 nav {
 	position: absolute;
-	top: 40px;
-	right: 40px;
+	top: 20px;
+	right: 20px;
 	z-index: 10;
 }
 
