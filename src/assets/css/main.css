@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300;400;600;700&display=swap');
 @import url('https://use.fontawesome.com/releases/v5.11.2/css/all.css');
+@import url('main-var.css');
 html {
-	background-color: #383838;
+	background-color: var(--color-background);
 	font-family: 'Overpass Mono', monospace;
-	color: #F3F3F3;
-	border: 8px solid #F3F3F3;
+	color: var(--color);
+	border: 8px solid var(--color);
 	margin: 10px;
 	padding: 50px;
 	font-size: 1.25em;
@@ -83,8 +84,8 @@ a>span.tip {
 	border-radius: 5px;
 	font-size: .75em;
 	text-transform: uppercase;
-	color: #F3F3F3;
-	background-color: rgba(0, 0, 0, .5);
+	color: var(--color);
+	background-color: var(--color-dark-transparent);
 }
 
 span.tip.leftip {
