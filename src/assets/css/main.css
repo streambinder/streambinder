@@ -122,13 +122,13 @@ ul.cards>li:hover {
 	filter: brightness(.75);
 }
 
-ul.cards>li>i {
+ul.cards>li>a>i {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
 }
 
-ul.cards>li>span {
+ul.cards>li>a>span {
 	display: block;
 	text-indent: 40px;
 }
