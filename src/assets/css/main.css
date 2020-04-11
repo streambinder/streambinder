@@ -59,11 +59,11 @@ main.one-man-show {
 	transform: translate(-50%, -50%);
 }
 
-main.one-man-show>span {
+main.one-man-show>h1, main.one-man-show>span {
 	display: block;
 }
 
-main.one-man-show>span.title {
+main.one-man-show>h1.title {
 	font-weight: bold;
 	font-size: 2em;
 	text-transform: uppercase;
