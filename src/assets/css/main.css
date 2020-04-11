@@ -35,6 +35,16 @@ section {
 	margin: 0 auto 50px;
 }
 
+/* AMP */
+
+html:not([amp4ads]), html:not([amp4ads]) body {
+	height: calc(100vh - 61px) !important;
+}
+
+html:not([amp4ads]) body {
+	margin-top: 20px !important;
+}
+
 /* navbar */
 
 nav {
