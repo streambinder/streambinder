@@ -227,5 +227,6 @@ span.separator::after {
 	/* cards */
 	ul.cards>li {
 		width: 40%;
+		margin-right: 1.5%;
 	}
 }
