@@ -134,7 +134,7 @@ ul.cards>li:hover {
 
 ul.cards>li>a>i {
 	position: absolute;
-	top: 50%;
+	top: 30px;
 	transform: translateY(-50%);
 }
 
