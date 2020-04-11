@@ -38,13 +38,13 @@ projects:
     content: projects/chopper.md
   - name: Paperboy
     caption: IMAP email checker and GTK notifier
-    type: devicon-c-plain
+    icon: devicon-c-plain
     content: projects/paperboy.md
   - name: Ashtray
     caption: Private Solus-Project package repository
-    type: devicon-amazonwebservices-original
+    icon: devicon-amazonwebservices-original
     content: projects/ashtray.md
   - name: Resume
     caption: That cool thing to look interesting in the world of work
-    type: devicon-python-plain
+    icon: devicon-python-plain
     content: projects/resume.md
