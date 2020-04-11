@@ -1,0 +1,14 @@
+<main class="page">
+	<h1>{{ project.name }}</h1>
+	<h6 class="caption">{{ project.caption }}</h6>
+
+	<ul class="cards">
+		{! for section in project.sections !}
+		<li><a href="#{{ section.id }}"><i class="{{ section.name }}"></i> <span>{{ section.name }}</span></a></li>
+		{! endfor !}
+	</ul>
+
+	<span class="separator"><i>#</i></span>
+
+	{{ project.content }}
+</main>

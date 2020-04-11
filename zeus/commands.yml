@@ -1,0 +1,54 @@
+language: bash
+
+globals:
+    build_dir: public
+
+commands:
+
+    setup:
+        description: Prepare environment
+        exec: mkdir -p ${build_dir}
+
+    assets:
+        description: Install static assets
+        dependencies:
+            - setup
+        exec: cp -rf src/assets/* ${build_dir}/
+
+    projects:
+        description: Compile Markdown into HTML
+        language: python3
+        dependencies:
+            - setup
+
+    pages:
+        description: Compile templates into HTML
+        language: python3
+        dependencies:
+            - projects
+
+    facade:
+        description: Merge fragments into facade
+        language: python3
+        dependencies:
+            - pages
+
+    strip:
+        description: Clean up output directory
+        exec: find ${build_dir} -type f -not -name 'index.html' -delete
+
+    minify:
+        description: Minify generated files
+
+    generate:
+        description: Generate website pages
+        dependencies:
+            - facade
+            - strip
+            - assets
+            - minify
+        exec: echo -n
+
+    clean:
+        description: Clean up
+        exec: rm -rf ${build_dir}

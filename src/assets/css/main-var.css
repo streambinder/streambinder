@@ -1,9 +1,6 @@
 html {
 	--color: #F3F3F3;
+	--color-softer: #ADADAD;
 	--color-background: #383838;
 	--color-dark-transparent: rgba(0, 0, 0, .5);
-	--color-linkedin: #0077B5;
-	--color-github: var(--color);
-	--color-email: #E74C3C;
-	--color-resume: #16A085;
 }

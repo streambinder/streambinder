@@ -1,0 +1,11 @@
+<main class="page">
+	<h1>{{ page.title }}</h1>
+	<ul class="cards">
+		{! for entry in projects !}
+		<li>
+			<a href="/doc/{{ entry.name.lower() }}"><i class="{{ entry.icon }}"></i> <span>{{ entry.name }}</span></a>
+			<p class="caption">{{ entry.caption }}</p>
+		</li>
+		{! endfor !}
+	</ul>
+</main>

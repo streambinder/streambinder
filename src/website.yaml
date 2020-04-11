@@ -1,0 +1,50 @@
+info:
+  name: Davide Pucci
+  role: Network Engineer
+  social:
+    - name: LinkedIn
+      url: https://url.davidepucci.it/linkedin
+      color: "#0077B5"
+      icon: "fab fa-linkedin-square"
+    - name: GitHub
+      url: https://url.davidepucci.it/github
+      color: var(--color)
+      icon: "fab fa-github-square"
+    - name: Email
+      url: https://url.davidepucci.it/email
+      color: "#E74C3C"
+      icon: "fas fa-envelope-square"
+    - name: Resume
+      url: https://url.davidepucci.it/resume
+      color: "#16A085"
+      icon: "fas fa-check-square"
+
+pages:
+  - path: /
+    content: pages/index.html
+    title: Davide Pucci
+  - path: /doc
+    content: pages/projects.html
+    title: Projects
+
+projects:
+  - name: Spotitube
+    caption: Synchronize your Spotify collections downloading from external providers
+    icon: devicon-go-plain
+    content: projects/spotitube.md
+  - name: Chopper
+    caption: Share all-sizes files using reconstructable manifests
+    icon: devicon-python-plain
+    content: projects/chopper.md
+  - name: Paperboy
+    caption: IMAP email checker and GTK notifier
+    type: devicon-c-plain
+    content: projects/paperboy.md
+  - name: Ashtray
+    caption: Private Solus-Project package repository
+    type: devicon-amazonwebservices-original
+    content: projects/ashtray.md
+  - name: Resume
+    caption: That cool thing to look interesting in the world of work
+    type: devicon-python-plain
+    content: projects/resume.md
