@@ -24,7 +24,16 @@ def get_content(html):
             section_id = slugify(section_name)
             html = html.replace(
                 match.group(), '<h2 id="{}">{}</h2>'.format(section_id, section_name))
-            sections.append({'id': section_id, 'name': section_name})
+            section = {
+                'id': section_id,
+                'name': section_name,
+                'icon': 'fab fa-slack-hash'
+            }
+            if section_id == "about":
+                section['icon'] = 'fas fa-question'
+            elif section_id == "installation":
+                section['icon'] = 'fas fa-cloud-download-alt'
+            sections.append(section)
     return {'content': html, 'sections': sections}
 
 
