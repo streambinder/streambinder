@@ -233,18 +233,7 @@ span.separator::after {
 	border-radius: 5px;
 }
 
-pre {
-	overflow-x: auto;
-	padding: 20px;
-}
-
-code {
-	font-family: 'Overpass Mono', monospace;
-	font-weight: normal;
-	font-size: .85em;
-}
-
-.codehilite, .codehilite pre, .codehilite table, code {
+.codehilite *, pre * {
 	/* allow select */
 	user-select: text;
 	-o-user-select: text;
@@ -253,12 +242,18 @@ code {
 	-webkit-user-select: text;
 }
 
+pre {
+	overflow-x: auto;
+	padding: 20px;
+}
+
 code {
-	text-decoration: underline;
+	font-weight: bold;
 }
 
 .codehilite code {
-	text-decoration: inherit;
+	font-size: .85em;
+	font-weight: normal;
 }
 
 /* scroll bar */
