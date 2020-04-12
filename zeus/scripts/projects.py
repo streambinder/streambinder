@@ -52,6 +52,9 @@ for project in glob.glob('src/projects/*.md'):
     os.makedirs(project_html, exist_ok=True)
     with open(project, 'r') as project_fd:
         html = post_parse(
-            markdown.markdown(project_fd.read(), extensions=['fenced_code', 'codehilite']))
+            markdown.markdown(
+                project_fd.read(),
+                extensions=['fenced_code', 'codehilite'],
+            ))
         with open(os.path.join(project_html, '_proj.yaml'), 'w') as yaml_fd:
             yaml.dump(html, yaml_fd)

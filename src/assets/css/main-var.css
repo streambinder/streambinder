@@ -2,5 +2,6 @@ html {
 	--color: #F3F3F3;
 	--color-softer: #ADADAD;
 	--color-background: #383838;
+	--color-background-shell: #0A0A0A;
 	--color-dark-transparent: rgba(0, 0, 0, .5);
 }

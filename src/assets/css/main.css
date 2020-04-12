@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300;400;600;700&display=swap');
 @import url('https://use.fontawesome.com/releases/v5.11.2/css/all.css');
 @import url('https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css');
-@import url('https://cdn.jsdelivr.net/npm/pygments-css@1.0.0/manni.css');
 @import url('main-var.css');
+@import url('pygments.css');
 /* core tags */
 
 html {
@@ -136,6 +136,10 @@ ul.cards>li {
 
 ul.cards>li:hover {
 	filter: brightness(.75);
+}
+
+ul.cards>li>a {
+	text-decoration: none;
 }
 
 ul.cards>li>a>i {
