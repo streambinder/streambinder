@@ -110,7 +110,7 @@ Before starting using the tool, further actions need to be taken, in order to ac
 
 ``` yaml
 # To obtain the token, go to:
-# 
+# https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line#creating-a-token
 # Solbump does not require any scope to be enabled.
 github:
     api: habmfnlzrwmxuopmjganlqfpmccouxieijlouxcl
