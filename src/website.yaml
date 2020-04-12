@@ -4,20 +4,20 @@ info:
   social:
     - name: LinkedIn
       url: https://url.davidepucci.it/linkedin
-      color: "#0077B5"
-      icon: "fab fa-linkedin-square"
+      color: var(--color)
+      icon: "fab fa-linkedin-in"
     - name: GitHub
       url: https://url.davidepucci.it/github
       color: var(--color)
-      icon: "fab fa-github-square"
+      icon: "fab fa-github"
     - name: Email
       url: https://url.davidepucci.it/email
-      color: "#E74C3C"
-      icon: "fas fa-envelope-square"
+      color: var(--color)
+      icon: "fas fa-envelope"
     - name: Resume
       url: https://url.davidepucci.it/resume
-      color: "#16A085"
-      icon: "fas fa-check-square"
+      color: var(--color)
+      icon: "fas fa-graduation-cap"
 
 pages:
   - path: /
