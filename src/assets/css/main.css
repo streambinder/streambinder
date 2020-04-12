@@ -112,6 +112,10 @@ main.page>h5 {
 	font-weight: normal;
 }
 
+main.page a {
+	text-decoration: underline;
+}
+
 /* cards */
 
 ul.cards {
