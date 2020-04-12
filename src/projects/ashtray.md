@@ -23,25 +23,11 @@ eopkg add-repo streambinder https://solus.davidepucci.it/eopkg-index.xml.xz
 If you want it to point to a specific GitHub release - represented by the `$TAG` variable:
 
 ```bash
-TAG="v15"
-eopkg add-repo streambinder \
-    https://github.com/streambinder/ashtray/releases/download/$TAG/eopkg-index.xml.xz
+tag="https://github.com/streambinder/ashtray/releases/download/v1"
+eopkg add-repo streambinder "${tag}/eopkg-index.xml.xz
 ```
 
 You may notice in the first case `solus.davidepucci.it` host name gets used, while in the latter you would be pointing directly to the GitHub repository: I get more in depth about this on the [Infrastructure page](infrastructure.md#packages-free-hosting).
-
-## Uninstall
-
-```bash
-eopkg remove-repo streambinder
-```
-
-## Enable / Disable
-
-```bash
-eopkg enable-repo streambinder
-eopkg disable-repo streambinder
-```
 
 # Infrastructure
 
@@ -64,8 +50,8 @@ The order used by the `Makefile` to build files is imposed by the `src/series` f
 Also, in order to make the whole process work, `solbuild` (the tool used to build the package starting from a `package.yml` template) needs to be configured to treat the local build directory as a local repository. This can be done by editing the `/usr/share/solbuild/main-x86_64.profile` settings and adding the following lines:
 
 ```go
-remove_repos = ['Solus']
-add_repos = ['Local','Ashtray','Solus']
+remove_repos = ["Solus"]
+add_repos = ["Local", "Ashtray", "Solus"]
 
 [repo.Local]
 uri = "/path/to/ashtray/bin"
@@ -95,7 +81,8 @@ These two issues lead to the additional headache of configuring a custom web ser
 ```php
 <?php
 
-if (strlen($_SERVER['REQUEST_URI']) == 0 || strcmp($_SERVER['REQUEST_URI'], '/') == 0) {
+if (strlen($_SERVER['REQUEST_URI']) == 0
+        || strcmp($_SERVER['REQUEST_URI'], '/') == 0) {
     header("location: https://doc.davidepucci.it/p/ashtray");
     return;
 }
@@ -117,7 +104,7 @@ This way, the `solus.davidepucci.it` host behaves as a poor proxy, redirecting d
 
 Also, this `.htaccess` is used to forward all the files `GET` requests to the PHP snippet above:
 
-```http
+```
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -151,7 +138,7 @@ gitlab:
 Using the tool is pretty straightforward:
 
 ```bash
-solbump package1.yml package2.yml package3/package.yml
+solbump package1.yml package2/package.yml
 ```
 
 ## Installation
@@ -166,6 +153,6 @@ eopkg it -y solbump
 
 ### GO toolset
 
-```
+```bash
 go get github.com/streambinder/solbump
 ```
