@@ -235,12 +235,12 @@ span.separator::after {
 	}
 	/* generic page*/
 	main.page {
-		width: 500px;
+		width: 750px;
 		margin: auto;
 	}
 	/* cards */
 	ul.cards>li {
-		width: 40%;
-		margin: auto 7.5px 7.5px auto;
+		width: 325px;
+		margin: auto 8px 8px auto;
 	}
 }
