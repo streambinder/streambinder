@@ -64,5 +64,5 @@ for project in config['projects']:
     parser.get_template(path_content).stream(
         project_config).dump(path_local_html)
     with open(path_local_yaml, 'w') as yaml_fd:
-        yaml.dump({'title': page['title'] if page['title'] == config['info']['name']
-                   else '{} | {}'.format(page['title'], config['info']['name'])}, yaml_fd)
+        yaml.dump({'title': project['name'] if project['name'] == config['info']['name']
+                   else '{} | {}'.format(project['name'], config['info']['name'])}, yaml_fd)
