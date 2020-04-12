@@ -232,6 +232,18 @@ pre {
 	background: var(--color-background-darker);
 }
 
+/* scroll bar */
+
+::-webkit-scrollbar {
+	width: 12.5px;
+}
+
+/* ::-webkit-scrollbar-track {} */
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--color-background-darker);
+}
+
 /* desktop media queries */
 
 @media (min-width: 768px) {
