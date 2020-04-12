@@ -41,7 +41,7 @@ projects:
     icon: devicon-c-plain
     content: projects/paperboy.md
   - name: Ashtray
-    caption: Private Solus-Project package repository
+    caption: Private package repository
     icon: devicon-amazonwebservices-original
     content: projects/ashtray.md
   - name: Resume
