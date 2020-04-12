@@ -27,7 +27,7 @@ a {
 	cursor: pointer;
 }
 
-p {
+p, li {
 	font-size: .85em;
 	font-weight: lighter;
 }
@@ -44,14 +44,14 @@ html:not([amp4ads]) {
 
 html:not([amp4ads]) body {
 	min-height: calc(100vh /100 * 80) !important;
-	margin-top: 20px !important;
+	padding-top: 75px !important;
 }
 
 /* navbar */
 
 nav {
 	position: absolute;
-	top: 0;
+	top: 20px;
 	right: 0;
 	z-index: 10;
 }
@@ -117,6 +117,10 @@ main.page a {
 	text-decoration: underline;
 }
 
+main.page>h2 {
+	margin-block-start: 1.5em;
+}
+
 /* cards */
 
 ul.cards {
@@ -157,7 +161,6 @@ ul.cards>li>p.caption {
 	margin-bottom: 0;
 	border-top: 1px solid var(--color-softer);
 	padding-top: 25px;
-	font-size: .75em;
 }
 
 /* tooltip */
@@ -224,12 +227,38 @@ span.separator::after {
 	transform: translateX(25px);
 }
 
-/* terminalize pre tags */
+/* terminalize pre/code tags */
+
+.codehilite, .codehilite pre, .codehilite table {
+	border-radius: 5px;
+}
 
 pre {
-	overflow-x: scroll;
-	padding: 10px;
-	background: var(--color-background-darker);
+	overflow-x: auto;
+	padding: 20px;
+}
+
+code {
+	font-family: 'Overpass Mono', monospace;
+	font-weight: normal;
+	font-size: .85em;
+}
+
+.codehilite, .codehilite pre, .codehilite table, code {
+	/* allow select */
+	user-select: text;
+	-o-user-select: text;
+	-ms-user-select: text;
+	-moz-user-select: text;
+	-webkit-user-select: text;
+}
+
+code {
+	text-decoration: underline;
+}
+
+.codehilite code {
+	text-decoration: inherit;
 }
 
 /* scroll bar */
