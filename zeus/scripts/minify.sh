@@ -1,6 +1,6 @@
 #!/bin/bash
 
-find ${build_dir} -type f | while read -r fname; do
+find public -type f | while read -r fname; do
     case "${fname##*.}" in
         html|css|js|json|svg|xml)
             minify "${fname}" -o "/tmp/${fname}" && \

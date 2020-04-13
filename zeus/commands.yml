@@ -15,17 +15,11 @@ commands:
             - setup
         exec: cp -rf src/assets/* ${build_dir}/
 
-    projects:
-        description: Compile Markdown into HTML
-        language: python3
-        dependencies:
-            - setup
-
     pages:
         description: Compile templates into HTML
         language: python3
         dependencies:
-            - projects
+            - setup
 
     facade:
         description: Merge fragments into facade

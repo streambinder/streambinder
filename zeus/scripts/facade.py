@@ -9,36 +9,24 @@ import yaml
 from jinja2 import Template
 from distutils.dir_util import copy_tree
 
+from _config import Config as config
+from _globals import get as zeus_global
+from _parser import get as parse
 
-parser = jinja2.Environment(
-    block_start_string='{!',
-    block_end_string='!}',
-    variable_start_string='{{',
-    variable_end_string='}}',
-    trim_blocks=True,
-    autoescape=False,
-    loader=jinja2.FileSystemLoader(os.path.abspath('.'))
-)
 
-for subdir, dirs, files in os.walk('public'):
-    for fname in files:
+for fdir, _, fnames in os.walk(zeus_global('build_dir')):
+    for fname in fnames:
         if fname != '_index.html':
             continue
 
-        fname_html = os.path.join(subdir, fname)
-        fname_yaml = fname_html.replace('html', 'yaml')
-        config_html = None
-        config_yaml = None
+        fname_html = os.path.join(fdir, fname)
+
         with open(fname_html, 'r') as html_fd:
-            config_html = html_fd.read()
-        with open(fname_yaml, 'r') as yaml_fd:
-            try:
-                config_yaml = yaml.safe_load(yaml_fd)
-            except yaml.YAMLError as e:
-                print(e)
-                sys.exit(1)
-        if config_yaml is None:
-            print('unable to parse {}'.format(fname_yaml))
-            sys.exit(1)
-        parser.get_template('src/facade.html').stream(
-            {**config_yaml, 'content': config_html}).dump(os.path.join(subdir, 'index.html'))
+            parse(template='src/facade.html',
+                  output=os.path.join(fdir, 'index.html'),
+                  config={
+                      'html': {
+                          **config.new(fname_html.replace('html', 'yaml')).get('html'),
+                          **{'body': html_fd.read()}
+                      }
+                  })
