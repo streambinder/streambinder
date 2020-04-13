@@ -12,7 +12,7 @@ def _idfy(value):
 def _section_icon(id):
     if id == 'about':
         return 'fas fa-question'
-    elif id == 'installation':
+    elif id in ['installation', 'download']:
         return 'fas fa-cloud-download-alt'
     elif id == 'engineering':
         return 'far fa-lightbulb'
