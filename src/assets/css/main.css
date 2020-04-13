@@ -129,6 +129,7 @@ ul.cards {
 
 ul.cards>li {
 	display: inline-block;
+	background-color: var(--color-background);
 	border: 1px solid var(--color-softer);
 	width: 100%;
 	margin-bottom: 10px;
@@ -138,7 +139,7 @@ ul.cards>li {
 }
 
 ul.cards>li:hover {
-	filter: brightness(.75);
+	filter: brightness(.9);
 }
 
 ul.cards>li>a {
