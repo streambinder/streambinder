@@ -22,29 +22,37 @@ info:
 pages:
   - path: /
     content: pages/index.html
-    title: Davide Pucci
+    name: Davide Pucci
   - path: /doc
     content: pages/projects.html
-    title: Projects
-
-projects:
-  - name: Spotitube
+    name: Projects
+  - path: /doc/spotitube
+    name: Spotitube
     caption: Synchronize your Spotify collections downloading from external providers
     icon: devicon-go-plain
     content: projects/spotitube.md
-  - name: Chopper
+    parent: pages/project.html
+  - path: /doc/chopper
+    name: Chopper
     caption: Share all-sizes files using reconstructable manifests
     icon: devicon-python-plain
     content: projects/chopper.md
-  - name: Paperboy
+    parent: pages/project.html
+  - path: /doc/paperboy
+    name: Paperboy
     caption: IMAP email checker and GTK notifier
     icon: devicon-c-plain
     content: projects/paperboy.md
-  - name: Ashtray
+    parent: pages/project.html
+  - path: /doc/ashtray
+    name: Ashtray
     caption: Private package repository
     icon: devicon-amazonwebservices-original
     content: projects/ashtray.md
-  - name: Resume
+    parent: pages/project.html
+  - path: /doc/resume
+    name: Resume
     caption: That cool thing to look interesting in the world of work
     icon: devicon-python-plain
     content: projects/resume.md
+    parent: pages/project.html

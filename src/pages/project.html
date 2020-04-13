@@ -1,14 +1,19 @@
-<main class="page">
-	<h1>{{ project.name }}</h1>
-	<h5 class="caption">{{ project.caption }}</h5>
+<main class=page>
+    <h1>{{ page.name }}</h1>
+    <h5 class=caption>{{ page.caption }}</h5>
 
-	<ul class="cards">
-		{! for section in project.sections !}
-		<li><a href="#{{ section.id }}"><i class="{{ section.icon }}"></i> <span>{{ section.name }}</span></a></li>
-		{! endfor !}
-	</ul>
+    <ul class=cards>
+        {! for section in page.sections !}
+        <li>
+            <a href="#{{ section.id }}">
+                <i class="{{ section.icon }}"></i>
+                <span>{{ section.name }}</span>
+            </a>
+        </li>
+        {! endfor !}
+    </ul>
 
-	<span class="separator"><i>#</i></span>
+    <span class=separator><i>#</i></span>
 
-	{{ project.content }}
+    {{ page.content }}
 </main>
