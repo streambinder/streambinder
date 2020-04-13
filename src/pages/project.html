@@ -4,12 +4,12 @@
 
     <ul class=cards>
         {! for section in page.sections !}
-        <a href="#{{ section.id }}">
-            <li>
+        <li>
+            <a href="#{{ section.id }}">
                 <i class="{{ section.icon }}"></i>
                 <span>{{ section.name }}</span>
-            </li>
-        </a>
+            </a>
+        </li>
         {! endfor !}
     </ul>
 

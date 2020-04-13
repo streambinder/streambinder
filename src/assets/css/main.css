@@ -127,7 +127,7 @@ ul.cards {
 	padding: 0;
 }
 
-ul.cards>a>li {
+ul.cards>li {
 	display: inline-block;
 	border: 1px solid var(--color-softer);
 	width: calc(100% - 40px);
@@ -138,15 +138,15 @@ ul.cards>a>li {
 	vertical-align: top;
 }
 
-ul.cards>a>li:hover {
+ul.cards>li:hover {
 	filter: brightness(.75);
 }
 
-ul.cards>a {
+ul.cards>li>a {
 	text-decoration: none;
 }
 
-ul.cards>a>li>i {
+ul.cards>li>a>i {
 	position: absolute;
 	top: 30px;
 	transform: translateY(-50%);
@@ -154,12 +154,12 @@ ul.cards>a>li>i {
 	text-align: center;
 }
 
-ul.cards>a>li>span {
+ul.cards>li>a>span {
 	display: block;
 	text-indent: 40px;
 }
 
-ul.cards>a>li>p.caption {
+ul.cards>li>p.caption {
 	margin-bottom: 0;
 	border-top: 1px solid var(--color-softer);
 	padding-top: 25px;
@@ -291,7 +291,7 @@ code {
 		margin: auto;
 	}
 	/* cards */
-	ul.cards>a>li {
+	ul.cards>li {
 		width: 325px;
 		margin: auto 8px 8px auto;
 	}
