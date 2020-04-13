@@ -14,6 +14,8 @@ def _section_icon(id):
         return 'fas fa-question'
     elif id == 'installation':
         return 'fas fa-cloud-download-alt'
+    elif id == 'engineering':
+        return 'far fa-lightbulb'
     else:
         return 'fab fa-slack-hash'
 
