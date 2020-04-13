@@ -130,8 +130,7 @@ ul.cards {
 ul.cards>li {
 	display: inline-block;
 	border: 1px solid var(--color-softer);
-	width: calc(100% - 40px);
-	padding: 20px;
+	width: 100%;
 	margin-bottom: 10px;
 	border-radius: 3.5px;
 	position: relative;
@@ -144,6 +143,8 @@ ul.cards>li:hover {
 
 ul.cards>li>a {
 	text-decoration: none;
+	display: block;
+	padding: 20px;
 }
 
 ul.cards>li>a>i {
@@ -159,7 +160,7 @@ ul.cards>li>a>span {
 	text-indent: 40px;
 }
 
-ul.cards>li>p.caption {
+ul.cards>li>a>p.caption {
 	margin-bottom: 0;
 	border-top: 1px solid var(--color-softer);
 	padding-top: 25px;
@@ -292,7 +293,7 @@ code {
 	}
 	/* cards */
 	ul.cards>li {
-		width: 325px;
-		margin: auto 8px 8px auto;
+		width: 49%;
+		margin: auto .35% 5px .35%;
 	}
 }
