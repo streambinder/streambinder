@@ -4,20 +4,19 @@ import markdown
 import re
 
 
+from _config import Config as config
+
+
 def _idfy(value):
     value = value.replace(' ', '-')
     return ''.join(c for c in value if c.isalnum() or c == '-').lower()
 
 
 def _section_icon(id):
-    if id == 'about':
-        return 'fas fa-question'
-    elif id in ['installation', 'download']:
-        return 'fas fa-cloud-download-alt'
-    elif id == 'engineering':
-        return 'far fa-lightbulb'
-    else:
-        return 'fab fa-slack-hash'
+    icons = config.new('src/website.yaml').get('icons')
+    if 'section-{}'.format(id) in icons:
+        return icons['section-{}'.format(id)]
+    return icons['section-generic']
 
 
 def _pre_parse_html(html):
