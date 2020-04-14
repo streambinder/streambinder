@@ -56,8 +56,9 @@ def extract(path):
             markdown.markdown(
                 markdown_fd.read(),
                 extensions=[
+                    'tables',
                     'fenced_code',
-                    'codehilite'
+                    'codehilite',
                 ],
             )
         )
