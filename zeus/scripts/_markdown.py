@@ -4,19 +4,7 @@ import markdown
 import re
 
 
-from _config import Config as config
-
-
-def _idfy(value):
-    value = value.replace(' ', '-')
-    return ''.join(c for c in value if c.isalnum() or c == '-').lower()
-
-
-def _section_icon(id):
-    icons = config.new('src/website.yaml').get('icons')
-    if 'section-{}'.format(id) in icons:
-        return icons['section-{}'.format(id)]
-    return icons['section-generic']
+from _html import idfy, icon
 
 
 def _pre_parse_html(html):
@@ -35,7 +23,7 @@ def _parse_html(html):
     for _, match in enumerate(matches, start=1):
         for group in range(0, len(match.groups())):
             section_name = match.group(group+1)
-            section_id = _idfy(section_name)
+            section_id = idfy(section_name)
             html = html.replace(
                 match.group(),
                 '<h2 id="{}">{}</h2>'.format(section_id, section_name)
@@ -43,7 +31,7 @@ def _parse_html(html):
             html_sections.append({
                 'id': section_id,
                 'name': section_name,
-                'icon': _section_icon(section_id)
+                'icon': icon(section_id)
             })
 
     return html, html_sections
