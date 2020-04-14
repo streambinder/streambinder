@@ -150,7 +150,7 @@ ul.cards>li>a {
 
 ul.cards>li>a>i {
 	position: absolute;
-	top: 30px;
+	top: 27.5px;
 	transform: translateY(-50%);
 	width: 20px;
 	text-align: center;
