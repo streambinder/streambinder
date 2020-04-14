@@ -4,6 +4,9 @@ import os
 import yaml
 
 
+_cache = dict()
+
+
 class Config(object):
     def __init__(self, path):
         self.path = path
@@ -20,7 +23,13 @@ class Config(object):
 
     @staticmethod
     def new(path):
-        return Config(path)
+        global _cache
+
+        if path in _cache:
+            return _cache[path]
+
+        _cache[path] = Config(path)
+        return _cache[path]
 
     @staticmethod
     def dump_yaml(path, config):
