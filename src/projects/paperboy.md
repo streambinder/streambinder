@@ -20,7 +20,9 @@ The configuration is YAML-formatted and should respect the following sample stru
 
 ``` yaml
 accounts:
-  - alias: "Name"
+
+  + alias: "Name"
+
     address: "email@addre.ss"
     password: "pa$word"
     hostname: "imap.host.name"
@@ -87,10 +89,12 @@ make
 make install
 ```
 
-Dependencies:
+### Dependencies
 
-* `libgtk-3` 
-* `libyaml` 
-* `libcurl` 
-* `xdg-open` (runtime)
+| Name       | Type        |
+| :--------- | :---------- |
+| `libgtk-3` | Compilation |
+| `libyaml` | Compilation |
+| `libcurl` | Compilation |
+| `xdg-open` | Runtime     |
 

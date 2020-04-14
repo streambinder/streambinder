@@ -72,12 +72,14 @@ Spotitube binaries and packages are hosted on GitHub, in project's [_Releases_ s
 
 For Solus-Project, RedHat-based, Debian-based distributions users, there's an installable package, while for the others Linux/Unix systems users a generic binary can be used. For Windows users, an _exe_ binary variant is there, too.
 
-Dependencies:
+## Dependencies
 
-* `golang` 1.7+ 
-* `youtube-dl` (runtime)
-* `ffmpeg` (runtime)
-* `xdg-open` for Linux, `rundll32` for Windows (runtime)
+| Name          | Type        |
+| :------------ | :---------- |
+| `golang` 1.7+ | Compilation |
+| `youtube-dl` | Runtime |
+| `ffmpeg` | Runtime |
+| `xdg-open` / `rundll32` | Runtime     |
 
 ## Updating
 
