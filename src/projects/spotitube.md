@@ -70,12 +70,14 @@ For Solus-Project, RedHat-based, Debian-based distributions users, there's an in
 
 ## Dependencies
 
-Name                    | Type
-:---------------------- | :----------
-`golang` 1.7+           | Compilation
-`youtube-dl`            | Runtime
-`ffmpeg`                | Runtime
-`xdg-open` / `rundll32` | Runtime
+Dependencies on which the code base is relying to be provenly working follow:
+
+Name         | Type    | Version
+:----------- | :------ | :------
+`golang`     | compile | 1.14.2
+`youtube-dl` | runtime | latest
+`ffmpeg`     | runtime | 4.2.2
+`xdg-open`   | runtime | 1.1.3
 
 ## Updating
 
@@ -174,16 +176,20 @@ Several tests got made during the drawing up of the application and now I can sa
 
 Latest verified statistics describes a sample of 396 songs, cumulative of different musical genres: _rock_, _pop_, _disco_ - _house_, _dubstep_ and _remixes_ -, _chamber music_, _soundtrack_, _folk_, _indie_, _punk_, and many others. Also, they belonged to several decades, with songs from 1975 or up to 2017\. They were produced by many and very different artists, such as _Kodaline_, _Don Diablo_, _OneRepublic_, _The Cinematic Orchestra_, _Sigur Ros_, _Rooney_, _Royal Blood_, _Antonello Venditti_, _Skrillex_, _Savant_, _Knife Party_, _Yann Tiersen_, _Celine Dion_, _The Lumineers_, _alt-J_, _Mumford & Sons_, _Patrick Park_, _Jake Bugg_, _About Wayne_, _Arctic Monkeys_, _The Offspring_, _Maitre Gims_, _Thegiornalisti_, _Glee_ cast, _One Direction_, _Baustelle_, _Kaleo_, _La La Land_ cast, and many, many more.
 
-The result of `spotitube` execution against a 396 tracks library:
+The result of `spotitube` execution:
 
-- Songs _not found_: **13**
-- Found, but _wrong_: **22**
-- Found, and _right_: **361**
+Type               | Quantity (of 396)
+:----------------- | :----------------
+Songs _not found_  | **13**
+Found, but _wrong_ | **22**
+Found, and _right_ | **361**
 
 In other words, we could say `spotitube` behaved as it was expected to both for _songs not found_ and _found, and right_. In fact, in the first case, the greatest part of the _not found_ songs were actually really not found on _YouTube_.
 
-- Success rate: **95%**
-- Failure rate: **5%**
+Type    | Percentage
+:------ | :---------
+Success | **95%**
+Failure | **5%**
 
 ### Getting always better
 
