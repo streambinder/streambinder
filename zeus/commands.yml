@@ -15,6 +15,7 @@ commands:
             - setup
         exec: |
             cp -rf src/static/* ${build_dir}/
+            cp -rf src/projects/assets ${build_dir}/
 
     pages:
         description: Compile templates into HTML
