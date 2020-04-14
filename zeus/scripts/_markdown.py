@@ -55,6 +55,7 @@ def extract(path):
         return _parse_html(
             markdown.markdown(
                 markdown_fd.read(),
+                tab_length=2,
                 extensions=[
                     'tables',
                     'fenced_code',
