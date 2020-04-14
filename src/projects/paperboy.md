@@ -88,9 +88,9 @@ make install
 
 ### Dependencies
 
-Name       | Type
-:--------- | :----------
-`libgtk-3` | Compilation
-`libyaml`  | Compilation
-`libcurl`  | Compilation
-`xdg-open` | Runtime
+Name       | Type        | Version (tested)
+:--------- | :---------- | :---------------
+`libgtk-3` | compilation | 3.24.16
+`libyaml`  | compilation | 0.2.2
+`libcurl`  | compilation | 7.69.1
+`xdg-open` | runtime     | 1.1.3
