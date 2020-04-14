@@ -13,7 +13,8 @@ commands:
         description: Install static assets
         dependencies:
             - setup
-        exec: cp -rf src/assets/* ${build_dir}/
+        exec: |
+            cp -rf src/static/* ${build_dir}/
 
     pages:
         description: Compile templates into HTML
