@@ -5,7 +5,7 @@
 		{! if entry.content.endswith('md') !}
 		<li>
 			<a href="/doc/{{ entry.name.lower() }}">
-				<i class="{{ entry.icon }}"></i>
+				<i class="{{ icons[entry.icon] or icons['lang-generic'] }}"></i>
 				<span>{{ entry.name }}</span>
 				<p class=caption>{{ entry.caption }}</p>
 			</a>

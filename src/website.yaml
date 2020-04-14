@@ -5,23 +5,23 @@ info:
     - name: LinkedIn
       url: https://url.davidepucci.it/linkedin
       color: var(--color)
-      icon: "fab fa-linkedin-in"
+      icon: social-linkedin
     - name: GitHub
       url: https://url.davidepucci.it/github
       color: var(--color)
-      icon: "fab fa-github"
+      icon: social-github
     - name: Spotify
       url: https://url.davidepucci.it/spotify
       color: var(--color)
-      icon: "fab fa-spotify"
+      icon: social-spotify
     - name: Email
       url: https://url.davidepucci.it/email
       color: var(--color)
-      icon: "fas fa-envelope"
+      icon: social-email
     - name: Resume
       url: https://url.davidepucci.it/resume
       color: var(--color)
-      icon: "fas fa-graduation-cap"
+      icon: social-resume
 
 pages:
   - path: /
@@ -33,30 +33,47 @@ pages:
   - path: /doc/spotitube
     name: Spotitube
     caption: Synchronize your Spotify collections downloading from external providers
-    icon: devicon-go-plain
+    icon: lang-go
     content: projects/spotitube.md
     parent: pages/project.html
   - path: /doc/chopper
     name: Chopper
     caption: Share all-sizes files using reconstructable manifests
-    icon: devicon-python-plain
+    icon: lang-python
     content: projects/chopper.md
     parent: pages/project.html
   - path: /doc/paperboy
     name: Paperboy
     caption: IMAP email checker and GTK notifier
-    icon: devicon-c-plain
+    icon: lang-c
     content: projects/paperboy.md
     parent: pages/project.html
   - path: /doc/ashtray
     name: Ashtray
     caption: Private package repository
-    icon: devicon-amazonwebservices-original
+    icon: lang-infra
     content: projects/ashtray.md
     parent: pages/project.html
   - path: /doc/resume
     name: Resume
     caption: That cool thing to look interesting in the world of work
-    icon: devicon-python-plain
+    icon: lang-latex
     content: projects/resume.md
     parent: pages/project.html
+
+icons:
+  social-linkedin: fab fa-linkedin-in
+  social-github: fab fa-github
+  social-spotify: fab fa-spotify
+  social-email: fas fa-envelope
+  social-resume: fas fa-graduation-cap
+  lang-go: devicon-go-plain
+  lang-python: fab fa-python
+  lang-c: devicon-c-plain
+  lang-infra: fas fa-cubes
+  lang-generic: fas fa-code
+  section-about: fas fa-question
+  section-installation: fas fa-cloud-download-alt
+  section-download: fas fa-cloud-download-alt
+  section-engineering: far fa-lightbulb
+  section-generic: fab fa-slack-hash
