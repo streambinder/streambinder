@@ -10,6 +10,10 @@ info:
       url: https://url.davidepucci.it/github
       color: var(--color)
       icon: "fab fa-github"
+    - name: Spotify
+      url: https://url.davidepucci.it/spotify
+      color: var(--color)
+      icon: "fab fa-spotify"
     - name: Email
       url: https://url.davidepucci.it/email
       color: var(--color)
