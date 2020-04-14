@@ -2,32 +2,30 @@
 
 Spotitube is a CLI application to programmatically authenticate to your Spotify account, fetch some music collections and synchronize them locally relying on a set of providers, keeping track of playlists files, inserting metadata informations, album artworks, songs lyrics and maximizing audio quality.
 
-The project was born as per two needs.
-First one was wanting to learn some _GO-lang_ basics.
-And, on the other hand, I needed to automate the process of synchronize the songs I wanted to download, which was composed by the following phases:
+The project was born as per two needs. First one was wanting to learn some _GO-lang_ basics. And, on the other hand, I needed to automate the process of synchronize the songs I wanted to download, which was composed by the following phases:
 
-* Keep track of music I want to download
-* Find the best song file I can
-* Download it
-* Apply correct metadata
+- Keep track of music I want to download
+- Find the best song file I can
+- Download it
+- Apply correct metadata
 
 ## Usage
 
 The most common way to use it is to synchronize your library:
 
-``` bash
+```bash
 spotitube -folder ~/Music
 ```
 
 If you want to synchronize a playlist/album:
 
-``` bash
+```bash
 spotitube -folder ~/Music -playlist $playlist_uid -album $album_uid
 ```
 
 Spotitube supports aggregating multiple collections in a single synchronization flow:
 
-``` bash
+```bash
 # library synchronization is done by default
 # if no other collection is asked
 spotitube -folder ~/Music
@@ -44,17 +42,15 @@ spotitube -folder ~/Music \
 
 As have been noticed, few flags tend to be always unchanged, as the `-folder` or the `-playlist` , and it's either boring to always write them if they stick to the same value, or difficult to remember them. To simplify the management of such scenario, a configuration file can be used:
 
-``` yaml
+```yaml
 # the value below is used in case no -folder flag
 # is passed exlicitely to spotitube
 folder: ~/Music
 # the values of these aliases are possibly replaced
 # with the ones passed as -playlist|album flags values
 aliases:
-
     - my_playlist: spotify:playlist:whateverUid
     - another_playlist: spotify:playlist:anotherUid
-
 ```
 
 ### Troubleshooting
@@ -74,12 +70,12 @@ For Solus-Project, RedHat-based, Debian-based distributions users, there's an in
 
 ## Dependencies
 
-| Name          | Type        |
-| :------------ | :---------- |
-| `golang` 1.7+ | Compilation |
-| `youtube-dl` | Runtime |
-| `ffmpeg` | Runtime |
-| `xdg-open` / `rundll32` | Runtime     |
+Name                    | Type
+:---------------------- | :----------
+`golang` 1.7+           | Compilation
+`youtube-dl`            | Runtime
+`ffmpeg`                | Runtime
+`xdg-open` / `rundll32` | Runtime
 
 ## Updating
 
@@ -87,9 +83,9 @@ Theoretically, Spotitube is taught to be self-updated if not running an updated 
 
 ## Package manager
 
-Installation from repositories is only available for Solus-Project users which have enabled [ `ashtray` ](/ashtray/) repository:
+Installation from repositories is only available for Solus-Project users which have enabled [`ashtray`](/ashtray/) repository:
 
-``` bash
+```bash
 eopkg it -y spotitube
 ```
 
@@ -105,15 +101,15 @@ For the ones moving this way, `SPOTIFY_KEY` is associated to `SPOTIFY_ID` : if y
 
 By default, the application is coded to use the following redirect URIs:
 
-* `http://127.0.0.1:8080/callback` 
-* `http://localhost:8080/callback` 
-* `http://spotitube.local:8080/callback` 
+- `http://127.0.0.1:8080/callback`
+- `http://localhost:8080/callback`
+- `http://spotitube.local:8080/callback`
 
 Assure you configure your Spotify application to allow them.
 
 ### Build instructions
 
-``` bash
+```bash
 go get github.com/dreadl0ck/zeus
 git clone https://github.com/streambinder/spotitube
 cd spotitube
@@ -122,13 +118,13 @@ zeus build-linux|build-windows
 
 If you want to install it widely in the system:
 
-``` bash
+```bash
 zeus install
 ```
 
 Passing Spotify API credentials:
 
-``` bash
+```bash
 # the following SPOTIFY_ID and SPOTIFY_KEY are bogus
 SPOTIFY_ID=YJ5U6TSB317572L40EMQQPVEI2HICXFL \
     SPOTIFY_KEY=4SW2W3ICZ3DPY6NWC88UFJDBCZJAQA8J \
@@ -139,7 +135,7 @@ SPOTIFY_ID=YJ5U6TSB317572L40EMQQPVEI2HICXFL \
 
 As Spotitube is built in Go, you can use the standard method to build it:
 
-``` bash
+```bash
 go get github.com/streambinder/spotitube
 ```
 
@@ -147,10 +143,10 @@ Anyway, take into account that this method won't hardcode Spotify API credential
 
 ### Running on Windows
 
-* For each of the following assets, either install it (making sure their binary path is exported as part of the `%PATH%` variable) or put it in the same folder: `youtube-dl` ([ytdl-org.github.io/youtube-dl](https://ytdl-org.github.io/youtube-dl/download.html)), `ffmpeg` ([ffmpeg.zeranoe.com](https://ffmpeg.zeranoe.com/builds/)), `spotitube` (pick the `exe` variant release).
-* Enter the `cmd` 
-* If you didn't follow the `%PATH%` method, enter the folder in which all the downloaded assets are located
-* Run `spotitube` and enjoy
+- For each of the following assets, either install it (making sure their binary path is exported as part of the `%PATH%` variable) or put it in the same folder: `youtube-dl` ([ytdl-org.github.io/youtube-dl](https://ytdl-org.github.io/youtube-dl/download.html)), `ffmpeg` ([ffmpeg.zeranoe.com](https://ffmpeg.zeranoe.com/builds/)), `spotitube` (pick the `exe` variant release).
+- Enter the `cmd`
+- If you didn't follow the `%PATH%` method, enter the folder in which all the downloaded assets are located
+- Run `spotitube` and enjoy
 
 # Engineering
 
@@ -158,40 +154,40 @@ Anyway, take into account that this method won't hardcode Spotify API credential
 
 The solution I wrote to automate the process is covered by three major components:
 
-* **Authentication and data fetching phase:** _**Spotify**_
+- **Authentication and data fetching phase:** _**Spotify**_
 
-   This component, once authenticated, is used to keep track of the music to synchronize \(both via library or a playlist\) and as database for the metadata to apply to every downloaded _mp3_.
+  This component, once authenticated, is used to keep track of the music to synchronize (both via library or a playlist) and as database for the metadata to apply to every downloaded _mp3_.
 
-* **Searching phase: download providers, such as** _**YouTube**_
+- **Searching phase: download providers, such as** _**YouTube**_
 
-   This one is our free music shop, used to be queried to give us the best video it owns about the songs we're looking for.
+  This one is our free music shop, used to be queried to give us the best video it owns about the songs we're looking for.
 
-* **Lyrics fetching phase: lyrics providers, such as** _**Genius**_ **or** _**lyrics.ovh**_
+- **Lyrics fetching phase: lyrics providers, such as** _**Genius**_ **or** _**lyrics.ovh**_
 
-   You will go through this component if you'll enable automatic songs lyrics fetch: _Spotify_ informations about song will be used to find lyrics provided by two entities: _Genius_ and, eventually, if the first one doesn't own it, _lyrics.ovh_.
+  You will go through this component if you'll enable automatic songs lyrics fetch: _Spotify_ informations about song will be used to find lyrics provided by two entities: _Genius_ and, eventually, if the first one doesn't own it, _lyrics.ovh_.
 
 ## Reliability
 
-Several tests got made during the drawing up of the application and now I can say its pretty good at choosing the right song out of a list of keywords \(such as the title and the user of any _YouTube_ video\).
+Several tests got made during the drawing up of the application and now I can say its pretty good at choosing the right song out of a list of keywords (such as the title and the user of any _YouTube_ video).
 
 ### Latest statistics
 
-Latest verified statistics describes a sample of 396 songs, cumulative of different musical genres: _rock_, _pop_, _disco_ - _house_, _dubstep_ and _remixes_ -, _chamber music_, _soundtrack_, _folk_, _indie_, _punk_, and many others. Also, they belonged to several decades, with songs from 1975 or up to 2017. They were produced by many and very different artists, such as _Kodaline_, _Don Diablo_, _OneRepublic_, _The Cinematic Orchestra_, _Sigur Ros_, _Rooney_, _Royal Blood_, _Antonello Venditti_, _Skrillex_, _Savant_, _Knife Party_, _Yann Tiersen_, _Celine Dion_, _The Lumineers_, _alt-J_, _Mumford & Sons_, _Patrick Park_, _Jake Bugg_, _About Wayne_, _Arctic Monkeys_, _The Offspring_, _Maitre Gims_, _Thegiornalisti_, _Glee_ cast, _One Direction_, _Baustelle_, _Kaleo_, _La La Land_ cast, and many, many more.
+Latest verified statistics describes a sample of 396 songs, cumulative of different musical genres: _rock_, _pop_, _disco_ - _house_, _dubstep_ and _remixes_ -, _chamber music_, _soundtrack_, _folk_, _indie_, _punk_, and many others. Also, they belonged to several decades, with songs from 1975 or up to 2017\. They were produced by many and very different artists, such as _Kodaline_, _Don Diablo_, _OneRepublic_, _The Cinematic Orchestra_, _Sigur Ros_, _Rooney_, _Royal Blood_, _Antonello Venditti_, _Skrillex_, _Savant_, _Knife Party_, _Yann Tiersen_, _Celine Dion_, _The Lumineers_, _alt-J_, _Mumford & Sons_, _Patrick Park_, _Jake Bugg_, _About Wayne_, _Arctic Monkeys_, _The Offspring_, _Maitre Gims_, _Thegiornalisti_, _Glee_ cast, _One Direction_, _Baustelle_, _Kaleo_, _La La Land_ cast, and many, many more.
 
 The result of `spotitube` execution against a 396 tracks library:
 
-* Songs _not found_: **13**
-* Found, but _wrong_: **22** 
-* Found, and _right_: **361**
+- Songs _not found_: **13**
+- Found, but _wrong_: **22**
+- Found, and _right_: **361**
 
 In other words, we could say `spotitube` behaved as it was expected to both for _songs not found_ and _found, and right_. In fact, in the first case, the greatest part of the _not found_ songs were actually really not found on _YouTube_.
 
-* Success rate: **95%**
-* Failure rate: **5%**
+- Success rate: **95%**
+- Failure rate: **5%**
 
 ### Getting always better
 
-The code can surely be taught to behave always better, but there will always be a small percentage of failures, caused by the specific download provider uploaders, which are very often unable to specify what a video actually is containing and synthesize it in a title that is not ambiguous \(I'm thinking about, for example, the case of a really talented teenager who posts his first cover video, without specifying that it actually is a cover\). The more you'll get involved on improve `spotitube` , the more you'll notice how lot of things are ambigous and thinking of a way to workaround this ambiguity would bring the project to be too much selective, losing useful results.
+The code can surely be taught to behave always better, but there will always be a small percentage of failures, caused by the specific download provider uploaders, which are very often unable to specify what a video actually is containing and synthesize it in a title that is not ambiguous (I'm thinking about, for example, the case of a really talented teenager who posts his first cover video, without specifying that it actually is a cover). The more you'll get involved on improve `spotitube` , the more you'll notice how lot of things are ambigous and thinking of a way to workaround this ambiguity would bring the project to be too much selective, losing useful results.
 
 # FAQ
 
@@ -203,14 +199,13 @@ The code can surely be taught to behave always better, but there will always be 
 
 Android delegates the indexing of every media file stored into internal/external storage to a service called MediaScanner, which gets executed to find any new or deprecated file and to update a database filled with all those entries, MediaStore. This is basically done to let every app be faster to find files on storage, relying on this service rather than on specific implementations.
 
-In few cases, some issues got encountered while testing SpotiTube generated playlists, recognized as empty on Android. After some investigations, it seems that MediaScanner defers the `.m3u` \(playlist file\) - the same with `.pls` file - effective parsing, in a actually not understood way: it immediately find the physical playlist file, but its informations will never be parsed.
+In few cases, some issues got encountered while testing SpotiTube generated playlists, recognized as empty on Android. After some investigations, it seems that MediaScanner defers the `.m3u` (playlist file) - the same with `.pls` file - effective parsing, in a actually not understood way: it immediately find the physical playlist file, but its informations will never be parsed.
 
 A simple workaround for the ones experiencing this kind of issues, is to run this shell snippet:
 
-``` bash
+```bash
 adb shell "am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE \
-	-d file:///sdcard/path/to/playlist/file"
+    -d file:///sdcard/path/to/playlist/file"
 sleep 5
 adb reboot
 ```
-

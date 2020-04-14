@@ -4,10 +4,9 @@ Yup. I host my LaTeX CV on a dedicated repository on GitHub and release every ve
 
 # Download
 
-To download latest version, please, reach latest [GitHub repository](https://github.com/streambinder/resume) release.
-Otherwise, if you want to grab it from the shell \(or in any other way you prefer\), you can use \(or adapt\) the following snippet:
+To download latest version, please, reach latest [GitHub repository](https://github.com/streambinder/resume) release. Otherwise, if you want to grab it from the shell (or in any other way you prefer), you can use (or adapt) the following snippet:
 
-``` bash
+```bash
 lang="en"
 variant="europass"
 release="https://github.com/streambinder/curriculum-vitae/releases/latest"
@@ -33,9 +32,9 @@ Looking for a nice way to replace my old and misfiring templating engine, I disc
 
 This scales really good for LaTeX documents, actually:
 
-* Python renderer:
+- Python renderer:
 
-``` python
+```python
 latex = jinja2.Environment(
     block_start_string='\\jblock{',
     block_end_string='}',
@@ -48,9 +47,9 @@ latex.get_template('template.tex')
     .dump('resume.tex')
 ```
 
-* LaTeX template `template.tex` :
+- LaTeX template `template.tex` :
 
-``` latex
+```latex
 \begin{document}
 
     \jvar{author}'s CV.
@@ -60,13 +59,13 @@ latex.get_template('template.tex')
             \textit{ \jvar{i} }
         \jblock{endif}
     \jblock{endfor}
-    
+
 \end{document}
 ```
 
-* LaTeX rendered `resume.tex` :
+- LaTeX rendered `resume.tex` :
 
-``` latex
+```latex
 \begin{document}
 
 streambinder's CV.
@@ -74,14 +73,13 @@ streambinder's CV.
 \textit{ 0 }
 \textit{ 2 }
 \textit{ 4 }
-    
+
 \end{document}
 ```
 
-Making the engine take the rendering parameters from a database file was pretty easy, too.
-The same result above can be achieved the following way:
+Making the engine take the rendering parameters from a database file was pretty easy, too. The same result above can be achieved the following way:
 
-``` python
+```python
 with open('database.yaml', 'r') as database_fd:
     latex.get_template('template.tex')
         .stream(yaml.safe_load(database_fd))
@@ -90,7 +88,7 @@ with open('database.yaml', 'r') as database_fd:
 
 With `database.yaml` like below:
 
-``` yaml
+```yaml
 author: streambinder
 ```
 
@@ -98,24 +96,23 @@ author: streambinder
 
 Once you have a perfectly working template engine with support for external data source, supporting internationalization is straightforward: introduce a different database file for each language.
 
-* Python renderer:
+- Python renderer:
 
-``` python
+```python
 for lang in ['en', 'it']:
     with open('database_{}.yaml'.format(lang), 'r') as database_fd:
         latex.get_template('template.tex')
             .stream(yaml.safe_load(database_fd))
 ```
 
-* YAML english database `database_en.yaml` : 
+- YAML english database `database_en.yaml` :
 
-``` yaml
+```yaml
 author: streambinder in english
 ```
 
-* YAML italian database `database_en.yaml` : 
+- YAML italian database `database_en.yaml` :
 
-``` yaml
+```yaml
 author: streambinder in italiano
 ```
-

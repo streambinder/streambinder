@@ -8,21 +8,21 @@ The resulting manifest file can then be exchanged and used to let Chopper recons
 
 ## How to use
 
-The way it can be used is very simple. If you want to _chop_ a file \(upload it and generate an exchangeable file\):
+The way it can be used is very simple. If you want to _chop_ a file (upload it and generate an exchangeable file):
 
-``` bash
+```bash
 chopper filename.mp4
 ```
 
 If you want to increase _chop_ redundancy:
 
-``` bash
+```bash
 chopper -r 3 filename.mp4
 ```
 
 If you want to rebuild a file starting from its manifest:
 
-``` bash
+```bash
 chopper build filename.chop
 ```
 
@@ -36,7 +36,7 @@ Head to [Chopper releases](https://github.com/streambinder/chopper) page to fetc
 
 ## Run latest source code
 
-``` bash
+```bash
 git clone https://github.com/streambinder/chopper.git
 python3 chopper/src/main.py -h
 ```
@@ -61,13 +61,13 @@ This means that _chopping_ a 10MB file will, at least, upload 12.5MB of data.
 
 The chunk upload phase is actually depending on the provider the chunk is being pushed onto.
 
-In fact, every storage provider is extending a generic \(and abstract\) `Provider` class which imposes to define many methods, such as the most important `upload()` and `download()` ones, but also many others to make them be properly handled by the whole process, such as the following:
+In fact, every storage provider is extending a generic (and abstract) `Provider` class which imposes to define many methods, such as the most important `upload()` and `download()` ones, but also many others to make them be properly handled by the whole process, such as the following:
 
-* `enabled()` : used to indicate whether the provider is usable or not
-* `nice_name()` : used to represent in a human-readable way the provider
-* `is_supporting()` : used to ask a provider if it's actually able to handle a URI to download content \(chunks\) from it
-* `max_chunk_size()` : used to indicate the maximum byte size sequence allowed by the provider
-* `trottle()` : used to trottle requests to the provider when a `TrottlingException` gets caught
+- `enabled()` : used to indicate whether the provider is usable or not
+- `nice_name()` : used to represent in a human-readable way the provider
+- `is_supporting()` : used to ask a provider if it's actually able to handle a URI to download content (chunks) from it
+- `max_chunk_size()` : used to indicate the maximum byte size sequence allowed by the provider
+- `trottle()` : used to trottle requests to the provider when a `TrottlingException` gets caught
 
 ### Upload
 
@@ -87,7 +87,7 @@ The whole thing has been thought to be as extendible as possible: this means any
 
 A manifest is a _base64_ encoded content which represents a JSON structured this way:
 
-``` javascript
+```javascript
 {
     "chunks": [{
             "md5": "3b33399a12f208075a2413114220f46c",
@@ -112,4 +112,3 @@ A manifest is a _base64_ encoded content which represents a JSON structured this
 ## Redundancy
 
 In order to assure more redundancy over the data, Chopper has been taught to provide the possibility to upload every chunk on several storage providers: this obviously increase the amount of data that is being pushed, along with an increase of the probability the file will be kept safe.
-
