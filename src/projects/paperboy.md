@@ -1,5 +1,7 @@
 # About
 
+![](/assets/paperboy-sample.gif)
+
 Paperboy is a simple CLI application which sends a GTK notification when an email is received, allowing the user to just click on the callback button to open the webmail associated to the account.
 
 In order to do what's been described:

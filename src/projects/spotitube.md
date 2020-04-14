@@ -1,5 +1,7 @@
 # About
 
+![](/assets/spotitube-sample.gif)
+
 Spotitube is a CLI application to programmatically authenticate to your Spotify account, fetch some music collections and synchronize them locally relying on a set of providers, keeping track of playlists files, inserting metadata informations, album artworks, songs lyrics and maximizing audio quality.
 
 The project was born as per two needs. First one was wanting to learn some _GO-lang_ basics. And, on the other hand, I needed to automate the process of synchronize the songs I wanted to download, which was composed by the following phases:
@@ -197,10 +199,6 @@ The code can surely be taught to behave always better, but there will always be 
 
 # FAQ
 
-## **How to pull out URI from playlist**
-
-// TODO
-
 ## **Empty or not recognized playlists on Android**
 
 Android delegates the indexing of every media file stored into internal/external storage to a service called MediaScanner, which gets executed to find any new or deprecated file and to update a database filled with all those entries, MediaStore. This is basically done to let every app be faster to find files on storage, relying on this service rather than on specific implementations.
@@ -215,3 +213,7 @@ adb shell "am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE \
 sleep 5
 adb reboot
 ```
+
+## **How to pull out URI from playlist**
+
+![](/assets/spotitube-faq-uid.jpg)
