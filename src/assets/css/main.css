@@ -108,7 +108,7 @@ main.page>h1 {
 	margin-bottom: 20px;
 }
 
-main.page>h5 {
+main.page>h5.caption {
 	margin: 0 0 50px;
 	font-weight: normal;
 }
