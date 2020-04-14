@@ -88,9 +88,11 @@ make install
 
 ### Dependencies
 
-Name       | Type        | Version (tested)
-:--------- | :---------- | :---------------
-`libgtk-3` | compilation | 3.24.16
-`libyaml`  | compilation | 0.2.2
-`libcurl`  | compilation | 7.69.1
-`xdg-open` | runtime     | 1.1.3
+Dependencies on which the code base is relying to be provenly working follow:
+
+Name       | Type    | Version
+:--------- | :------ | :------
+`libgtk-3` | compile | 3.24.16
+`libyaml`  | compile | 0.2.2
+`libcurl`  | compile | 7.69.1
+`xdg-open` | runtime | 1.1.3
