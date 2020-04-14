@@ -254,6 +254,7 @@ pre {
 code {
 	font-family: 'Overpass Mono', monospace;
 	font-weight: bold;
+	word-break: break-word;
 }
 
 .codehilite code {
