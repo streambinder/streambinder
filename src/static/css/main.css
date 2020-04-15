@@ -51,7 +51,7 @@ html:not([amp4ads]) body {
 
 nav {
 	position: absolute;
-	top: 0;
+	top: 20px;
 	right: 0;
 	z-index: 10;
 }
