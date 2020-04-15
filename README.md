@@ -1,9 +1,3 @@
-# Davide Pucci
+# Davide Pucci <a href="https://davidepucci.it/doc"><img align="left" src="https://davidepucci.it/favicon/favicon-96x96.png"></a>
 
-You don't know who the heck is _Davide Pucci_? You'll still do.
-
-But you'll at least be able to know where to find the very fundamental web references.
-
-## Some minor technical informations
-
-This is a single page website, built upon the [HTML5 UP!](https://html5up.net/) [Identity template](https://html5up.net/identity).
+Documentation available at [davidepucci.it/doc](https://davidepucci.it/doc).
