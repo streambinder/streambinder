@@ -39,7 +39,7 @@ section {
 /* AMP */
 
 html:not([amp4ads]) {
-	min-height: calc(100vh - 61px) !important;
+	min-height: calc(100vh - 86px) !important;
 }
 
 html:not([amp4ads]) body {
