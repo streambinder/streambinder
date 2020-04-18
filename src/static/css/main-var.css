@@ -1,6 +1,7 @@
 html {
 	--color: #F3F3F3;
 	--color-softer: #ADADAD;
+	--color-softest: #525252;
 	--color-background: #383838;
 	--color-background-darker: #202020;
 	--color-dark-transparent: rgba(0, 0, 0, .5);

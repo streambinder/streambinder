@@ -153,7 +153,7 @@ ul.cards>li>a>span {
 
 ul.cards>li>a>p.caption {
 	margin-bottom: 0;
-	border-top: 1px solid var(--color-softer);
+	border-top: 1px solid var(--color-softest);
 	padding-top: 25px;
 }
 
