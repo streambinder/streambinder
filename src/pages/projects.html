@@ -2,7 +2,7 @@
 	<h1>{{ page.name }}</h1>
 	<ul class=cards>
 		{! for entry in pages !}
-		{! if entry.content.endswith('md') !}
+		{! if entry.type == "markdown" !}
 		<li>
 			<a href="/doc/{{ entry.name.lower() }}">
 				<i class="{{ icons[entry.icon] or icons['lang-generic'] }}"></i>

@@ -13,15 +13,22 @@ commands:
         description: Install static assets
         dependencies:
             - setup
+            - papers
         exec: |
             cp -rf src/static/* ${build_dir}/
-            cp -rf src/projects/assets ${build_dir}/
+            cp -rf src/papers/*/assets ${build_dir}/
+
+    papers:
+        description: Pull out documentation documents
+        exec: |
+            git submodule update --init --recursive --remote
 
     pages:
         description: Compile templates into HTML
         language: python3
         dependencies:
             - setup
+            - papers
 
     facade:
         description: Merge fragments into facade
