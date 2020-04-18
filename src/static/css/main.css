@@ -13,6 +13,7 @@ html {
 	margin: 10px;
 	padding: 25px;
 	font-size: 1.25em;
+	min-height: calc(100vh - 86px);
 	/* disable text select */
 	user-select: none;
 	-o-user-select: none;
@@ -36,23 +37,12 @@ section {
 	margin: 0 auto 50px;
 }
 
-/* AMP */
-
-html:not([amp4ads]) {
-	min-height: calc(100vh - 61px) !important;
-}
-
-html:not([amp4ads]) body {
-	min-height: calc(100vh /100 * 80) !important;
-	padding-top: 20px !important;
-}
-
 /* navbar */
 
 nav {
 	position: absolute;
-	top: 20px;
-	right: 0;
+	top: 40px;
+	right: 40px;
 	z-index: 10;
 }
 
@@ -312,10 +302,6 @@ main.page img {
 /* desktop media queries */
 
 @media (min-width: 768px) {
-	/* AMP */
-	html:not([amp4ads]) body {
-		padding-top: 75px !important;
-	}
 	/* one man show */
 	main.one-man-show {
 		min-width: 500px;
