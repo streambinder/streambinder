@@ -140,8 +140,8 @@ ul.cards>li>a {
 
 ul.cards>li>a>i {
 	position: absolute;
-	top: 27.5px;
-	transform: translateY(-50%);
+	top: 30px;
+	transform: translateY(-60%);
 	width: 20px;
 	text-align: center;
 }
