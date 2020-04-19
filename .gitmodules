@@ -1,3 +1,15 @@
-[submodule "src/papers"]
-	path = src/papers
-	url = git@github.com:streambinder/papers.git
+[submodule "src/wikis/ashtray"]
+	path = src/wikis/ashtray
+	url = git@github.com:streambinder/ashtray.wiki.git
+[submodule "src/wikis/chopper"]
+	path = src/wikis/chopper
+	url = git@github.com:streambinder/chopper.wiki.git
+[submodule "src/wikis/paperboy"]
+	path = src/wikis/paperboy
+	url = git@github.com:streambinder/paperboy.wiki.git
+[submodule "src/wikis/resume"]
+	path = src/wikis/resume
+	url = git@github.com:streambinder/resume.wiki.git
+[submodule "src/wikis/spotitube"]
+	path = src/wikis/spotitube
+	url = git@github.com:streambinder/spotitube.wiki.git

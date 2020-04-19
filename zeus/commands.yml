@@ -13,12 +13,10 @@ commands:
         description: Install static assets
         dependencies:
             - setup
-            - papers
         exec: |
             cp -rf src/static/* ${build_dir}/
-            cp -rf src/papers/*/assets ${build_dir}/
 
-    papers:
+    wikis:
         description: Pull out documentation documents
         exec: |
             git submodule update --init --recursive --remote
@@ -28,7 +26,6 @@ commands:
         language: python3
         dependencies:
             - setup
-            - papers
 
     facade:
         description: Merge fragments into facade
@@ -41,7 +38,12 @@ commands:
         description: Clean up output directory
         dependencies:
             - setup
-        exec: find ${build_dir} -type f -not -name 'index.html' -delete
+        exec: |
+            find ${build_dir} -type f \
+                -not -name 'index.html' \
+                -not -name '*.jpg' \
+                -not -name '*.png' \
+                -not -name '*.gif' -delete
 
     minify:
         description: Minify generated files

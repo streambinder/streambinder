@@ -3,6 +3,7 @@
 import glob
 import jinja2
 import os
+import subprocess
 import sys
 import yaml
 
@@ -31,19 +32,23 @@ for page in config_website.get('pages'):
     path_content = os.path.join('src', page['content'])
     os.makedirs(path, exist_ok=True)
 
-    # markdown page
-    if os.path.isdir(path_content):
+    # wiki page
+    if os.path.isdir(path_content) and page['type'] == 'wiki':
+        page_assets = os.path.join(path_content, 'assets')
+        if os.path.isdir(page_assets):
+            os.system('cp -rf {} {}'.format(page_assets, path))
+
         html_content = ''
         html_sections = []
-        for fdir, _, fnames in os.walk(path_content):
-            for fname in sorted(fnames):
-                if not fname.endswith('md'):
-                    continue
-
-                html_sub_content, html_sub_sections = markdown(
-                    os.path.join(fdir, fname))
-                html_content += html_sub_content
-                html_sections += html_sub_sections
+        wiki_index = os.path.join(path_content, 'Home.md')
+        wiki_index_entries, _ = subprocess.Popen(
+            ['egrep', '-e', '\\([a-zA-Z]+\\)$', wiki_index],
+            stdout=subprocess.PIPE).communicate()
+        for wiki_page in [page.split('(')[1][:-1] + '.md' for page in wiki_index_entries.decode('utf-8').splitlines()]:
+            html_sub_content, html_sub_sections = markdown(
+                os.path.join(path_content, wiki_page))
+            html_content += html_sub_content
+            html_sections += html_sub_sections
 
         page_config = {
             **page_config,

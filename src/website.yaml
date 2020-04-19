@@ -34,36 +34,36 @@ pages:
     name: Spotitube
     caption: Synchronize your Spotify collections downloading from external providers
     icon: lang-go
-    type: markdown
-    content: papers/spotitube
+    type: wiki
+    content: wikis/spotitube
     parent: pages/project.html
   - path: /doc/chopper
     name: Chopper
     caption: Share all-sizes files using reconstructable manifests
     icon: lang-python
-    type: markdown
-    content: papers/chopper
+    type: wiki
+    content: wikis/chopper
     parent: pages/project.html
   - path: /doc/paperboy
     name: Paperboy
     caption: IMAP email checker and GTK notifier
     icon: lang-c
-    type: markdown
-    content: papers/paperboy
+    type: wiki
+    content: wikis/paperboy
     parent: pages/project.html
   - path: /doc/ashtray
     name: Ashtray
     caption: Private package repository
     icon: lang-infra
-    type: markdown
-    content: papers/ashtray
+    type: wiki
+    content: wikis/ashtray
     parent: pages/project.html
   - path: /doc/resume
     name: Resume
     caption: That cool thing to look interesting in the world of work
     icon: lang-latex
-    type: markdown
-    content: papers/resume
+    type: wiki
+    content: wikis/resume
     parent: pages/project.html
 
 icons:
