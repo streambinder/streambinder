@@ -9,7 +9,7 @@ from _config import Config as config
 
 def title(primary_key, website_title):
     if primary_key != website_title:
-        return '{} | {}'.format(primary_key, website_title)
+        return '{} — {}'.format(primary_key, website_title)
     return website_title
 
 
