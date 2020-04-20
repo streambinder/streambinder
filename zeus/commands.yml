@@ -62,6 +62,14 @@ commands:
             - minify
         exec: echo -n
 
+    compress:
+        description: Compress generated website
+        dependencies:
+            - generate
+        exec: |
+            cd ${build_dir}
+            zip -r website.zip *
+
     clean:
         description: Clean up
         exec: rm -rf ${build_dir}
