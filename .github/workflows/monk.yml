@@ -10,12 +10,12 @@ jobs:
 
     steps:
       # dependencies
-      - name: Setup Go environment
-        uses: actions/setup-go@v2-beta
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.SMOKER_KEY }}
+      - name: Setup Go environment
+        uses: actions/setup-go@v2-beta
 
       # git setup
       - name: Setup repository

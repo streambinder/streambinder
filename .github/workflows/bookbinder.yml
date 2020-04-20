@@ -1,0 +1,57 @@
+name: bookbinder
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # dependencies
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Go environment
+        uses: actions/setup-go@v2-beta
+      - name: Setup Python environment
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.7'
+          architecture: 'x64'
+
+      # extend PATH
+      - name: Extend PATH
+        run: |
+          echo "::add-path::${HOME}/go/bin"
+
+      # python dependencies
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install markdown jinja2 pygments
+          echo "::set-env name=PYTHONPATH::/opt/hostedtoolcache/Python/3.7.6/x64/lib/python3.7/site-packages"
+
+      # zeus setup
+      - name: Download and configure Zeus
+        run: |
+          go get -v github.com/dreadl0ck/zeus@45d665d962
+        env:
+          GO111MODULE: on
+
+      # effective action
+      - name: Generate website
+        run: |
+          zeus wikis
+          zeus generate
+      
+      # upload artifacts
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2-preview
+        with:
+          name: Website
+          path: public/*
