@@ -24,11 +24,6 @@ jobs:
           python-version: '3.7'
           architecture: 'x64'
 
-      # extend PATH
-      - name: Extend PATH
-        run: |
-          echo "::add-path::${HOME}/go/bin"
-
       # system dependencies
       - name: Install system dependencies
         run: |
@@ -45,6 +40,7 @@ jobs:
       - name: Install Go dependencies
         run: |
           go get -v github.com/dreadl0ck/zeus@45d665d962
+          echo "::add-path::$(go env GOPATH)/bin"
         env:
           GO111MODULE: on
 

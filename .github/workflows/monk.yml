@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.SMOKER_KEY }}
+          token: ${{ secrets.GH_ACTIONS_DAVIDEPUCCI }}
       - name: Setup Go environment
         uses: actions/setup-go@v2-beta
 
@@ -23,10 +23,11 @@ jobs:
           git config user.email "monk@davidepucci.it" 
           git config user.name "Amanuensis Monk"
 
-      # zeus setup
-      - name: Download and configure Zeus
+      # go dependencies
+      - name: Install Go dependencies
         run: |
           go get -v github.com/dreadl0ck/zeus@45d665d962
+          echo "::add-path::$(go env GOPATH)/bin"
         env:
           GO111MODULE: on
 
