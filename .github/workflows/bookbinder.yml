@@ -49,10 +49,11 @@ jobs:
         run: |
           zeus wikis
           zeus generate
+          zeus compress
       
       # upload artifacts
       - name: Upload artifacts
         uses: actions/upload-artifact@v2-preview
         with:
-          name: Website
-          path: public/*
+          name: website.zip
+          path: public/website.zip
