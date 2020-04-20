@@ -29,6 +29,11 @@ jobs:
         run: |
           echo "::add-path::${HOME}/go/bin"
 
+      # system dependencies
+      - name: Install system dependencies
+        run: |
+          sudo apt install -y minify
+
       # python dependencies
       - name: Install Python dependencies
         run: |
@@ -36,8 +41,8 @@ jobs:
           python -m pip install markdown jinja2 pygments
           echo "::set-env name=PYTHONPATH::/opt/hostedtoolcache/Python/3.7.6/x64/lib/python3.7/site-packages"
 
-      # zeus setup
-      - name: Download and configure Zeus
+      # go dependencies
+      - name: Install Go dependencies
         run: |
           go get -v github.com/dreadl0ck/zeus@45d665d962
         env:
