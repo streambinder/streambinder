@@ -33,6 +33,7 @@ pages:
   - path: /doc/spotitube
     name: Spotitube
     caption: Synchronize your Spotify collections downloading from external providers
+    url: https://github.com/streambinder/spotitube
     icon: lang-go
     type: wiki
     content: wikis/spotitube
@@ -40,6 +41,7 @@ pages:
   - path: /doc/chopper
     name: Chopper
     caption: Share all-sizes files using reconstructable manifests
+    url: https://github.com/streambinder/chopper
     icon: lang-python
     type: wiki
     content: wikis/chopper
@@ -47,6 +49,7 @@ pages:
   - path: /doc/paperboy
     name: Paperboy
     caption: IMAP email checker and GTK notifier
+    url: https://github.com/streambinder/paperboy
     icon: lang-c
     type: wiki
     content: wikis/paperboy
@@ -54,6 +57,7 @@ pages:
   - path: /doc/ashtray
     name: Ashtray
     caption: Private package repository
+    url: https://github.com/streambinder/ashtray
     icon: lang-infra
     type: wiki
     content: wikis/ashtray
@@ -61,6 +65,7 @@ pages:
   - path: /doc/resume
     name: Resume
     caption: That cool thing to look interesting in the world of work
+    url: https://github.com/streambinder/resume
     icon: lang-latex
     type: wiki
     content: wikis/resume
@@ -72,6 +77,7 @@ icons:
   social-spotify: fab fa-spotify
   social-email: fas fa-envelope
   social-resume: fas fa-graduation-cap
+  project-code: fab fa-github
   lang-go: devicon-go-plain
   lang-python: fab fa-python
   lang-c: devicon-c-plain

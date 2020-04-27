@@ -1,5 +1,8 @@
 <main class=page>
-    <h1>{{ page.name }}</h1>
+    <h1>
+        <a href="{{ page.url }}"><i class="{{ icons['project-code'] }}"></i><span class=tip>Source code</span></a>
+        {{ page.name }}
+    </h1>
     <h5 class=caption>{{ page.caption }}</h5>
 
     <ul class=cards>

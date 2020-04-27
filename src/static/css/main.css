@@ -159,15 +159,21 @@ ul.cards>li>a>p.caption {
 
 /* tooltip */
 
+a {
+	position: relative;
+}
+
 a>span.tip {
 	visibility: hidden;
 	position: absolute;
 	left: 50%;
-	bottom: 120%;
-	transform: translateX(-50%);
+	bottom: 50%;
+	transform: translate(-50%, -100%);
 	padding: 7.5px 7.5px 5px 7.5px;
 	border-radius: 5px;
-	font-size: .75em;
+	font-size: 15px;
+	font-weight: normal;
+	width: max-content;
 	text-transform: uppercase;
 	color: var(--color);
 	background-color: var(--color-dark-transparent);
@@ -300,6 +306,13 @@ main.page img {
 }
 
 /* desktop media queries */
+
+@media (max-width: 395px) {
+	/* generic page*/
+	main.page>h1 {
+		font-size: 1.75em;
+	}
+}
 
 @media (min-width: 768px) {
 	/* one man show */
