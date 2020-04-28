@@ -13,3 +13,6 @@
 [submodule "src/wikis/spotitube"]
 	path = src/wikis/spotitube
 	url = https://github.com/streambinder/spotitube.wiki.git
+[submodule "src/wikis/vpnc"]
+	path = src/wikis/vpnc
+	url = https://github.com/streambinder/vpnc.wiki.git

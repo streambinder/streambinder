@@ -121,6 +121,14 @@ pages:
     type: wiki
     content: wikis/resume
     parent: pages/project.html
+  - path: /doc/vpnc
+    name: VPNC
+    caption: IPsec (Cisco/Juniper) VPN concentrator client
+    url: https://github.com/streambinder/vpnc
+    icon: lang-c
+    type: wiki
+    content: wikis/vpnc
+    parent: pages/project.html
 
 icons:
   social-linkedin: fab fa-linkedin-in
