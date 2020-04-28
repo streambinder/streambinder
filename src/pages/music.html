@@ -1,0 +1,19 @@
+<main class=page>
+	<h1>
+		<a href="{{ page.data.url }}"><i class="{{ icons['social-spotify'] }}"></i><span class=tip>Spotify</span></a>
+		{{ page.name }}
+	</h1>
+	<ul class=playlists>
+		{! for entry in page.data.playlists !}
+		<li {! if loop.index0 % 2==1 !} class="swap" {! endif !}>
+			<div>
+				<h2>{{ entry.name }}</h2>
+				<p class=caption>{{ entry.caption }}</p>
+			</div>
+			<iframe width="100%" frameborder="0" allowtransparency="true" allow="encrypted-media"
+				src="https://open.spotify.com/embed/playlist/{{ entry.uid }}">
+			</iframe>
+		</li>
+		{! endfor !}
+	</ul>
+</main>

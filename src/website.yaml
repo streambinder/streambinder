@@ -10,8 +10,8 @@ info:
       url: https://url.davidepucci.it/github
       color: var(--color)
       icon: social-github
-    - name: Spotify
-      url: https://url.davidepucci.it/spotify
+    - name: Music
+      url: https://davidepucci.it/music
       color: var(--color)
       icon: social-spotify
     - name: Email
@@ -27,6 +27,57 @@ pages:
   - path: /
     content: pages/index.html
     name: Davide Pucci
+  - path: /music
+    content: pages/music.html
+    name: Music
+    data:
+      url: https://url.davidepucci.it/spotify
+      playlists:
+        - name: cornwall
+          caption: |
+            Staring at her in the eyes, feeling embarrassed, capturing a blurry and desaturated picture.
+          uid: 2wyZKlaKzPEUurb6KshAwQ
+        - name: sunday
+          caption: |
+            Waking up late, acknowledging the sunny day, dancing in the kitchen with the pasta water boiling.
+          uid: 1GFthetX3IYw6bjisEpuYA
+        - name: garland
+          caption: |
+            Sleeping under the little faded lights, warming up hugged by a duvet on the couch, drinking an old and ugly cup of vin brulè.
+          uid: 7kIhihNt7JP6dAG2cTuFEX
+        - name: junky
+          caption: |
+            Ignoring, being cynic, getting pissed off, snubbing, smoking.
+          uid: 7Ih8tpgZglFqNsifz6RIRo
+        - name: cradle
+          caption: |
+            Feeling the missing, commemorating old time joyes, being nostalgic even before it got ended.
+          uid: 76GQDvtNXfNK76FUmDdCHS
+        - name: spur
+          caption: |
+            Sweating, chilling in the family cottage, drinking coffee, chatting, losing time.
+          uid: 40ggDcA3M5o4aHK2kcgFHZ
+        - name: ponz
+          caption: |
+            Pumping the day, flashing the shit outta you, reaching the drop.
+          uid: 7ijEsF33AM4XwsEy27evVe
+        - name: marauder
+          caption: |
+            I solemnly swear I am up to no good... mischief managed.
+          uid: 1LSTRWX6gVsc6LZRq6xTnh
+        - name: roar
+          caption: |
+            Getting and trashing, shouting, escaping, taking revenge and pushing away.
+          uid: 1p0PNpGyoD7dHkph5zopMS
+        - name: cheers
+          caption: |
+            Traveling the world, fucking around with your friends, drinking a beer and admiring a beach sunset.
+          uid: 07Q0DUVebhvkl6UCZfeGOc
+        - name: swag
+          caption: |
+            Yo shit, wtfing, explicit, ***, censored.
+          uid: 1DnutbCbIZExm3BIwHdKmA
+
   - path: /doc
     content: pages/projects.html
     name: Projects
