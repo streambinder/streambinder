@@ -13,7 +13,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # dependencies
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Setup Go environment
@@ -21,22 +20,20 @@ jobs:
       - name: Setup Python environment
         uses: actions/setup-python@v1
         with:
-          python-version: '3.7'
-          architecture: 'x64'
+          python-version: 3.7
+          architecture: x64
 
-      # system dependencies
       - name: Install system dependencies
         run: |
           sudo apt install -y minify
 
-      # python dependencies
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install markdown jinja2 pygments
+          python -m pip install markdown jinja2 pygments pyyaml
           echo "::set-env name=PYTHONPATH::/opt/hostedtoolcache/Python/3.7.6/x64/lib/python3.7/site-packages"
+          sudo ln -sf $(which python) /usr/bin/python3
 
-      # go dependencies
       - name: Install Go dependencies
         run: |
           go get -v github.com/dreadl0ck/zeus@45d665d962
@@ -44,16 +41,13 @@ jobs:
         env:
           GO111MODULE: on
 
-      # effective action
       - name: Generate website
         run: |
           zeus wikis
           zeus generate
-          zeus compress
       
-      # upload artifacts
       - name: Upload artifacts
         uses: actions/upload-artifact@v2-preview
         with:
-          name: website.zip
-          path: public/website.zip
+          name: davidepucci
+          path: public/*
