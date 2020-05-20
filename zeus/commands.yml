@@ -50,6 +50,7 @@ commands:
         dependencies:
             - assets
             - facade
+            - strip
 
     generate:
         description: Generate website pages
