@@ -1,6 +1,6 @@
-[submodule "src/wikis/ashtray"]
-	path = src/wikis/ashtray
-	url = https://github.com/streambinder/ashtray.wiki.git
+[submodule "src/wikis/theca"]
+	path = src/wikis/theca
+	url = https://github.com/streambinder/theca.wiki.git
 [submodule "src/wikis/chopper"]
 	path = src/wikis/chopper
 	url = https://github.com/streambinder/chopper.wiki.git

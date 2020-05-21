@@ -105,13 +105,13 @@ pages:
     type: wiki
     content: wikis/paperboy
     parent: pages/project.html
-  - path: /doc/ashtray
-    name: Ashtray
+  - path: /doc/theca
+    name: Theca
     caption: Private package repository
-    url: https://github.com/streambinder/ashtray
+    url: https://github.com/streambinder/theca
     icon: lang-infra
     type: wiki
-    content: wikis/ashtray
+    content: wikis/theca
     parent: pages/project.html
   - path: /doc/resume
     name: Resume
