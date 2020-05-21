@@ -48,9 +48,9 @@ commands:
     minify:
         description: Minify generated files
         dependencies:
-            - assets
             - facade
             - strip
+            - assets
 
     generate:
         description: Generate website pages
