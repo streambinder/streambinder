@@ -37,6 +37,12 @@ section {
 	margin: 0 auto 50px;
 }
 
+br {
+    display: block;
+    margin: 7.5px 0;
+    content: " ";
+}
+
 /* navbar */
 
 nav {
