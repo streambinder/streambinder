@@ -10,11 +10,10 @@ import yaml
 from jinja2 import Template
 from distutils.dir_util import copy_tree
 
-from _config import Config as config
-from _globals import get as zeus_global
-from _html import title
-from _markdown import extract as markdown
-from _parser import get as parse
+from config import Config as config
+from ext_html import title
+from ext_markdown import extract as markdown
+from parser import get as parse
 
 config_website = config.new('src/website.yaml')
 if config_website is None:
@@ -26,7 +25,7 @@ for page in config_website.get('pages'):
     page_config = {**config_website.raw(), **{'page': page}}
 
     # paths
-    path = os.path.join(zeus_global('build_dir'), *page['path'].split("/"))
+    path = os.path.join(os.environ['BUILD_DIR'], *page['path'].split("/"))
     path_html = os.path.join(path, '_index.html')
     path_yaml = os.path.join(path, '_index.yaml')
     path_content = os.path.join('src', page['content'])

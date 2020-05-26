@@ -4,7 +4,7 @@ import jinja2
 import os
 import yaml
 
-from _config import Config as config
+from config import Config as config
 
 
 def title(primary_key, website_title):

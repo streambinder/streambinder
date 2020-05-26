@@ -4,7 +4,7 @@ import markdown
 import re
 
 
-from _html import idfy, icon
+from ext_html import idfy, icon
 
 
 def _pre_parse_html(html):

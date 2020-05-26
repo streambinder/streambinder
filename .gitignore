@@ -1,5 +1,1 @@
-public/
-zeus/data.yml
-zeus/dumps
-zeus/scripts/__pycache__
-zeus/.history
+build/
