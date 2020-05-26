@@ -15,8 +15,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      - name: Setup Go environment
-        uses: actions/setup-go@v2-beta
+
       - name: Setup Python environment
         uses: actions/setup-python@v1
         with:
@@ -34,17 +33,9 @@ jobs:
           echo "::set-env name=PYTHONPATH::/opt/hostedtoolcache/Python/3.7.6/x64/lib/python3.7/site-packages"
           sudo ln -sf $(which python) /usr/bin/python3
 
-      - name: Install Go dependencies
-        run: |
-          go get -v github.com/dreadl0ck/zeus@45d665d962
-          echo "::add-path::$(go env GOPATH)/bin"
-        env:
-          GO111MODULE: on
-
       - name: Generate website
         run: |
-          zeus wikis
-          zeus generate
+          make
       
       - name: Upload artifacts
         uses: actions/upload-artifact@v2-preview
