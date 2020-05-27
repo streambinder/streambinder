@@ -9,8 +9,6 @@ html {
 	background-color: var(--color-background);
 	font-family: 'Overpass Mono', monospace;
 	color: var(--color);
-	border: 8px solid var(--color);
-	margin: 10px;
 	padding: 25px;
 	font-size: 1.25em;
 	min-height: calc(100vh - 86px);
@@ -352,6 +350,11 @@ p.caption {
 }
 
 @media (min-width: 768px) {
+	/* core tags */
+	html {
+		border: 8px solid var(--color);
+		margin: 10px;
+	}
 	/* one man show */
 	main.one-man-show {
 		min-width: 500px;
