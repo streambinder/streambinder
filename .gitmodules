@@ -1,18 +1,18 @@
-[submodule "src/wikis/theca"]
-	path = src/wikis/theca
-	url = https://github.com/streambinder/theca.wiki.git
 [submodule "src/wikis/chopper"]
 	path = src/wikis/chopper
 	url = https://github.com/streambinder/chopper.wiki.git
+[submodule "src/wikis/erro"]
+	path = src/wikis/erro
+	url = https://github.com/streambinder/erro.wiki.git
 [submodule "src/wikis/paperboy"]
 	path = src/wikis/paperboy
 	url = https://github.com/streambinder/paperboy.wiki.git
-[submodule "src/wikis/resume"]
-	path = src/wikis/resume
-	url = https://github.com/streambinder/resume.wiki.git
 [submodule "src/wikis/spotitube"]
 	path = src/wikis/spotitube
 	url = https://github.com/streambinder/spotitube.wiki.git
+[submodule "src/wikis/theca"]
+	path = src/wikis/theca
+	url = https://github.com/streambinder/theca.wiki.git
 [submodule "src/wikis/vpnc"]
 	path = src/wikis/vpnc
 	url = https://github.com/streambinder/vpnc.wiki.git

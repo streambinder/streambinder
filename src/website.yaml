@@ -113,13 +113,13 @@ pages:
     type: wiki
     content: wikis/theca
     parent: pages/project.html
-  - path: /doc/resume
-    name: Resume
+  - path: /doc/erro
+    name: Erro
     caption: That cool thing to look interesting in the world of work
-    url: https://github.com/streambinder/resume
+    url: https://github.com/streambinder/erro
     icon: lang-latex
     type: wiki
-    content: wikis/resume
+    content: wikis/erro
     parent: pages/project.html
   - path: /doc/vpnc
     name: VPNC
