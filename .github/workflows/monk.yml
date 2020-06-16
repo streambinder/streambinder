@@ -4,11 +4,12 @@ on:
   schedule:
     - cron: '0 0 * * *'
 
+env:
+  commit_msg: "src: wikis: flush"
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      commit_msg: "src: wikis: flush"
 
     steps:
       - name: Checkout repository
