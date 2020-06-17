@@ -31,6 +31,7 @@ jobs:
 
       - name: Strip wikis flushes
         run: |
+          git fetch --unshallow
           while true; do
             git log --oneline -2 | tail -1 | awk "/${commit_msg}\$/ {print \$1}" | xargs -r git commit --amend --fixup
             [ $(git log --oneline -1 | head -1 | grep -c 'fixup!') -ne 1 ] && break
@@ -41,4 +42,4 @@ jobs:
 
       - name: Push repository
         run: |
-          git push -f
+          git push -f origin master
