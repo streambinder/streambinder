@@ -77,7 +77,7 @@ main.one-man-show>h1.title {
 }
 
 main.one-man-show>span.subtitle {
-	letter-spacing: 3.75px;
+	letter-spacing: 5.75px;
 }
 
 main.one-man-show>ul {
@@ -363,8 +363,8 @@ p.caption {
 		font-size: 3.25em;
 	}
 	main.one-man-show>span.subtitle {
-		font-size: 2em;
-		letter-spacing: 5px;
+		font-size: 2.3em;
+		letter-spacing: 6px;
 	}
 	/* generic page*/
 	main.page {
