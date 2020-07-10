@@ -1,3 +1,9 @@
-# Davide Pucci <a href="https://davidepucci.it/doc"><img align="left" src="https://davidepucci.it/favicon/favicon-96x96.png"></a>
+# Network and Software Engineer
 
-Documentation available at [davidepucci.it/doc](https://davidepucci.it/doc).
+Head to my [personal website](https://davidepucci.it), grab my [resume](https://url.davidepucci.it/resume), or reach me out:
+
+- on [LinkedIn](https://url.davidepucci.it/linkedin)
+- on [Twitter](https://url.davidepucci.it/twitter)
+- on [Spotify](https://url.davidepucci.it/spotify)
+- on [Instagram](https://url.davidepucci.it/instagram)
+- by [email](https://url.davidepucci.it/email)
