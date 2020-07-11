@@ -1,6 +1,7 @@
 info:
   name: Davide Pucci
   role: Network and Software Engineer
+  website: https://davidepucci.it
   social:
     - name: LinkedIn
       url: https://url.davidepucci.it/linkedin
@@ -27,9 +28,13 @@ pages:
   - path: /
     content: pages/index.html
     name: Davide Pucci
+    description: Network and Software Engineer
+    image: https://avatars3.githubusercontent.com/u/7783188
   - path: /music
     content: pages/music.html
     name: Music
+    description:
+    image:
     data:
       url: https://url.davidepucci.it/spotify
       playlists:
@@ -81,6 +86,8 @@ pages:
   - path: /doc
     content: pages/projects.html
     name: Projects
+    description:
+    image:
   - path: /doc/spotitube
     name: Spotitube
     caption: Synchronize your Spotify collections downloading from external providers
@@ -89,6 +96,8 @@ pages:
     type: wiki
     content: wikis/spotitube
     parent: pages/project.html
+    description:
+    image:
   - path: /doc/chopper
     name: Chopper
     caption: Share all-sizes files using reconstructable manifests
@@ -97,6 +106,8 @@ pages:
     type: wiki
     content: wikis/chopper
     parent: pages/project.html
+    description:
+    image:
   - path: /doc/paperboy
     name: Paperboy
     caption: IMAP email checker and GTK notifier
@@ -105,6 +116,8 @@ pages:
     type: wiki
     content: wikis/paperboy
     parent: pages/project.html
+    description:
+    image:
   - path: /doc/theca
     name: Theca
     caption: Private package repository
@@ -113,6 +126,8 @@ pages:
     type: wiki
     content: wikis/theca
     parent: pages/project.html
+    description:
+    image:
   - path: /doc/erro
     name: Erro
     caption: That cool thing to look interesting in the world of work
@@ -121,6 +136,8 @@ pages:
     type: wiki
     content: wikis/erro
     parent: pages/project.html
+    description:
+    image:
   - path: /doc/vpnc
     name: VPNC
     caption: IPsec (Cisco/Juniper) VPN concentrator client
@@ -129,6 +146,8 @@ pages:
     type: wiki
     content: wikis/vpnc
     parent: pages/project.html
+    description:
+    image:
 
 icons:
   social-linkedin: fab fa-linkedin-in

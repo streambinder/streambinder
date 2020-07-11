@@ -5,8 +5,27 @@
 
     <!-- title -->
     <title>{{ html.head.title }}</title>
+    <meta name="description" content="{{ html.head.metadata.description }}">
 
-    <!-- metas -->
+    <!-- Google meta tags -->
+    <meta itemprop="name" content="{{ html.head.metadata.title }}">
+    <meta itemprop="description" content="{{ html.head.metadata.description }}">
+    <meta itemprop="image" content="{{ html.head.metadata.image }}">
+
+    <!-- Facebook meta tags -->
+    <meta property="og:url" content="{{ html.head.metadata.url }}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ html.head.metadata.title }}">
+    <meta property="og:description" content="{{ html.head.metadata.description }}">
+    <meta property="og:image" content="{{ html.head.metadata.image }}">
+
+    <!-- Twitter meta tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ html.head.metadata.title }}">
+    <meta name="twitter:description" content="{{ html.head.metadata.description }}">
+    <meta name="twitter:image" content="{{ html.head.metadata.image }}">
+
+    <!-- view -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 

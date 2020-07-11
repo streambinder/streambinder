@@ -66,7 +66,13 @@ for page in config_website.get('pages'):
     config.dump_yaml(path_yaml, {
         'html': {
             'head': {
-                'title': title(page['name'], config_website.get('info', 'name'))
+                'title': title(page['name'], config_website.get('info', 'name')),
+                'metadata': {
+                    'title': title(page['name'], config_website.get('info', 'name')),
+                    'description': page['description'],
+                    'image': page['image'],
+                    'url': ''.join([config_website.get('info', 'website'), page['path']]),
+                }
             }
         }
     })
