@@ -5,7 +5,7 @@ BUILD_DIR	:= $(ROOT_DIR)/build
 export BUILD_DIR
 
 .PHONY: generate
-generate: wikis init pages facade strip assets minify
+generate: wikis init pages facade dynimages strip assets minify
 
 .PHONY: init
 init:
@@ -20,7 +20,7 @@ wikis:
 	@git submodule update --init --recursive --remote
 
 .PHONY: pages
-pages: init
+pages: init wikis
 	@python3 $(MAKE_DIR)/pages.py
 
 .PHONY: facade
@@ -38,6 +38,10 @@ strip: init
 .PHONY: minify
 minify: facade strip assets
 	@bash $(MAKE_DIR)/minify.sh
+
+.PHONY: dynimages
+dynimages: pages
+	@python3 $(MAKE_DIR)/dynimages.py
 
 .PHONY: clean
 clean:
