@@ -4,7 +4,6 @@ import glob
 import jinja2
 import os
 import sys
-import yaml
 
 from jinja2 import Template
 from distutils.dir_util import copy_tree
