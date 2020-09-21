@@ -29,7 +29,7 @@ pages:
     content: pages/index.html
     name: Davide Pucci
     description: Network and Software Engineer
-    image: https://avatars3.githubusercontent.com/u/7783188
+    image:
   - path: /music
     content: pages/music.html
     name: Music
