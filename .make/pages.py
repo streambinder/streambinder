@@ -70,7 +70,7 @@ for page in config_website.get('pages'):
                 'metadata': {
                     'title': title(page['name'], config_website.get('info', 'name')),
                     'description': page['description'],
-                    'image': page['image'],
+                    'image': page['image'] or 'index.png',
                     'url': ''.join([config_website.get('info', 'website'), page['path']]),
                 }
             }
