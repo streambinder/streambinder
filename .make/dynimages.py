@@ -36,7 +36,7 @@ for fdir, _, fnames in os.walk(os.environ['BUILD_DIR']):
                  cfg.get('html', 'head', 'metadata', 'description')), '_index-desc.png'], cwd=fdir).communicate()
         subprocess.Popen(
             ['convert', '-define', 'png:bit-depth=8', '-size', '3600x1881', 'xc:transparent', '_index-title.png',
-             '-geometry', '+0-100', '-composite', '_index-desc.png', '-geometry', '+0+100', '-composite', '_index-alpha.png'], cwd=fdir).communicate()
+             '-geometry', '+0-150', '-composite', '_index-desc.png', '-geometry', '+0+150', '-composite', '_index-alpha.png'], cwd=fdir).communicate()
         subprocess.Popen(
             ['convert', '-background', '#383838', '-alpha', 'remove', '-alpha', 'off',
              '_index-alpha.png', cfg.get('html', 'head', 'metadata', 'image')], cwd=fdir).communicate()
