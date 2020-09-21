@@ -72,6 +72,11 @@
         </a>
     </nav>
 
+    <!-- always offer a default image to be pulled for social purposes -->
+    <picture style="visibility:hidden; position:absolute; top:0;">
+        <img src="{{ html.head.metadata.image }}" alt="og:image">
+    </picture>
+
     {{ html.body }}
 </body>
 
