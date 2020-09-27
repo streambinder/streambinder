@@ -285,7 +285,7 @@ main.page table th:first-child {
 	border-top-right-radius: 5px;
 }
 
-main.page table th, td {
+main.page table th, main.page table td {
 	display: block;
 	min-width: 135px;
     padding-top: 5px;
@@ -295,11 +295,14 @@ main.page table th, td {
 	text-align: left;
 }
 
+main.page table th:last-child, main.page table td:last-child {
+	margin-bottom: 10px;
+}
+
 main.page table tr::after {
     content: '';
     display: block;
 	border-bottom: 1px solid var(--color-softest);
-	margin: 10px auto;
 }
 
 main.page table tr:last-child::after {
@@ -387,7 +390,7 @@ p.caption {
 		margin: auto .35% 5px .35%;
 	}
 	/* tables */
-	main.page table th, td {
+	main.page table th, main.page table td {
 		display: table-cell;
 	}	
 	main.page table th:first-child {
