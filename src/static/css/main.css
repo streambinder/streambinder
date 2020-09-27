@@ -277,24 +277,33 @@ main.page table {
 
 main.page table th {
 	background-color: var(--color-background-darker);
+	border-radius: 0;
 }
 
 main.page table th:first-child {
 	border-top-left-radius: 5px;
-	border-bottom-left-radius: 5px;
-}
-
-main.page table th:last-child {
 	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
 }
 
 main.page table th, td {
+	display: block;
 	min-width: 135px;
     padding-top: 5px;
     padding-right: 10px;
 	padding-bottom: 5px;
 	padding-left: 10px;
+	text-align: left;
+}
+
+main.page table tr::after {
+    content: '';
+    display: block;
+	border-bottom: 1px solid var(--color-softest);
+	margin: 10px auto;
+}
+
+main.page table tr:last-child::after {
+	display: none;
 }
 
 /* playlists */
@@ -376,6 +385,21 @@ p.caption {
 	ul.cards>li {
 		width: 49%;
 		margin: auto .35% 5px .35%;
+	}
+	/* tables */
+	main.page table th, td {
+		display: table-cell;
+	}	
+	main.page table th:first-child {
+		border-top-left-radius: 5px;
+		border-bottom-left-radius: 5px;
+	}
+	main.page table th:last-child {
+		border-top-right-radius: 5px;
+		border-bottom-right-radius: 5px;
+	}
+	main.page table tr::after {
+		display: none;
 	}
 	/* playlists */
 	main.page ul.playlists>li {
