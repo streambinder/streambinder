@@ -327,6 +327,7 @@ main.page ul.playlists>li>div {
 
 main.page ul.playlists>li>iframe {
 	width: 100%;
+	height: 350px;
 	border-radius: 5px;
 	background-color: var(--color-background-darker);
 	background-image: url(https://www.iconsdb.com/icons/preview/white/spotify-xxl.png);
