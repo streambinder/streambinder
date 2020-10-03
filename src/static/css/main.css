@@ -382,7 +382,7 @@ p.caption {
 	}
 	/* generic page*/
 	main.page {
-		width: 750px;
+		width: 65ch;
 		margin: auto;
 	}
 	/* cards */
