@@ -43,7 +43,7 @@ pages:
         icon: fas fa-graduation-cap
       - name: EuroPass
         url: https://github.com/streambinder/erro/releases/latest/europass_en.pdf
-        icon: fa fa-eur
+        icon: fas fa-euro-sign
   - path: /music
     content: pages/music.html
     name: Music
