@@ -20,11 +20,8 @@ for fdir, _, fnames in os.walk(os.environ['BUILD_DIR']):
         fname_html = os.path.join(fdir, fname)
 
         with open(fname_html, 'r') as html_fd:
+            cfg = config.new(fname_html.replace('html', 'yaml'))
+            cfg.data['html']['body'] = html_fd.read()
             parse(template='src/facade.html',
                   output=os.path.join(fdir, 'index.html'),
-                  config={
-                      'html': {
-                          **config.new(fname_html.replace('html', 'yaml')).get('html'),
-                          **{'body': html_fd.read()}
-                      }
-                  })
+                  config=cfg.data)
