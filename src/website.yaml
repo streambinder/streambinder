@@ -20,7 +20,7 @@ info:
       color: var(--color)
       icon: social-email
     - name: Resume
-      url: https://url.davidepucci.it/resume
+      url: https://davidepucci.it/resume
       color: var(--color)
       icon: social-resume
 
@@ -30,6 +30,20 @@ pages:
     name: Davide Pucci
     description: Network and Software Engineer
     image:
+  - path: /resume
+    name: Resume
+    type: prefetch
+    content: https://github.com/streambinder/erro/releases/latest/web_en.html
+    parent: pages/resume.html
+    description:
+    image:
+    variants:
+      - name: Personal
+        url: https://url.davidepucci.it/resume
+        icon: fas fa-graduation-cap
+      - name: EuroPass
+        url: https://github.com/streambinder/erro/releases/latest/europass_en.pdf
+        icon: fa fa-eur
   - path: /music
     content: pages/music.html
     name: Music
@@ -78,7 +92,6 @@ pages:
           caption: |
             Yo shit, wtfing, explicit, ***, censored.
           uid: 1DnutbCbIZExm3BIwHdKmA
-
   - path: /doc
     content: pages/projects.html
     name: Projects

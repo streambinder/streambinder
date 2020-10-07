@@ -353,6 +353,18 @@ p.caption {
 	padding-top: 25px;
 }
 
+/* page specific style */
+
+body.resume tr > td:first-child {
+	color: var(--color-softer);
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
+
+body.resume br {
+	margin: 5px 0;
+}
+
 /* desktop media queries */
 
 @media (max-width: 395px) {
@@ -438,5 +450,12 @@ p.caption {
 		border-radius: 0;
 		border-top-left-radius: 5px;
 		border-bottom-left-radius: 5px;
+	}
+	/* page specific style */
+	body.resume tr > td:first-child {
+		color: var(--color-softer);
+		width: 30%;
+		text-align: right;
+		padding: 20px;
 	}
 }
