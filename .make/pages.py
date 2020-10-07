@@ -3,6 +3,7 @@
 import glob
 import jinja2
 import os
+import requests
 import subprocess
 import sys
 import yaml
@@ -14,12 +15,15 @@ from config import Config as config
 from ext_html import title
 from ext_markdown import extract as markdown
 from parser import get as parse
+from url import manipulate as url_manipulate
 
 config_website = config.new('src/website.yaml')
 if config_website is None:
     sys.exit('Unable to parse configuration file')
 
 for page in config_website.get('pages'):
+    if 'type' not in page:
+        page['type'] = 'generic'
 
     # config
     page_config = {**config_website.raw(), **{'page': page}}
@@ -58,6 +62,17 @@ for page in config_website.get('pages'):
             }
         }
         path_content = os.path.join('src', page['parent'])
+    # prebult page
+    elif page['type'] == 'prefetch':
+        page_config = {
+            **page_config,
+            'prefetch': requests.get(
+                url_manipulate(page['content']), allow_redirects=True).content.decode('utf-8')
+        }
+        for variant in range(len(page_config['page']['variants'])):
+            page_config['page']['variants'][variant]['url'] = url_manipulate(
+                page_config['page']['variants'][variant]['url'])
+        path_content = os.path.join('src', page['parent'])
 
     # parse and dump
     parse(template=path_content,
@@ -74,5 +89,6 @@ for page in config_website.get('pages'):
                     'url': ''.join([config_website.get('info', 'website'), page['path']]),
                 }
             }
-        }
+        },
+        'page': page
     })
