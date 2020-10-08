@@ -5,5 +5,6 @@ if [ -z "${PUB_KEY}" ]; then
     exit 1
 fi
 
-echo "${PUB_KEY}" > "${HOME}/id_streambinder"
-rsync -av --delete -e "ssh -i ${HOME}/id_streambinder" "${BUILD_DIR}"/ dpuccissh@vps.davidepucci.it:/web/
+echo "${PUB_KEY}" > "${HOME}/key"
+chmod 600 "${HOME}/key"
+rsync -av --delete -e "ssh -i ${HOME}/key -o StrictHostKeyChecking=no" "${BUILD_DIR}"/ dpuccissh@vps.davidepucci.it:/web/

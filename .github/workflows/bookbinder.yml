@@ -42,3 +42,9 @@ jobs:
         with:
           name: davidepucci
           path: build/*
+
+      - name: Publish website
+        run: |
+          make publish
+        env:
+          PUB_KEY: ${{ secrets.GH_ACTIONS_SSH_KEY }}
