@@ -38,11 +38,17 @@ pages:
     description:
     image:
     variants:
-      - name: Personal
-        url: https://url.davidepucci.it/resume
+      - name: Personal — english
+        url: https://github.com/streambinder/erro/releases/latest/personal_en.pdf
         icon: fas fa-graduation-cap
-      - name: EuroPass
+      - name: Personal — italian
+        url: https://github.com/streambinder/erro/releases/latest/personal_it.pdf
+        icon: fas fa-graduation-cap
+      - name: EuroPass — english
         url: https://github.com/streambinder/erro/releases/latest/europass_en.pdf
+        icon: fas fa-euro-sign
+      - name: EuroPass — italian
+        url: https://github.com/streambinder/erro/releases/latest/europass_it.pdf
         icon: fas fa-euro-sign
   - path: /music
     content: pages/music.html
