@@ -28,7 +28,7 @@ pages:
   - path: /
     content: pages/index.html
     name: Davide Pucci
-    description: Network and Software Engineer
+    description: Site Reliability Engineer
     image:
   - path: /resume
     name: Resume
