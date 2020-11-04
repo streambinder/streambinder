@@ -4,9 +4,9 @@
 [submodule "src/wikis/erro"]
 	path = src/wikis/erro
 	url = https://github.com/streambinder/erro.wiki.git
-[submodule "src/wikis/paperboy"]
-	path = src/wikis/paperboy
-	url = https://github.com/streambinder/paperboy.wiki.git
+[submodule "src/wikis/nuntius"]
+	path = src/wikis/nuntius
+	url = https://github.com/streambinder/nuntius.wiki.git
 [submodule "src/wikis/spotitube"]
 	path = src/wikis/spotitube
 	url = https://github.com/streambinder/spotitube.wiki.git

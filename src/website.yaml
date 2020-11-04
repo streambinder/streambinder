@@ -123,13 +123,13 @@ pages:
     parent: pages/project.html
     description:
     image:
-  - path: /doc/paperboy
-    name: Paperboy
+  - path: /doc/nuntius
+    name: Nuntius
     caption: IMAP email checker and GTK notifier
-    url: https://github.com/streambinder/paperboy
+    url: https://github.com/streambinder/nuntius
     icon: lang-c
     type: wiki
-    content: wikis/paperboy
+    content: wikis/nuntius
     parent: pages/project.html
     description:
     image:
