@@ -113,13 +113,13 @@ pages:
     parent: pages/project.html
     description:
     image:
-  - path: /doc/chopper
-    name: Chopper
+  - path: /doc/discindo
+    name: Discindo
     caption: Share all-sizes files using reconstructable manifests
-    url: https://github.com/streambinder/chopper
+    url: https://github.com/streambinder/discindo
     icon: lang-python
     type: wiki
-    content: wikis/chopper
+    content: wikis/discindo
     parent: pages/project.html
     description:
     image:
