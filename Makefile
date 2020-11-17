@@ -20,7 +20,7 @@ wikis:
 	@git submodule update --init --recursive --remote
 
 .PHONY: pages
-pages: init wikis
+pages: init
 	@python3 $(MAKE_DIR)/pages.py
 
 .PHONY: facade
