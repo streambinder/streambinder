@@ -47,6 +47,10 @@ dynimages: pages
 publish: generate
 	@bash $(MAKE_DIR)/publish.sh
 
+.PHONY: docker
+docker:
+	@bash $(MAKE_DIR)/docker.sh
+
 .PHONY: clean
 clean:
 	@rm -rf $(BUILD_DIR)
