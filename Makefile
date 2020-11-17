@@ -5,7 +5,7 @@ BUILD_DIR	:= $(ROOT_DIR)/build
 export BUILD_DIR
 
 .PHONY: generate
-generate: wikis init pages facade dynimages strip assets minify
+generate: init pages facade dynimages strip assets minify
 
 .PHONY: init
 init:
