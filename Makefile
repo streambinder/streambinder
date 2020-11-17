@@ -43,10 +43,6 @@ minify: facade strip assets
 dynimages: pages
 	@python3 $(MAKE_DIR)/dynimages.py
 
-.PHONY: publish
-publish: generate
-	@bash $(MAKE_DIR)/publish.sh
-
 .PHONY: docker
 docker:
 	@bash $(MAKE_DIR)/docker.sh
