@@ -12,7 +12,7 @@ info:
       color: var(--color)
       icon: social-github
     - name: Music
-      url: https://davidepucci.it/music
+      url: /music
       color: var(--color)
       icon: social-spotify
     - name: Email
@@ -20,7 +20,7 @@ info:
       color: var(--color)
       icon: social-email
     - name: Resume
-      url: https://davidepucci.it/resume
+      url: /resume
       color: var(--color)
       icon: social-resume
 
