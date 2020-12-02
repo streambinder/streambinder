@@ -116,6 +116,12 @@ main.page>h2 {
 	margin-block-start: 1.5em;
 }
 
+/* per-page rules */
+
+body.resume>nav {
+	display: none;
+}
+
 /* cards */
 
 ul.cards {
