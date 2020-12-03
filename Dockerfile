@@ -11,3 +11,5 @@ FROM alpine
 RUN apk add --no-cache lighttpd
 COPY --from=builder /build /var/www/localhost/htdocs
 CMD ["lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
+LABEL org.opencontainers.image.source https://github.com/streambinder/streambinder
+

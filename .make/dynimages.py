@@ -6,17 +6,7 @@ import sys
 
 from config import Config as config
 
-font_mono = None
-for font in subprocess.Popen(
-        ['convert', '-list', 'font'], stdout=subprocess.PIPE).communicate()[0].splitlines():
-    font = font.strip().decode('utf8')
-    if font.lower().endswith('mono'):
-        font_mono = font.split()[-1]
-        break
-if not font_mono:
-    print('Font not found')
-    sys.exit(1)
-
+font_mono = 'Noto-Sans-Mono-Regular'
 for fdir, _, fnames in os.walk(os.environ['BUILD_DIR']):
     for fname in fnames:
         if fname != '_index.yaml':
