@@ -1,6 +1,6 @@
 info:
-  name: Davide Pucci
-  role: Site Reliability Engineer
+  name: &info-name Davide Pucci
+  role: &info-role Site Reliability Engineer
   website: https://davidepucci.it
   social:
     - name: LinkedIn
@@ -27,15 +27,15 @@ info:
 pages:
   - path: /
     content: pages/index.html
-    name: Davide Pucci
-    description: Site Reliability Engineer
+    name: *info-name
+    description: *info-role
     image:
   - path: /resume
     name: Resume
     type: prefetch
     content: https://github.com/streambinder/erro/releases/latest/web_en.html
     parent: pages/resume.html
-    description:
+    description: &proj-caption-erro That cool thing to look interesting in the world of work
     image:
     variants:
       - name: Personal — english
@@ -53,7 +53,7 @@ pages:
   - path: /music
     content: pages/music.html
     name: Music
-    description:
+    description: Personal music collections
     image:
     data:
       url: https://url.davidepucci.it/spotify
@@ -94,74 +94,74 @@ pages:
           caption: |
             Getting and trashing, shouting, escaping, taking revenge and pushing away.
           uid: 1p0PNpGyoD7dHkph5zopMS
-        - name: swag
+        - name: kiddo
           caption: |
             Yo shit, wtfing, explicit, ***, censored.
           uid: 1DnutbCbIZExm3BIwHdKmA
   - path: /doc
     content: pages/projects.html
     name: Projects
-    description:
+    description: Personal IT-related time suckers
     image:
   - path: /doc/spotitube
     name: Spotitube
-    caption: Synchronize your Spotify collections downloading from external providers
+    caption: &proj-caption-spotitube Synchronize your Spotify collections downloading from external providers
     url: https://github.com/streambinder/spotitube
     icon: lang-go
     type: wiki
     content: wikis/spotitube
     parent: pages/project.html
-    description:
+    description: *proj-caption-spotitube
     image:
   - path: /doc/discindo
     name: Discindo
-    caption: Share all-sizes files using reconstructable manifests
+    caption: &proj-caption-discindo Share all-sizes files using reconstructable manifests
     url: https://github.com/streambinder/discindo
     icon: lang-python
     type: wiki
     content: wikis/discindo
     parent: pages/project.html
-    description:
+    description: *proj-caption-discindo
     image:
   - path: /doc/nuntius
     name: Nuntius
-    caption: IMAP email checker and GTK notifier
+    caption: &proj-caption-nuntius IMAP email checker and GTK notifier
     url: https://github.com/streambinder/nuntius
     icon: lang-c
     type: wiki
     content: wikis/nuntius
     parent: pages/project.html
-    description:
+    description: *proj-caption-nuntius
     image:
   - path: /doc/theca
     name: Theca
-    caption: Private package repository
+    caption: &proj-caption-theca Private package repository
     url: https://github.com/streambinder/theca
     icon: lang-infra
     type: wiki
     content: wikis/theca
     parent: pages/project.html
-    description:
+    description: *proj-caption-theca
     image:
   - path: /doc/erro
     name: Erro
-    caption: That cool thing to look interesting in the world of work
+    caption: *proj-caption-erro
     url: https://github.com/streambinder/erro
     icon: lang-latex
     type: wiki
     content: wikis/erro
     parent: pages/project.html
-    description:
+    description: *proj-caption-erro
     image:
   - path: /doc/vpnc
     name: VPNC
-    caption: IPsec (Cisco/Juniper) VPN concentrator client
+    caption: &proj-caption-vpnc IPsec (Cisco/Juniper) VPN concentrator client
     url: https://github.com/streambinder/vpnc
     icon: lang-c
     type: wiki
     content: wikis/vpnc
     parent: pages/project.html
-    description:
+    description: *proj-caption-vpnc
     image:
 
 icons:
