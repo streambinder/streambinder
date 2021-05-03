@@ -17,7 +17,7 @@ from ext_markdown import extract as markdown
 from parser import get as parse
 from url import manipulate as url_manipulate
 
-config_website = config.new('src/website.yaml')
+config_website = config.new('src/website.yml')
 if config_website is None:
     sys.exit('Unable to parse configuration file')
 

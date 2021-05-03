@@ -19,7 +19,7 @@ def idfy(value):
 
 
 def icon(id):
-    icons = config.new('src/website.yaml').get('icons')
+    icons = config.new('src/website.yml').get('icons')
     if 'section-{}'.format(id) in icons:
         return icons['section-{}'.format(id)]
     return icons['section-generic']
