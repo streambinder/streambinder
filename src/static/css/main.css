@@ -319,8 +319,16 @@ main.page table th, main.page table td {
 	text-align: left;
 }
 
-main.page table th:last-child, main.page table td:last-child {
+main.page table td:first-child {
+	margin-top: 10px;
+}
+
+main.page table td:last-child {
 	margin-bottom: 10px;
+}
+
+main.page table td {
+	font-size: medium;
 }
 
 main.page table tr::after {
@@ -435,13 +443,21 @@ body.resume br {
 	/* tables */
 	main.page table th, main.page table td {
 		display: table-cell;
-	}	
+	}
+	main.page table td {
+		padding-top: 15px;
+		padding-bottom: 10px;
+	}
 	main.page table th:first-child {
+		border-top-right-radius: 0;
 		border-top-left-radius: 5px;
 		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 0;
 	}
 	main.page table th:last-child {
 		border-top-right-radius: 5px;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
 		border-bottom-right-radius: 5px;
 	}
 	main.page table tr::after {
