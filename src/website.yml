@@ -124,7 +124,7 @@ pages:
     parent: pages/project.html
     description: *proj-caption-discindo
     image:
-    alive: true
+    alive: false
   - path: /doc/nuntius
     name: Nuntius
     caption: &proj-caption-nuntius IMAP email checker and GTK notifier
@@ -135,7 +135,7 @@ pages:
     parent: pages/project.html
     description: *proj-caption-nuntius
     image:
-    alive: true
+    alive: false
   - path: /doc/theca
     name: Theca
     caption: &proj-caption-theca Private package repository
