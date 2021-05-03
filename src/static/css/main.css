@@ -126,17 +126,29 @@ body.resume>nav {
 
 ul.cards {
 	padding: 0;
+	text-align: center;
 }
 
 ul.cards>li {
 	display: inline-block;
 	background-color: var(--color-background);
-	border: 1px solid var(--color-softer);
+	border: 1px solid var(--color-softest);
 	width: 100%;
-	margin-bottom: 10px;
-	border-radius: 3.5px;
 	position: relative;
 	vertical-align: top;
+	text-align: left;
+	border-bottom: none;
+}
+
+ul.cards>li:first-child {
+	border-top-left-radius: 3.5px;
+	border-top-right-radius: 3.5px;
+}
+
+ul.cards>li:last-child {
+	border-bottom-left-radius: 3.5px;
+	border-bottom-right-radius: 3.5px;
+	border-bottom: 1px solid var(--color-softest);
 }
 
 ul.cards>li:hover {
@@ -363,7 +375,6 @@ p.caption {
 /* disclaimer */
 
 div.disclaimer {
-    margin: auto .35% 5px;
     border-radius: 3.5px;
     padding-right: 25px;
     padding-left: 25px;
@@ -415,11 +426,6 @@ body.resume br {
 	main.page {
 		width: 65ch;
 		margin: auto;
-	}
-	/* cards */
-	ul.cards>li {
-		width: 49%;
-		margin: auto .35% 5px .35%;
 	}
 	/* tables */
 	main.page table th, main.page table td {
