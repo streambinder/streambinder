@@ -169,6 +169,11 @@ ul.cards>li>a>i {
 	text-align: center;
 }
 
+ul.cards>li>a>i:nth-child(3) {
+    right: 20px;
+    color: var(--color-softer);
+}
+
 ul.cards>li>a>span {
 	display: block;
 	text-indent: 40px;
