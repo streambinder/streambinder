@@ -5,6 +5,15 @@
     </h1>
     <h5 class=caption>{{ page.caption }}</h5>
 
+    {! if not page.alive !}
+    <div class="disclaimer">
+        <h5>
+            This project is no more under active development.<br />
+            This may affect its usage in unpredictable and unguaranteed ways.
+        </h5>
+    </div>
+    {! endif !}
+
     <ul class=cards>
         {! for section in page.sections !}
         <li>

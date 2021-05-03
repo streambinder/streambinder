@@ -5,4 +5,7 @@ html {
 	--color-background: #383838;
 	--color-background-darker: #202020;
 	--color-dark-transparent: rgba(0, 0, 0, .5);
+	--color-warn: #DAAF3F;
+	--color-warn-softer: rgba(174, 124, 20, 0.4);
+	--color-warn-background: rgba(174, 124, 20, 0.1);
 }

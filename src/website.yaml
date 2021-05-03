@@ -113,6 +113,7 @@ pages:
     parent: pages/project.html
     description: *proj-caption-spotitube
     image:
+    alive: true
   - path: /doc/discindo
     name: Discindo
     caption: &proj-caption-discindo Share all-sizes files using reconstructable manifests
@@ -123,6 +124,7 @@ pages:
     parent: pages/project.html
     description: *proj-caption-discindo
     image:
+    alive: true
   - path: /doc/nuntius
     name: Nuntius
     caption: &proj-caption-nuntius IMAP email checker and GTK notifier
@@ -133,6 +135,7 @@ pages:
     parent: pages/project.html
     description: *proj-caption-nuntius
     image:
+    alive: true
   - path: /doc/theca
     name: Theca
     caption: &proj-caption-theca Private package repository
@@ -143,6 +146,7 @@ pages:
     parent: pages/project.html
     description: *proj-caption-theca
     image:
+    alive: false
   - path: /doc/erro
     name: Erro
     caption: *proj-caption-erro
@@ -153,6 +157,7 @@ pages:
     parent: pages/project.html
     description: *proj-caption-erro
     image:
+    alive: true
   - path: /doc/vpnc
     name: VPNC
     caption: &proj-caption-vpnc IPsec (Cisco/Juniper) VPN concentrator client
@@ -163,6 +168,7 @@ pages:
     parent: pages/project.html
     description: *proj-caption-vpnc
     image:
+    alive: true
 
 icons:
   social-linkedin: fab fa-linkedin-in

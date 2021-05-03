@@ -360,6 +360,18 @@ p.caption {
 	padding-top: 25px;
 }
 
+/* disclaimer */
+
+div.disclaimer {
+    margin: auto .35% 5px;
+    border-radius: 3.5px;
+    padding-right: 25px;
+    padding-left: 25px;
+    color: var(--color-warn);
+    border: 1px solid var(--color-warn-softer);
+    background-color: var(--color-warn-background);
+}
+
 /* page specific style */
 
 body.resume tr > td:first-child {
