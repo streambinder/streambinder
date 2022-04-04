@@ -62,6 +62,9 @@ pages:
           caption: |
             Staring at her in the eyes, feeling embarrassed, capturing a blurry and desaturated picture.
           uid: 2wyZKlaKzPEUurb6KshAwQ
+        - name: matin
+          caption: ""
+          uid: 3HQ9jyV7s5l9p8lXLJ91WN
         - name: sunday
           caption: |
             Waking up late, acknowledging the sunny day, dancing in the kitchen with the pasta water boiling.
@@ -90,6 +93,10 @@ pages:
           caption: |
             I solemnly swear I am up to no good... mischief managed.
           uid: 1LSTRWX6gVsc6LZRq6xTnh
+        - name: duke
+          caption: |
+            “Gentlemen, thank you for your calls.”
+          uid: 5s9gvhZDtfTaM8VMfBtssy
         - name: roar
           caption: |
             Getting and trashing, shouting, escaping, taking revenge and pushing away.
