@@ -15,7 +15,6 @@ from config import Config as config
 from ext_html import title
 from ext_markdown import extract as markdown
 from parser import get as parse
-from url import manipulate as url_manipulate
 
 config_website = config.new('src/website.yml')
 if config_website is None:
@@ -62,16 +61,12 @@ for page in config_website.get('pages'):
             }
         }
         path_content = os.path.join('src', page['parent'])
-    # prebult page
+    # prebuilt page
     elif page['type'] == 'prefetch':
         page_config = {
             **page_config,
-            'prefetch': requests.get(
-                url_manipulate(page['content']), allow_redirects=True).content.decode('utf-8')
+            'prefetch': requests.get(page['content']).content.decode('utf-8')
         }
-        for variant in range(len(page_config['page']['variants'])):
-            page_config['page']['variants'][variant]['url'] = url_manipulate(
-                page_config['page']['variants'][variant]['url'])
         path_content = os.path.join('src', page['parent'])
 
     # parse and dump
