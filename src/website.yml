@@ -33,22 +33,22 @@ pages:
   - path: /resume
     name: Resume
     type: prefetch
-    content: https://github.com/streambinder/erro/releases/latest/web_en.html
+    content: https://github.com/streambinder/erro/releases/latest/download/web_en.html
     parent: pages/resume.html
     description: &proj-caption-erro That cool thing to look interesting in the world of work
     image:
     variants:
       - name: Personal — english
-        url: https://github.com/streambinder/erro/releases/latest/personal_en.pdf
+        url: https://github.com/streambinder/erro/releases/latest/download/personal_en.pdf
         icon: fas fa-graduation-cap
       - name: Personal — italian
-        url: https://github.com/streambinder/erro/releases/latest/personal_it.pdf
+        url: https://github.com/streambinder/erro/releases/latest/download/personal_it.pdf
         icon: fas fa-graduation-cap
       - name: EuroPass — english
-        url: https://github.com/streambinder/erro/releases/latest/europass_en.pdf
+        url: https://github.com/streambinder/erro/releases/latest/download/europass_en.pdf
         icon: fas fa-euro-sign
       - name: EuroPass — italian
-        url: https://github.com/streambinder/erro/releases/latest/europass_it.pdf
+        url: https://github.com/streambinder/erro/releases/latest/download/europass_it.pdf
         icon: fas fa-euro-sign
   - path: /music
     content: pages/music.html
