@@ -38,16 +38,16 @@ pages:
     description: &proj-caption-erro That cool thing to look interesting in the world of work
     image:
     variants:
-      - name: Personal — english
+      - name: Personal 🇺🇸
         url: https://github.com/streambinder/erro/releases/latest/download/personal_en.pdf
         icon: fas fa-graduation-cap
-      - name: Personal — italian
+      - name: Personal 🇮🇹
         url: https://github.com/streambinder/erro/releases/latest/download/personal_it.pdf
         icon: fas fa-graduation-cap
-      - name: EuroPass — english
+      - name: EuroPass 🇺🇸
         url: https://github.com/streambinder/erro/releases/latest/download/europass_en.pdf
         icon: fas fa-euro-sign
-      - name: EuroPass — italian
+      - name: EuroPass 🇮🇹
         url: https://github.com/streambinder/erro/releases/latest/download/europass_it.pdf
         icon: fas fa-euro-sign
   - path: /music
