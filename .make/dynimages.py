@@ -7,6 +7,7 @@ import sys
 from config import Config as config
 
 font_mono = 'Overpass-Mono-Regular-Nerd-Font-Complete-Mono'
+font_mono_bold = 'Overpass-Mono-Bold-Nerd-Font-Complete-Mono'
 for fdir, _, fnames in os.walk(os.environ['BUILD_DIR']):
     for fname in fnames:
         if fname != '_index.yaml':
@@ -17,16 +18,16 @@ for fdir, _, fnames in os.walk(os.environ['BUILD_DIR']):
             continue
 
         subprocess.Popen(
-            ['convert', '-fill', 'white', '-gravity', 'center', '-size', '3600x1881', 'xc:transparent', '-pointsize',
-             '200', '-strokewidth', '1', '-font', font_mono, '-draw', 'text 0,0 \'{}\''.format(
-                 cfg.get('html', 'head', 'metadata', 'title')), '_index-title.png'], cwd=fdir).communicate()
+            ['convert', '-background', 'rgba(0,0,0,0)', '-fill', 'white', '-gravity', 'center', '-size', '3600x1881', '-pointsize',
+             '300', '-kerning', '-150', '-font', font_mono_bold, 'caption:{}'.format(
+                 cfg.get('page', 'name').upper()), '_index-title.png'], cwd=fdir).communicate()
         subprocess.Popen(
-            ['convert', '-fill', 'white', '-gravity', 'center', '-size', '3600x1881', 'xc:transparent', '-pointsize',
-             '90', '-font', font_mono, '-draw', 'text 0,0 \'{}\''.format(
-                 cfg.get('html', 'head', 'metadata', 'description')), '_index-desc.png'], cwd=fdir).communicate()
+            ['convert', '-background', 'rgba(0,0,0,0)', '-fill', 'white', '-gravity', 'center', '-size', '3200x1881', '-pointsize',
+             '150', '-kerning', '-75', '-font', font_mono, 'caption:{}'.format(
+                 cfg.get('page', 'description')), '_index-desc.png'], cwd=fdir).communicate()
         subprocess.Popen(
             ['convert', '-define', 'png:bit-depth=8', '-size', '3600x1881', 'xc:transparent', '_index-title.png',
-             '-geometry', '+0-150', '-composite', '_index-desc.png', '-geometry', '+0+150', '-composite', cfg.get('html', 'head', 'metadata', 'image')], cwd=fdir).communicate()
+             '-geometry', '+50-250', '-composite', '_index-desc.png', '-geometry', '+200+300', '-composite', cfg.get('html', 'head', 'metadata', 'image')], cwd=fdir).communicate()
         subprocess.Popen(
             ['convert', '-background', '#383838', '-alpha', 'remove', '-alpha', 'off', '-shave', '50', '-border', '25', '-bordercolor', 'white',
              cfg.get('html', 'head', 'metadata', 'image'), cfg.get('html', 'head', 'metadata', 'image')], cwd=fdir).communicate()
