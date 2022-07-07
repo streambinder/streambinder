@@ -18,11 +18,11 @@ for fdir, _, fnames in os.walk(os.environ['BUILD_DIR']):
 
         subprocess.Popen(
             ['convert', '-fill', 'white', '-gravity', 'center', '-size', '3600x1881', 'xc:transparent', '-pointsize',
-             '225', '-font', font_mono, '-draw', 'text 0,0 \'{}\''.format(
+             '200', '-strokewidth', '1', '-font', font_mono, '-draw', 'text 0,0 \'{}\''.format(
                  cfg.get('html', 'head', 'metadata', 'title')), '_index-title.png'], cwd=fdir).communicate()
         subprocess.Popen(
             ['convert', '-fill', 'white', '-gravity', 'center', '-size', '3600x1881', 'xc:transparent', '-pointsize',
-             '125', '-font', font_mono, '-draw', 'text 0,0 \'{}\''.format(
+             '90', '-font', font_mono, '-draw', 'text 0,0 \'{}\''.format(
                  cfg.get('html', 'head', 'metadata', 'description')), '_index-desc.png'], cwd=fdir).communicate()
         subprocess.Popen(
             ['convert', '-define', 'png:bit-depth=8', '-size', '3600x1881', 'xc:transparent', '_index-title.png',
