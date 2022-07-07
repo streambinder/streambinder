@@ -1,5 +1,5 @@
 FROM alpine as builder
-RUN apk add --no-cache bash font-noto git imagemagick make py3-pip
+RUN apk add --no-cache bash font-overpass-nerd git imagemagick make py3-pip
 RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install markdown jinja2 pygments pyyaml requests
 RUN wget https://github.com/tdewolff/minify/releases/download/v2.9.10/minify_linux_amd64.tar.gz

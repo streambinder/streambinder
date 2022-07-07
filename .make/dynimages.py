@@ -6,7 +6,7 @@ import sys
 
 from config import Config as config
 
-font_mono = 'Noto-Sans-Mono-Regular'
+font_mono = 'Overpass-Mono-Regular-Nerd-Font-Complete-Mono'
 for fdir, _, fnames in os.walk(os.environ['BUILD_DIR']):
     for fname in fnames:
         if fname != '_index.yaml':
