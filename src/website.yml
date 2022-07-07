@@ -30,6 +30,11 @@ pages:
     name: *info-name
     description: *info-role
     image:
+  - path: /404
+    content: pages/404.html
+    name: "404"
+    description: not found
+    image:
   - path: /resume
     name: Resume
     type: prefetch
