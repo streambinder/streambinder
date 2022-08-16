@@ -10,6 +10,7 @@ import yaml
 
 from jinja2 import Template
 from distutils.dir_util import copy_tree
+from urllib.parse import urlparse
 
 from config import Config as config
 from ext_html import title
@@ -80,8 +81,9 @@ for page in config_website.get('pages'):
                 'metadata': {
                     'title': title(page['name'], config_website.get('info', 'name')),
                     'description': page['description'],
-                    'image': page['image'] or 'index.png',
-                    'url': ''.join([config_website.get('info', 'website'), page['path']]),
+                    'image': page['image'] or '/'.join([config_website.get('info', 'website'), page['path'], 'index.png']),
+                    'url': '/'.join([config_website.get('info', 'website'), page['path']]),
+                    'domain': urlparse(config_website.get('info', 'website')).netloc,
                 }
             }
         },
