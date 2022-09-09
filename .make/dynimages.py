@@ -14,7 +14,11 @@ for fdir, _, fnames in os.walk(os.environ['BUILD_DIR']):
             continue
 
         cfg = config.new(os.path.join(fdir, fname))
-        if cfg.get('html', 'head', 'metadata', 'image') not in ['', 'index.png'] or cfg.get('html', 'head', 'metadata', 'title') is None or cfg.get('html', 'head', 'metadata', 'description') is None:
+        image_path = str(cfg.get('html', 'head', 'metadata', 'image'))
+        if '/' in image_path:
+            image_path = image_path.split('/')[-1]
+
+        if not (image_path == '' or image_path.endswith('index.png')) or cfg.get('html', 'head', 'metadata', 'title') is None or cfg.get('html', 'head', 'metadata', 'description') is None:
             continue
 
         subprocess.Popen(
@@ -27,12 +31,12 @@ for fdir, _, fnames in os.walk(os.environ['BUILD_DIR']):
                  cfg.get('page', 'description')), '_index-desc.png'], cwd=fdir).communicate()
         subprocess.Popen(
             ['convert', '-define', 'png:bit-depth=8', '-size', '3600x1881', 'xc:transparent', '_index-title.png',
-             '-geometry', '+50-250', '-composite', '_index-desc.png', '-geometry', '+200+300', '-composite', cfg.get('html', 'head', 'metadata', 'image')], cwd=fdir).communicate()
+             '-geometry', '+50-250', '-composite', '_index-desc.png', '-geometry', '+200+300', '-composite', image_path], cwd=fdir).communicate()
         subprocess.Popen(
             ['convert', '-background', '#383838', '-alpha', 'remove', '-alpha', 'off', '-shave', '50', '-border', '25', '-bordercolor', 'white',
-             cfg.get('html', 'head', 'metadata', 'image'), cfg.get('html', 'head', 'metadata', 'image')], cwd=fdir).communicate()
+             image_path, image_path], cwd=fdir).communicate()
         subprocess.Popen(
-            ['convert', '-border', '25', '-bordercolor', '#383838', cfg.get('html', 'head', 'metadata', 'image'), cfg.get('html', 'head', 'metadata', 'image')], cwd=fdir).communicate()
+            ['convert', '-border', '25', '-bordercolor', '#383838', image_path, image_path], cwd=fdir).communicate()
 
         for tmp in ['_index-title.png', '_index-desc.png']:
             os.rename(os.path.join(fdir, tmp), os.path.join(
