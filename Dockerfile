@@ -13,4 +13,3 @@ RUN echo 'server.error-handler-404 = "/404"' >> /etc/lighttpd/lighttpd.conf
 COPY --from=builder /build /var/www/localhost/htdocs
 CMD ["lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
 LABEL org.opencontainers.image.source https://github.com/streambinder/streambinder
-
