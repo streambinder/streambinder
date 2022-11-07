@@ -1,6 +1,6 @@
 info:
   name: &info-name Davide Pucci
-  role: &info-role Site Reliability Engineer
+  role: &info-role Systems Engineer
   website: https://davidepucci.it
   social:
     - name: LinkedIn
