@@ -253,6 +253,7 @@ span.separator::after {
 
 .codehilite, .codehilite pre, .codehilite table {
 	border-radius: 5px;
+	text-align: left;
 }
 
 .codehilite *, pre * {

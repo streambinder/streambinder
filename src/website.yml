@@ -23,6 +23,10 @@ info:
       url: /resume
       color: var(--color)
       icon: social-resume
+    - name: PGP
+      url: /sig
+      color: var(--color)
+      icon: social-signature
 
 pages:
   - path: /
@@ -34,6 +38,11 @@ pages:
     content: pages/404.html
     name: "404"
     description: not found
+    image:
+  - path: /sig
+    content: pages/sig.html
+    name: PGP
+    description: PGP Public Key
     image:
   - path: /resume
     name: Resume
@@ -133,6 +142,7 @@ icons:
   social-spotify: fab fa-spotify
   social-email: fas fa-envelope
   social-resume: fas fa-graduation-cap
+  social-signature: fas fa-signature
   project-code: fab fa-github
   lang-go: devicon-go-plain
   lang-python: fab fa-python
