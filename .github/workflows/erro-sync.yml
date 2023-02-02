@@ -1,0 +1,30 @@
+name: erro-sync
+
+on:
+  repository_dispatch:
+    types: [erro-sync]
+
+env:
+  submodule_path: ".local/share/unciae"
+
+jobs:
+  erro-sync:
+    if: ${{ github.event.client_payload.ref == 'refs/heads/master' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger push workflow
+        uses: streambinder/streambinder/.github/workflows/push.yml@master
+        with:
+          token: ${{ secrets.GH_ACTIONS_CLAVIS }}
+      - name: Setup repository
+        run: |
+          git config user.email "automata@davidepucci.it"
+          git config user.name "Automata"
+      - name: Sync unciae to dispatched sha
+        run: |
+          git submodule update --init "${submodule_path}"
+          git --git-dir="${submodule_path}/.git" checkout "${{ github.event.client_payload.sha }}"
+          git commit -m "chore(unciae): sync (streambinder/unciae@$(cut -c-7 <<< "${{ github.event.client_payload.sha }}"))" "${submodule_path}"
+      - name: Push repository
+        run: |
+          git push
