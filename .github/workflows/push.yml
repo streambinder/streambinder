@@ -8,6 +8,9 @@ on:
     branches:
       - master
   workflow_call:
+    secrets:
+      GH_ACTIONS_DAVIDEPUCCI:
+        required: true
 
 jobs:
   docker:
