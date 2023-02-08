@@ -97,6 +97,10 @@ main.one-man-show>ul>li:hover {
 	filter: brightness(.85);
 }
 
+main.one-man-show>div.subtitle.codehilite>pre {
+	max-height: 300px;
+}
+
 /* generic page */
 
 main.page>h1 {
