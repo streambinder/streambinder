@@ -34,7 +34,7 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          push: true
+          push: ${{ github.event_name != 'pull_request' }}
           tags: ghcr.io/streambinder/streambinder:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
