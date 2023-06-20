@@ -6,8 +6,8 @@ import sys
 
 from config import Config as config
 
-font_mono = 'Overpass-Mono-Regular-Nerd-Font-Complete-Mono'
-font_mono_bold = 'Overpass-Mono-Bold-Nerd-Font-Complete-Mono'
+font_mono = 'Overpass-Mono-Light'
+font_mono_bold = 'Overpass-Mono-Bold'
 for fdir, _, fnames in os.walk(os.environ['BUILD_DIR']):
     for fname in fnames:
         if fname != '_index.yaml':
@@ -23,11 +23,11 @@ for fdir, _, fnames in os.walk(os.environ['BUILD_DIR']):
 
         subprocess.Popen(
             ['convert', '-background', 'rgba(0,0,0,0)', '-fill', 'white', '-gravity', 'center', '-size', '3600x1881', '-pointsize',
-             '300', '-kerning', '-150', '-font', font_mono_bold, 'caption:{}'.format(
+             '300', '-font', font_mono_bold, 'caption:{}'.format(
                  cfg.get('page', 'name').upper()), '_index-title.png'], cwd=fdir).communicate()
         subprocess.Popen(
             ['convert', '-background', 'rgba(0,0,0,0)', '-fill', 'white', '-gravity', 'center', '-size', '3200x1881', '-pointsize',
-             '150', '-kerning', '-75', '-font', font_mono, 'caption:{}'.format(
+             '150', '-font', font_mono, 'caption:{}'.format(
                  cfg.get('page', 'description')), '_index-desc.png'], cwd=fdir).communicate()
         subprocess.Popen(
             ['convert', '-define', 'png:bit-depth=8', '-size', '3600x1881', 'xc:transparent', '_index-title.png',
