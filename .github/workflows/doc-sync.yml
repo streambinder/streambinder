@@ -5,7 +5,7 @@ on:
     types: [doc-sync]
 
 env:
-  doc_name: "${{ github.event.client_payload.name }}"
+  doc_repo: "${{ github.event.client_payload.repo }}"
   doc_module: "src/docs/${{ github.event.client_payload.name }}"
   doc_sha: "${{ github.event.client_payload.sha }}"
 
@@ -26,6 +26,6 @@ jobs:
         run: |
           git submodule update --init "${doc_module}"
           git --git-dir="${doc_module}/.git" checkout "${doc_sha}"
-          git commit -m "docs(${doc_name}): sync (streambinder/unciae@$(cut -c-7 <<< "${doc_sha}"))" "${doc_module}"
+          git commit -m "docs($(awk -F'/' '{print $2}' <<< "${doc_repo}")): sync (${doc_repo}@$(cut -c-7 <<< "${doc_sha}"))" "${doc_module}"
       - name: Push repository
         run: git push
