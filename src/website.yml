@@ -74,8 +74,8 @@ pages:
     caption: &proj-caption-spotitube Synchronize your Spotify collections downloading from external providers
     url: https://github.com/streambinder/spotitube
     icon: lang-go
-    type: wiki
-    content: wikis/spotitube
+    type: doc
+    content: docs/spotitube/docs
     parent: pages/project.html
     description: *proj-caption-spotitube
     image:
@@ -153,4 +153,5 @@ icons:
   section-installation: fas fa-cloud-download-alt
   section-download: fas fa-cloud-download-alt
   section-engineering: far fa-lightbulb
+  section-design: far fa-lightbulb
   section-generic: fab fa-slack-hash
