@@ -1,0 +1,31 @@
+name: doc-sync
+
+on:
+  repository_dispatch:
+    types: [doc-sync]
+
+env:
+  doc_name: "${{ github.event.client_payload.name }}"
+  doc_module: "src/docs/${{ github.event.client_payload.name }}"
+  doc_sha: "${{ github.event.client_payload.sha }}"
+
+jobs:
+  doc-sync:
+    if: ${{ github.event.client_payload.ref == 'refs/heads/master' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GH_ACTIONS_DAVIDEPUCCI }}
+      - name: Setup repository
+        run: |
+          git config user.email "automata@davidepucci.it"
+          git config user.name "Automata"
+      - name: Sync doc to dispatched sha
+        run: |
+          git submodule update --init "${doc_module}"
+          git --git-dir="${doc_module}/.git" checkout "${doc_sha}"
+          git commit -m "docs(${doc_name}): sync (streambinder/unciae@$(cut -c-7 <<< "${doc_sha}"))" "${doc_module}"
+      - name: Push repository
+        run: git push
