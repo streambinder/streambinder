@@ -33,7 +33,8 @@ strip: init
 		-not -name 'index.html' \
 		-not -name '*.jpg' \
 		-not -name '*.png' \
-		-not -name '*.gif' -delete
+		-not -name '*.gif' \
+		-not -name '*.svg' -delete
 
 .PHONY: minify
 minify: facade strip assets
