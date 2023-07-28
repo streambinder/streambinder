@@ -35,8 +35,33 @@ for page in config_website.get('pages'):
     path_content = os.path.join('src', page['content'])
     os.makedirs(path, exist_ok=True)
 
+    if os.path.isdir(path_content) and page['type'] == 'doc':
+        page_assets = os.path.join(path_content, 'assets')
+        if os.path.isdir(page_assets):
+            os.system('cp -rf {} {}'.format(page_assets, path))
+
+        html_content = ''
+        html_sections = []
+        doc_index = os.path.join(path_content, 'README.md')
+        doc_index_entries, _ = subprocess.Popen(
+            ['grep', '-oE', '[a-z_\-]+\.md', doc_index],
+            stdout=subprocess.PIPE).communicate()
+        for doc_page in doc_index_entries.decode('utf-8').splitlines():
+            html_sub_content, html_sub_sections = markdown(
+                os.path.join(path_content, doc_page))
+            html_content += html_sub_content
+            html_sections += html_sub_sections
+        page_config = {
+            **page_config,
+            'page': {
+                **page_config['page'],
+                'content': html_content,
+                'sections': html_sections
+            }
+        }
+        path_content = os.path.join('src', page['parent'])
     # wiki page
-    if os.path.isdir(path_content) and page['type'] == 'wiki':
+    elif os.path.isdir(path_content) and page['type'] == 'wiki':
         page_assets = os.path.join(path_content, 'assets')
         if os.path.isdir(page_assets):
             os.system('cp -rf {} {}'.format(page_assets, path))
