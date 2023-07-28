@@ -1,7 +1,7 @@
 <main class=page>
 	<h1>{{ page.name }}</h1>
 	<ul class=cards>
-		{! for entry in pages|selectattr("type", "==", "wiki")|sort(attribute="alive", reverse=True) !}
+		{! for entry in pages|selectattr("type", "in", "doc,wiki")|sort(attribute="alive", reverse=True) !}
 		<li>
 			<a href="/doc/{{ entry.name.lower() }}">
 				<i class="{{ icons[entry.icon] or icons['lang-generic'] }}"></i>
