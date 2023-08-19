@@ -118,8 +118,8 @@ pages:
     caption: *proj-caption-erro
     url: https://github.com/streambinder/erro
     icon: lang-latex
-    type: wiki
-    content: wikis/erro
+    type: doc
+    content: docs/erro/docs
     parent: pages/project.html
     description: *proj-caption-erro
     image:

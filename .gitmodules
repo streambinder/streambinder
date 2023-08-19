@@ -1,9 +1,6 @@
 [submodule "src/wikis/discindo"]
 	path = src/wikis/discindo
 	url = https://github.com/streambinder/discindo.wiki.git
-[submodule "src/wikis/erro"]
-	path = src/wikis/erro
-	url = https://github.com/streambinder/erro.wiki.git
 [submodule "src/wikis/nuntius"]
 	path = src/wikis/nuntius
 	url = https://github.com/streambinder/nuntius.wiki.git
@@ -16,3 +13,6 @@
 [submodule "src/docs/spotitube"]
 	path = src/docs/spotitube
 	url = https://github.com/streambinder/spotitube.git
+[submodule "src/docs/erro"]
+	path = src/docs/erro
+	url = https://github.com/streambinder/erro.git
