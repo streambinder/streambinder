@@ -7,12 +7,12 @@
 [submodule "src/wikis/theca"]
 	path = src/wikis/theca
 	url = https://github.com/streambinder/theca.wiki.git
-[submodule "src/wikis/vpnc"]
-	path = src/wikis/vpnc
-	url = https://github.com/streambinder/vpnc.wiki.git
 [submodule "src/docs/spotitube"]
 	path = src/docs/spotitube
 	url = https://github.com/streambinder/spotitube.git
 [submodule "src/docs/erro"]
 	path = src/docs/erro
 	url = https://github.com/streambinder/erro.git
+[submodule "src/docs/vpnc"]
+	path = src/docs/vpnc
+	url = https://github.com/streambinder/vpnc.git

@@ -129,8 +129,8 @@ pages:
     caption: &proj-caption-vpnc IPsec (Cisco/Juniper) VPN concentrator client
     url: https://github.com/streambinder/vpnc
     icon: lang-c
-    type: wiki
-    content: wikis/vpnc
+    type: doc
+    content: docs/vpnc/docs
     parent: pages/project.html
     description: *proj-caption-vpnc
     image:
