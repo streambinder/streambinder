@@ -1,10 +1,10 @@
 FROM alpine as builder
-RUN apk add --no-cache bash font-overpass git imagemagick make py3-pip
-RUN python3 -m pip install --upgrade pip
-RUN python3 -m pip install markdown jinja2 pygments pyyaml requests
+RUN apk add --no-cache bash font-overpass git imagemagick make py3-pip python3-dev
+RUN pip install --break-system-packages --upgrade pip
+COPY . .
+RUN pip install --break-system-packages -r requirements.txt
 RUN wget https://github.com/tdewolff/minify/releases/download/v2.9.10/minify_linux_amd64.tar.gz
 RUN tar -xvf minify*.tar.gz -C /bin
-COPY . .
 RUN make
 
 FROM alpine
