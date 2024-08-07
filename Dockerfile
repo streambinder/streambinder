@@ -1,4 +1,4 @@
-FROM alpine as builder
+FROM alpine AS builder
 RUN apk add --no-cache bash font-overpass git imagemagick make py3-pip python3-dev
 RUN pip install --break-system-packages --upgrade pip
 COPY . .
@@ -12,4 +12,4 @@ RUN apk add --no-cache lighttpd
 RUN echo 'server.error-handler-404 = "/404"' >> /etc/lighttpd/lighttpd.conf
 COPY --from=builder /build /var/www/localhost/htdocs
 CMD ["lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
-LABEL org.opencontainers.image.source https://github.com/streambinder/streambinder
+LABEL org.opencontainers.image.source=https://github.com/streambinder/streambinder
