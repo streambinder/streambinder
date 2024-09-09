@@ -12,10 +12,53 @@ on:
       GH_ACTIONS_DAVIDEPUCCI:
         required: true
 
+permissions:
+  actions: read
+  attestations: none
+  checks: none
+  contents: read
+  deployments: none
+  id-token: none
+  issues: none
+  discussions: none
+  packages: write
+  pages: none
+  pull-requests: read
+  repository-projects: none
+  security-events: none
+  statuses: none
+
 jobs:
+  commitlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: wagoid/commitlint-github-action@v5
+  codespell:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: codespell-project/actions-codespell@v2
+        with:
+          check_filenames: true
+          ignore_words_list: erro,nd
+  super-linter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: super-linter/super-linter@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_ACTIONS_DAVIDEPUCCI }}
+          VALIDATE_ALL_CODEBASE: false
   docker:
     runs-on: ubuntu-latest
-    if: (github.event_name == 'repository_dispatch' || github.event_name == 'push') && github.ref == 'refs/heads/master'
+    needs: [commitlint, codespell, super-linter]
+    if: >-
+      success() &&
+      github.ref == 'refs/heads/master' &&
+      (github.event_name == 'repository_dispatch' || github.event_name == 'push')
     steps:
       - name: Checkout
         uses: actions/checkout@v4

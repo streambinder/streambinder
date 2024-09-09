@@ -4,6 +4,22 @@ on:
   repository_dispatch:
     types: [doc-sync]
 
+permissions:
+  actions: read
+  attestations: none
+  checks: none
+  contents: write
+  deployments: none
+  id-token: none
+  issues: none
+  discussions: none
+  packages: read
+  pages: none
+  pull-requests: read
+  repository-projects: none
+  security-events: none
+  statuses: none
+
 env:
   doc_repo: "${{ github.event.client_payload.repo }}"
   doc_sha: "${{ github.event.client_payload.sha }}"

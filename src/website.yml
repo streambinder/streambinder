@@ -30,17 +30,17 @@ info:
 
 pages:
   - path: /
-    content: pages/index.html
+    content: pages/index.html.j2
     name: *info-name
     description: *info-role
     image:
   - path: /404
-    content: pages/404.html
+    content: pages/404.html.j2
     name: "404"
     description: not found
     image:
   - path: /sig
-    content: pages/sig.html
+    content: pages/sig.html.j2
     name: PGP
     description: PGP Public Key
     image:
@@ -48,7 +48,7 @@ pages:
     name: Resume
     type: prefetch
     content: https://github.com/streambinder/erro/releases/latest/download/web_en.html
-    parent: pages/resume.html
+    parent: pages/resume.html.j2
     description: &proj-caption-erro That cool thing to look interesting in the world of work
     image:
     variants:
@@ -65,7 +65,7 @@ pages:
         url: https://github.com/streambinder/erro/releases/latest/download/europass_it.pdf
         icon: fas fa-euro-sign
   - path: /doc
-    content: pages/projects.html
+    content: pages/projects.html.j2
     name: Projects
     description: Personal IT-related time suckers
     image:
@@ -76,7 +76,7 @@ pages:
     icon: lang-go
     type: doc
     content: docs/spotitube/docs
-    parent: pages/project.html
+    parent: pages/project.html.j2
     description: *proj-caption-spotitube
     image:
     alive: true
@@ -87,7 +87,7 @@ pages:
     icon: lang-python
     type: wiki
     content: wikis/discindo
-    parent: pages/project.html
+    parent: pages/project.html.j2
     description: *proj-caption-discindo
     image:
     alive: false
@@ -98,7 +98,7 @@ pages:
     icon: lang-c
     type: wiki
     content: wikis/nuntius
-    parent: pages/project.html
+    parent: pages/project.html.j2
     description: *proj-caption-nuntius
     image:
     alive: false
@@ -109,7 +109,7 @@ pages:
     icon: lang-infra
     type: wiki
     content: wikis/theca
-    parent: pages/project.html
+    parent: pages/project.html.j2
     description: *proj-caption-theca
     image:
     alive: false
@@ -120,7 +120,7 @@ pages:
     icon: lang-latex
     type: doc
     content: docs/erro/docs
-    parent: pages/project.html
+    parent: pages/project.html.j2
     description: *proj-caption-erro
     image:
     alive: true
@@ -131,7 +131,7 @@ pages:
     icon: lang-c
     type: doc
     content: docs/vpnc/docs
-    parent: pages/project.html
+    parent: pages/project.html.j2
     description: *proj-caption-vpnc
     image:
     alive: true

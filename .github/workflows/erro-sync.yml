@@ -4,6 +4,8 @@ on:
   repository_dispatch:
     types: [erro-sync]
 
+permissions: read-all
+
 env:
   submodule_path: ".local/share/unciae"
 

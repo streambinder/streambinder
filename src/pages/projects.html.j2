@@ -1,0 +1,18 @@
+<main class="page">
+  <h1>{{ page.name }}</h1>
+  <ul class="cards">
+    {! for entry in pages|selectattr("type", "in",
+    "doc,wiki")|sort(attribute="alive", reverse=True) !}
+    <li>
+      <a href="/doc/{{ entry.name.lower() }}">
+        <i class="{{ icons[entry.icon] or icons['lang-generic'] }}"></i>
+        <span>{{ entry.name }}</span>
+        {! if not entry.alive !}
+        <i class="far fa-folder"></i>
+        {! endif !}
+        <p class="caption">{{ entry.caption }}</p>
+      </a>
+    </li>
+    {! endfor !}
+  </ul>
+</main>

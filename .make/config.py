@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 
-import os
 import yaml
 
+_cache: dict[str, str] = {}
 
-_cache = dict()
 
+class Config:
 
-class Config(object):
     def __init__(self, path):
         self.path = path
         self.data = Config.parse_yaml(path)
@@ -23,8 +22,6 @@ class Config(object):
 
     @staticmethod
     def new(path):
-        global _cache
-
         if path in _cache:
             return _cache[path]
 
@@ -33,12 +30,12 @@ class Config(object):
 
     @staticmethod
     def dump_yaml(path, config):
-        with open(path, 'w') as yaml_fd:
+        with open(path, "w", encoding="utf-8") as yaml_fd:
             yaml.dump(config, yaml_fd)
 
     @staticmethod
     def parse_yaml(path):
-        with open(path, 'r') as yaml_fd:
+        with open(path, "r", encoding="utf-8") as yaml_fd:
             try:
                 return yaml.safe_load(yaml_fd)
             except yaml.YAMLError as e:

@@ -1,0 +1,14 @@
+<main class="page">
+  <ul class="cards">
+    {! for resume in page.variants !}
+    <li>
+      <a href="{{ resume.url }}">
+        <i class="{{ resume.icon }}"></i>
+        <span>{{ resume.name }}</span>
+      </a>
+    </li>
+    {! endfor !}
+  </ul>
+
+  {{ prefetch }}
+</main>

@@ -1,11 +1,11 @@
 html {
-	--color: #F3F3F3;
-	--color-softer: #ADADAD;
-	--color-softest: #525252;
-	--color-background: #383838;
-	--color-background-darker: #202020;
-	--color-dark-transparent: rgba(0, 0, 0, .5);
-	--color-warn: #DAAF3F;
-	--color-warn-softer: rgba(174, 124, 20, 0.4);
-	--color-warn-background: rgba(174, 124, 20, 0.1);
+  --color: rgb(243 243 243);
+  --color-softer: rgb(173 173 173);
+  --color-softest: rgb(82 82 82);
+  --color-background: rgb(56 56 56);
+  --color-background-darker: rgb(32 32 32);
+  --color-dark-transparent: rgb(0 0 0 / 50%);
+  --color-warn: rgb(218 175 63);
+  --color-warn-softer: rgb(174 124 20 / 40%);
+  --color-warn-background: rgb(174 124 20 / 10%);
 }
