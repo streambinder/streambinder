@@ -15,7 +15,7 @@ RUN apk add --no-cache lighttpd && \
     adduser -S streambinder && \
     chown -R streambinder /var/log/lighttpd
 USER streambinder
-COPY --from=builder /build /var/www/localhost/htdocs
+COPY --from=builder /build/build /var/www/localhost/htdocs
 CMD ["lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
 EXPOSE 8080
 HEALTHCHECK CMD [ "/usr/bin/curl", "127.0.0.1" ]
