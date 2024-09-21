@@ -12,7 +12,8 @@ RUN apk add --no-cache lighttpd && \
     echo 'server.error-handler-404 = "/404"' >> /etc/lighttpd/lighttpd.conf && \
     echo 'server.port = 8080' >> /etc/lighttpd/lighttpd.conf && \
     sed -i 's|/run/lighttpd.pid|/tmp/lighttpd.pid|' /etc/lighttpd/lighttpd.conf && \
-    adduser -S streambinder
+    adduser -S streambinder && \
+    chown -R streambinder /var/log/lighttpd
 USER streambinder
 COPY --from=builder /build /var/www/localhost/htdocs
 CMD ["lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
