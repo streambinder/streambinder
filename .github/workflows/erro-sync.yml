@@ -4,7 +4,21 @@ on:
   repository_dispatch:
     types: [erro-sync]
 
-permissions: read-all
+permissions:
+  actions: read
+  attestations: none
+  checks: none
+  contents: read
+  deployments: none
+  id-token: none
+  issues: none
+  discussions: none
+  packages: write
+  pages: none
+  pull-requests: read
+  repository-projects: none
+  security-events: none
+  statuses: none
 
 env:
   submodule_path: ".local/share/unciae"
