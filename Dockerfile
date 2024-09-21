@@ -10,6 +10,7 @@ RUN pip install --no-cache-dir --break-system-packages -r requirements.txt && \
 FROM alpine:3
 RUN apk add --no-cache lighttpd && \
     echo 'server.error-handler-404 = "/404"' >> /etc/lighttpd/lighttpd.conf && \
+    sed -i 's|/run/lighttpd.pid|/tmp/lighttpd.pid|' /etc/lighttpd/lighttpd.conf && \
     adduser -S streambinder
 USER streambinder
 COPY --from=builder /build /var/www/localhost/htdocs
