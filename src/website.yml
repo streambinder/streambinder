@@ -11,11 +11,11 @@ info:
       url: https://url.davidepucci.it/github
       color: var(--color)
       icon: social-github
-    - name: Videos
+    - name: YouTube
       url: https://url.davidepucci.it/youtube
       color: var(--color)
       icon: social-youtube
-    - name: Music
+    - name: Spotify
       url: https://url.davidepucci.it/spotify
       color: var(--color)
       icon: social-spotify
