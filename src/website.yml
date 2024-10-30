@@ -11,6 +11,10 @@ info:
       url: https://url.davidepucci.it/github
       color: var(--color)
       icon: social-github
+    - name: Videos
+      url: https://url.davidepucci.it/youtube
+      color: var(--color)
+      icon: social-youtube
     - name: Music
       url: https://url.davidepucci.it/spotify
       color: var(--color)
@@ -139,6 +143,7 @@ pages:
 icons:
   social-linkedin: fab fa-linkedin-in
   social-github: fab fa-github
+  social-youtube: fab fa-youtube
   social-spotify: fab fa-spotify
   social-email: fas fa-envelope
   social-resume: fas fa-graduation-cap
