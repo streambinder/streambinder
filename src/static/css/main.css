@@ -379,7 +379,9 @@ body.resume br {
   main.page > h1 {
     font-size: 1.75em;
   }
+}
 
+@media (width <768px) {
   main.one-man-show > ul > li {
     margin: auto 7.5px;
     font-size: 0.8em;
