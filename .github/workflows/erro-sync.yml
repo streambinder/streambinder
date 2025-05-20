@@ -27,4 +27,4 @@ jobs:
   erro-sync:
     uses: streambinder/streambinder/.github/workflows/push.yml@master
     secrets:
-      GH_ACTIONS_DAVIDEPUCCI: ${{ secrets.GH_ACTIONS_DAVIDEPUCCI }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

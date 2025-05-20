@@ -18,7 +18,7 @@ permissions:
   pull-requests: read
   repository-projects: none
   security-events: none
-  statuses: none
+  statuses: write
 
 env:
   doc_repo: "${{ github.event.client_payload.repo }}"
@@ -32,7 +32,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GH_ACTIONS_DAVIDEPUCCI }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Setup repository
         run: |
           git config user.email "automata@davidepucci.it"
