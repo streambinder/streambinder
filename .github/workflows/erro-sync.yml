@@ -26,5 +26,3 @@ env:
 jobs:
   erro-sync:
     uses: streambinder/streambinder/.github/workflows/push.yml@master
-    secrets:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

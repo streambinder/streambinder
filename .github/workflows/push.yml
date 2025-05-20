@@ -3,10 +3,7 @@ name: push
 on: # yamllint disable-line rule:truthy
   push: null
   pull_request: null
-  workflow_call:
-    secrets:
-      GITHUB_TOKEN:
-        required: true
+  workflow_call: null
 
 permissions:
   actions: read
