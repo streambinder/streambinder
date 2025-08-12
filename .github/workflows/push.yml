@@ -25,7 +25,7 @@ jobs:
   codespell:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: codespell-project/actions-codespell@v2
         with:
           check_filenames: true
@@ -33,7 +33,7 @@ jobs:
   super-linter:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - run: ln -sv .github/linters/commitlint.config.js ./
@@ -50,7 +50,7 @@ jobs:
       (github.event_name == 'repository_dispatch' || github.event_name == 'push')
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           submodules: recursive
       - name: Set up QEMU
