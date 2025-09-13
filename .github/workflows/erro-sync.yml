@@ -13,12 +13,12 @@ permissions:
   id-token: none
   issues: none
   discussions: none
-  packages: write
+  packages: read
   pages: none
   pull-requests: read
   repository-projects: none
   security-events: none
-  statuses: write
+  statuses: none
 
 env:
   submodule_path: ".local/share/unciae"

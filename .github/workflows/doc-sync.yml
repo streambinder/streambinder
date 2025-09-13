@@ -8,7 +8,7 @@ permissions:
   actions: read
   attestations: none
   checks: none
-  contents: write
+  contents: none
   deployments: none
   id-token: none
   issues: none
@@ -28,11 +28,14 @@ jobs:
   doc-sync:
     if: ${{ github.event.client_payload.ref == 'refs/heads/master' }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: true
       - name: Setup repository
         run: |
           git config user.email "automata@davidepucci.it"
