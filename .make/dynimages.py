@@ -123,6 +123,4 @@ for fdir, _, fnames in os.walk(os.environ["BUILD_DIR"]):
             pass
 
         for tmp in ["_index-title.png", "_index-desc.png"]:
-            os.rename(
-                os.path.join(fdir, tmp), os.path.join(fdir, tmp.replace("png", "tmp"))
-            )
+            os.rename(os.path.join(fdir, tmp), os.path.join(fdir, tmp.replace("png", "tmp")))

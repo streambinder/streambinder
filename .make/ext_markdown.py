@@ -23,12 +23,8 @@ def _parse_html(html):
         for group in range(0, len(match.groups())):
             section_name = match.group(group + 1)
             section_id = idfy(section_name)
-            html = html.replace(
-                match.group(), f'<h2 id="{section_id}">{section_name}</h2>'
-            )
-            html_sections.append(
-                {"id": section_id, "name": section_name, "icon": icon(section_id)}
-            )
+            html = html.replace(match.group(), f'<h2 id="{section_id}">{section_name}</h2>')
+            html_sections.append({"id": section_id, "name": section_name, "icon": icon(section_id)})
 
     return html, html_sections
 

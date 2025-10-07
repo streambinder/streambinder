@@ -6,7 +6,6 @@ _cache: dict[str, str] = {}
 
 
 class Config:
-
     def __init__(self, path):
         self.path = path
         self.data = Config.parse_yaml(path)
