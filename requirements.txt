@@ -2,7 +2,7 @@ certifi==2025.10.5
 charset-normalizer==3.4.4
 idna==3.11
 Jinja2==3.1.6
-Markdown==3.9
+Markdown==3.10
 MarkupSafe==3.0.3
 PyYAML>=6.0.1
 requests==2.32.5
