@@ -43,6 +43,11 @@ pages:
     name: "404"
     description: not found
     image:
+  - path: /500
+    content: pages/500.html.j2
+    name: "500"
+    description: server error
+    image:
   - path: /sig
     content: pages/sig.html.j2
     name: PGP
