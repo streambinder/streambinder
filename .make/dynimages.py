@@ -26,7 +26,7 @@ for fdir, _, fnames in os.walk(os.environ["BUILD_DIR"]):
 
         with subprocess.Popen(
             [
-                "convert",
+                "magick",
                 "-background",
                 "rgba(0,0,0,0)",
                 "-fill",
@@ -47,7 +47,7 @@ for fdir, _, fnames in os.walk(os.environ["BUILD_DIR"]):
             pass
         with subprocess.Popen(
             [
-                "convert",
+                "magick",
                 "-background",
                 "rgba(0,0,0,0)",
                 "-fill",
@@ -68,7 +68,7 @@ for fdir, _, fnames in os.walk(os.environ["BUILD_DIR"]):
             pass
         with subprocess.Popen(
             [
-                "convert",
+                "magick",
                 "-define",
                 "png:bit-depth=8",
                 "-size",
@@ -89,7 +89,7 @@ for fdir, _, fnames in os.walk(os.environ["BUILD_DIR"]):
             pass
         with subprocess.Popen(
             [
-                "convert",
+                "magick",
                 "-background",
                 "#383838",
                 "-alpha",
@@ -110,7 +110,7 @@ for fdir, _, fnames in os.walk(os.environ["BUILD_DIR"]):
             pass
         with subprocess.Popen(
             [
-                "convert",
+                "magick",
                 "-border",
                 "25",
                 "-bordercolor",
