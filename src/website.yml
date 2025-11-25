@@ -3,10 +3,6 @@ info:
   role: &info-role Systems Engineer
   website: https://davidepucci.it
   social:
-    - name: LinkedIn
-      url: https://url.davidepucci.it/linkedin
-      color: var(--color)
-      icon: social-linkedin
     - name: GitHub
       url: https://url.davidepucci.it/github
       color: var(--color)
@@ -15,18 +11,18 @@ info:
       url: https://url.davidepucci.it/youtube
       color: var(--color)
       icon: social-youtube
-    - name: Spotify
-      url: https://url.davidepucci.it/spotify
+    - name: LinkedIn
+      url: https://url.davidepucci.it/linkedin
       color: var(--color)
-      icon: social-spotify
-    - name: Email
-      url: https://url.davidepucci.it/email
-      color: var(--color)
-      icon: social-email
+      icon: social-linkedin
     - name: Resume
       url: /resume
       color: var(--color)
       icon: social-resume
+    - name: Email
+      url: https://url.davidepucci.it/email
+      color: var(--color)
+      icon: social-email
     - name: PGP
       url: /sig
       color: var(--color)
