@@ -25,4 +25,4 @@ env:
 
 jobs:
   erro-sync:
-    uses: streambinder/streambinder/.github/workflows/push.yml@master
+    uses: streambinder/streambinder/.github/workflows/push.yml@master # zizmor: ignore[unpinned-uses]
