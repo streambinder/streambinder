@@ -73,7 +73,9 @@ jobs:
           context: .
           platforms: linux/arm64,linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ghcr.io/${{ github.repository }}:latest
+          tags: |
+            ghcr.io/${{ github.repository }}:latest
+            ghcr.io/${{ github.repository }}:${{ github.sha }}
       - name: Image digest
         run: echo "${STEPS_DOCKER_BUILD_OUTPUTS_DIGEST}"
         env:
