@@ -21,11 +21,11 @@ wikis:
 
 .PHONY: pages
 pages: init
-	@python3 $(MAKE_DIR)/pages.py
+	@uv run python $(MAKE_DIR)/pages.py
 
 .PHONY: facade
 facade: init pages
-	@python3 $(MAKE_DIR)/facade.py
+	@uv run python $(MAKE_DIR)/facade.py
 
 .PHONY: strip
 strip: init
@@ -42,7 +42,7 @@ minify: facade strip assets
 
 .PHONY: dynimages
 dynimages: pages
-	@python3 $(MAKE_DIR)/dynimages.py
+	@uv run python $(MAKE_DIR)/dynimages.py
 
 .PHONY: docker
 docker:

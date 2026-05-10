@@ -37,7 +37,9 @@ for page in config_website.get("pages"):
         HTML_CONTENT = ""
         html_sections = []
         doc_index = os.path.join(path_content, "README.md")
-        with subprocess.Popen(["grep", "-oE", r"[a-z_\-]+\.md", doc_index], stdout=subprocess.PIPE) as proc:
+        with subprocess.Popen(
+            ["grep", "-oE", r"[a-z_\-]+\.md", doc_index], stdout=subprocess.PIPE
+        ) as proc:
             doc_index_entries, _ = proc.communicate()
         for doc_page in doc_index_entries.decode("utf-8").splitlines():
             html_sub_content, html_sub_sections = markdown(os.path.join(path_content, doc_page))
@@ -61,9 +63,14 @@ for page in config_website.get("pages"):
         HTML_CONTENT = ""
         html_sections = []
         wiki_index = os.path.join(path_content, "Home.md")
-        with subprocess.Popen(["egrep", "-e", "\\([a-zA-Z]+\\)$", wiki_index], stdout=subprocess.PIPE) as proc:
+        with subprocess.Popen(
+            ["egrep", "-e", "\\([a-zA-Z]+\\)$", wiki_index], stdout=subprocess.PIPE
+        ) as proc:
             wiki_index_entries, _ = proc.communicate()
-        for wiki_page in [page.split("(")[1][:-1] + ".md" for page in wiki_index_entries.decode("utf-8").splitlines()]:
+        for wiki_page in [
+            page.split("(")[1][:-1] + ".md"
+            for page in wiki_index_entries.decode("utf-8").splitlines()
+        ]:
             html_sub_content, html_sub_sections = markdown(os.path.join(path_content, wiki_page))
             HTML_CONTENT += html_sub_content
             html_sections += html_sub_sections

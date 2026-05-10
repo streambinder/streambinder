@@ -1,8 +1,10 @@
+FROM ghcr.io/astral-sh/uv:0.11.12 AS uv
 FROM alpine:3 AS builder
 WORKDIR /build
-RUN apk add --no-cache bash font-overpass git imagemagick make py3-pip python3-dev
+RUN apk add --no-cache bash font-overpass git imagemagick make python3
+COPY --from=uv /uv /usr/local/bin/uv
 COPY . .
-RUN pip install --no-cache-dir --break-system-packages -r requirements.txt && \
+RUN uv sync --frozen && \
     wget -q https://github.com/tdewolff/minify/releases/download/v2.9.10/minify_linux_amd64.tar.gz && \
     tar -xvf minify*.tar.gz -C /bin && \
     make
