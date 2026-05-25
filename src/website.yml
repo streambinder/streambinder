@@ -1,6 +1,11 @@
 info:
   name: &info-name Davide Pucci
   role: &info-role Systems Engineer
+  intro: >-
+    systems engineer at [meta](https://meta.com).
+    i work on internal infrastructure and tooling,
+    with occasional side projects that scratch a personal itch
+    — most of them open-source.
   website: https://davidepucci.it
   social:
     - name: GitHub

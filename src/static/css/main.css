@@ -102,7 +102,7 @@ nav a:hover {
   color: var(--text-strong);
 }
 
-/* brand = first link in nav; right group of links separated by gap */
+/* brand = first link in nav; right group of links separated by mid-line dots */
 nav > a:first-child {
   color: var(--text-strong);
   font-weight: 500;
@@ -110,7 +110,18 @@ nav > a:first-child {
 
 nav > span {
   display: inline-flex;
-  gap: 2ch;
+  gap: 1ch;
+}
+
+nav .nav-sep {
+  color: var(--faint);
+}
+
+nav a.active {
+  color: var(--text-strong);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 4px;
 }
 
 /* ============================================================ prose ===== */
@@ -295,6 +306,29 @@ main.one-man-show > span.subtitle {
   font-size: 0.8125rem;
   color: var(--dim);
   letter-spacing: 0;
+}
+
+main.one-man-show > .home-intro {
+  margin: 40px 0 0;
+  max-width: 62ch;
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: var(--dim);
+}
+
+main.one-man-show > .home-intro p {
+  margin: 0;
+}
+
+main.one-man-show > .home-intro a {
+  color: var(--text-strong);
+  text-decoration: underline;
+  text-decoration-color: var(--rule-strong);
+  text-underline-offset: 4px;
+}
+
+main.one-man-show > .home-intro a:hover {
+  text-decoration-color: var(--accent);
 }
 
 /* =========================================================== footer ===== */
@@ -536,6 +570,16 @@ br {
   ul.cards > li > a > p.caption,
   ul.cards > li > a p.caption {
     grid-column: 1;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  footer .footer-social {
+    flex-direction: column;
+    gap: 4px;
   }
 }
 

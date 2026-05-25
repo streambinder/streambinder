@@ -44,11 +44,13 @@
 
 <body class="{{ page.path[1:] | replace('/', '-') }}">
     <nav>
-        <a href="/">davide pucci</a>
-        <span>
-            <a href="/doc">doc</a>
-            <a href="/resume">resume</a>
-            <a href="/sig">pgp</a>
+        <a href="/" class="nav-brand">davide pucci</a>
+        <span class="nav-links">
+            <a href="/doc"{! if page.path.startswith('/doc') !} class="active"{! endif !}>doc</a>
+            <span class="nav-sep">·</span>
+            <a href="/resume"{! if page.path.startswith('/resume') !} class="active"{! endif !}>resume</a>
+            <span class="nav-sep">·</span>
+            <a href="/sig"{! if page.path.startswith('/sig') !} class="active"{! endif !}>pgp</a>
         </span>
     </nav>
 
