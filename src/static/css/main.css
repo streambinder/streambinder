@@ -282,55 +282,6 @@ ul.cards > li > a > span:first-of-type {
   grid-column: 1;
 }
 
-/* ============================================== one-man-show (home) ===== */
-
-main.one-man-show {
-  text-align: left;
-  padding-top: 80px;
-  padding-bottom: 80px;
-}
-
-main.one-man-show > h1.title {
-  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-weight: 600;
-  font-size: 1.75rem;
-  margin: 0 0 8px;
-  color: var(--text-strong);
-  text-transform: none;
-  letter-spacing: 0;
-}
-
-main.one-man-show > span.subtitle {
-  display: block;
-  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.8125rem;
-  color: var(--dim);
-  letter-spacing: 0;
-}
-
-main.one-man-show > .home-intro {
-  margin: 40px 0 0;
-  max-width: 62ch;
-  font-size: 0.8125rem;
-  line-height: 1.7;
-  color: var(--dim);
-}
-
-main.one-man-show > .home-intro p {
-  margin: 0;
-}
-
-main.one-man-show > .home-intro a {
-  color: var(--text-strong);
-  text-decoration: underline;
-  text-decoration-color: var(--rule-strong);
-  text-underline-offset: 4px;
-}
-
-main.one-man-show > .home-intro a:hover {
-  text-decoration-color: var(--accent);
-}
-
 /* =========================================================== footer ===== */
 
 footer {
@@ -551,14 +502,6 @@ br {
 
   main.page > h1 {
     font-size: 1.25rem;
-  }
-
-  main.one-man-show {
-    padding-top: 60px;
-  }
-
-  main.one-man-show > h1.title {
-    font-size: 1.5rem;
   }
 
   ul.cards > li > a {
