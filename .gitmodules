@@ -16,3 +16,6 @@
 [submodule "src/docs/vpnc"]
 	path = src/docs/vpnc
 	url = https://github.com/streambinder/vpnc.git
+[submodule "src/docs/foedus"]
+	path = src/docs/foedus
+	url = https://github.com/streambinder/foedus.git

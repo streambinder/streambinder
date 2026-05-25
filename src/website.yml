@@ -111,3 +111,12 @@ pages:
     parent: pages/project.html.j2
     description: *proj-caption-vpnc
     alive: true
+  - path: /doc/foedus
+    name: Foedus
+    caption: &proj-caption-foedus Self-hosted wedding landing site with guest management and RSVP collection
+    url: https://github.com/streambinder/foedus
+    type: doc
+    content: docs/foedus/docs
+    parent: pages/project.html.j2
+    description: *proj-caption-foedus
+    alive: true
