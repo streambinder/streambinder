@@ -1,0 +1,16 @@
+.git
+.github
+.claude
+.venv
+.venv-*
+__pycache__
+*.pyc
+build
+node_modules
+*.md
+LICENSE
+.editorconfig
+.gitignore
+.gitmodules
+Dockerfile
+.dockerignore
