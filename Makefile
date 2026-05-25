@@ -5,7 +5,7 @@ BUILD_DIR	:= $(ROOT_DIR)/build
 export BUILD_DIR
 
 .PHONY: generate
-generate: init pages facade dynimages strip assets minify
+generate: init pages facade strip assets minify
 
 .PHONY: init
 init:
@@ -39,10 +39,6 @@ strip: init
 .PHONY: minify
 minify: facade strip assets
 	@bash $(MAKE_DIR)/minify.sh
-
-.PHONY: dynimages
-dynimages: pages
-	@uv run python $(MAKE_DIR)/dynimages.py
 
 .PHONY: docker
 docker:

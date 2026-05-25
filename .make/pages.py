@@ -110,14 +110,6 @@ def main() -> None:
                         "metadata": {
                             "title": title(page["name"], config_website.get("info", "name")),
                             "description": page["description"],
-                            "image": page["image"]
-                            or "/".join(
-                                [
-                                    config_website.get("info", "website"),
-                                    page["path"],
-                                    "index.png",
-                                ]
-                            ),
                             "url": "/".join([config_website.get("info", "website"), page["path"]]),
                             "domain": urlparse(config_website.get("info", "website")).netloc,
                         },

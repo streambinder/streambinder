@@ -1,9 +1,22 @@
 html {
-  --color: rgb(243 243 243);
-  --color-softer: rgb(173 173 173);
-  --color-softest: rgb(82 82 82);
-  --color-background: rgb(56 56 56);
-  --color-background-darker: rgb(32 32 32);
+  --bg: #0c0c0f;
+  --text: #fff;
+  --text-strong: #fff;
+  --text-body: #fbfbfc;
+  --text-read: #d4d4d8;
+  --muted: #ededf0;
+  --dim: #8a8a93;
+  --faint: #5c5c66;
+  --rule: #18181b;
+  --rule-strong: #1f1f23;
+  --accent: #6700ff;
+
+  /* legacy aliases — preserved so any unported selectors keep rendering */
+  --color: var(--text);
+  --color-softer: var(--dim);
+  --color-softest: var(--rule-strong);
+  --color-background: var(--bg);
+  --color-background-darker: var(--rule);
   --color-dark-transparent: rgb(0 0 0 / 50%);
   --color-warn: rgb(218 175 63);
   --color-warn-softer: rgb(174 124 20 / 40%);

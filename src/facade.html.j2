@@ -15,13 +15,11 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="{{ html.head.metadata.title }}" />
     <meta property="og:description" content="{{ html.head.metadata.description }}" />
-    <meta property="og:image" content="{{ html.head.metadata.image }}" />
 
     <!-- Twitter meta tags -->
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="{{ html.head.metadata.title }}" />
     <meta name="twitter:description" content="{{ html.head.metadata.description }}" />
-    <meta name="twitter:image" content="{{ html.head.metadata.image }}" />
     <meta property="twitter:url" content="{{ html.head.metadata.url }}" />
     <meta property="twitter:domain" content="davidepucci.it" />
 
@@ -29,19 +27,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!-- fonts (Google Fonts preconnect for faster first paint) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <!-- styles -->
     <link rel="stylesheet" href="/css/main.css" />
-
-    <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-        href="/fonts/overpass-mono/overpass-mono-v5-latin-300.woff2">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-        href="/fonts/overpass-mono/overpass-mono-v5-latin-600.woff2">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-        href="/fonts/overpass-mono/overpass-mono-v5-latin-700.woff2">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-        href="/fonts/overpass-mono/overpass-mono-v5-latin-regular.woff2">
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
@@ -53,19 +44,24 @@
 
 <body class="{{ page.path[1:] | replace('/', '-') }}">
     <nav>
-        <a href="/doc">
-            <i style="color: #F3F3F3" class="fas fa-feather"></i>
-            <span class="tip leftip">Documentation</span>
-        </a>
+        <a href="/">davide pucci</a>
+        <span>
+            <a href="/doc">doc</a>
+            <a href="/resume">resume</a>
+            <a href="/sig">pgp</a>
+        </span>
     </nav>
 
-    <!-- always offer a default image to be pulled for social purposes -->
-    <picture>
-        <img src="{{ html.head.metadata.image }}" alt="og:image"
-            style="visibility:hidden; position:absolute; top:0; width:1px;">
-    </picture>
-
     {{ html.body }}
+
+    <footer>
+        <span>davide pucci</span>
+        <span class="footer-social">
+            {! for entry in info.social if entry.name not in ['Resume', 'PGP'] !}
+            <a href="{{ entry.url }}">{{ entry.name | lower }}</a>
+            {! endfor !}
+        </span>
+    </footer>
 </body>
 
 </html>

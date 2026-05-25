@@ -1,7 +1,7 @@
 FROM ghcr.io/astral-sh/uv:0.11.12 AS uv
 FROM alpine:3 AS builder
 WORKDIR /build
-RUN apk add --no-cache bash font-overpass git imagemagick make python3
+RUN apk add --no-cache bash git make python3
 COPY --from=uv /uv /usr/local/bin/uv
 COPY . .
 RUN uv sync --frozen && \

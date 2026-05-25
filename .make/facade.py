@@ -9,6 +9,7 @@ from jinja_parser import get as parse
 
 
 def main() -> None:
+    site = config.new("src/website.yml").raw()
     for fdir, _, fnames in os.walk(os.environ["BUILD_DIR"]):
         for fname in fnames:
             if fname != "_index.html":
@@ -19,6 +20,8 @@ def main() -> None:
             with open(fname_html, "r", encoding="utf-8") as html_fd:
                 cfg = config.new(fname_html.replace("html", "yaml"))
                 cfg.data["html"]["body"] = html_fd.read()
+                # hoist site-level info (social, etc.) into facade scope
+                cfg.data["info"] = site["info"]
                 parse(
                     template="src/facade.html.j2",
                     output=os.path.join(fdir, "index.html"),

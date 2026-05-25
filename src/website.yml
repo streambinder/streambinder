@@ -5,159 +5,104 @@ info:
   social:
     - name: GitHub
       url: https://url.davidepucci.it/github
-      color: var(--color)
-      icon: social-github
     - name: YouTube
       url: https://url.davidepucci.it/youtube
-      color: var(--color)
-      icon: social-youtube
     - name: LinkedIn
       url: https://url.davidepucci.it/linkedin
-      color: var(--color)
-      icon: social-linkedin
     - name: Resume
       url: /resume
-      color: var(--color)
-      icon: social-resume
     - name: Email
       url: https://url.davidepucci.it/email
-      color: var(--color)
-      icon: social-email
     - name: PGP
       url: /sig
-      color: var(--color)
-      icon: social-signature
 
 pages:
   - path: /
     content: pages/index.html.j2
     name: *info-name
     description: *info-role
-    image:
   - path: /404
     content: pages/404.html.j2
     name: "404"
     description: not found
-    image:
   - path: /500
     content: pages/500.html.j2
     name: "500"
     description: server error
-    image:
   - path: /sig
     content: pages/sig.html.j2
     name: PGP
     description: PGP Public Key
-    image:
   - path: /resume
     name: Resume
     type: prefetch
     content: https://github.com/streambinder/erro/releases/latest/download/web_en.html
     parent: pages/resume.html.j2
     description: &proj-caption-erro That cool thing to look interesting in the world of work
-    image:
     variants:
       - name: Personal 🇺🇸
         url: https://github.com/streambinder/erro/releases/latest/download/personal_en.pdf
-        icon: fas fa-graduation-cap
       - name: Personal 🇮🇹
         url: https://github.com/streambinder/erro/releases/latest/download/personal_it.pdf
-        icon: fas fa-graduation-cap
       - name: EuroPass 🇺🇸
         url: https://github.com/streambinder/erro/releases/latest/download/europass_en.pdf
-        icon: fas fa-euro-sign
       - name: EuroPass 🇮🇹
         url: https://github.com/streambinder/erro/releases/latest/download/europass_it.pdf
-        icon: fas fa-euro-sign
   - path: /doc
     content: pages/projects.html.j2
     name: Projects
     description: Personal IT-related time suckers
-    image:
   - path: /doc/spotitube
     name: Spotitube
     caption: &proj-caption-spotitube Synchronize your Spotify collections downloading from external providers
     url: https://github.com/streambinder/spotitube
-    icon: lang-go
     type: doc
     content: docs/spotitube/docs
     parent: pages/project.html.j2
     description: *proj-caption-spotitube
-    image:
     alive: true
   - path: /doc/discindo
     name: Discindo
     caption: &proj-caption-discindo Share all-sizes files using reconstructable manifests
     url: https://github.com/streambinder/discindo
-    icon: lang-python
     type: wiki
     content: wikis/discindo
     parent: pages/project.html.j2
     description: *proj-caption-discindo
-    image:
     alive: false
   - path: /doc/nuntius
     name: Nuntius
     caption: &proj-caption-nuntius IMAP email checker and GTK notifier
     url: https://github.com/streambinder/nuntius
-    icon: lang-c
     type: wiki
     content: wikis/nuntius
     parent: pages/project.html.j2
     description: *proj-caption-nuntius
-    image:
     alive: false
   - path: /doc/theca
     name: Theca
     caption: &proj-caption-theca Private package repository
     url: https://github.com/streambinder/theca
-    icon: lang-infra
     type: wiki
     content: wikis/theca
     parent: pages/project.html.j2
     description: *proj-caption-theca
-    image:
     alive: false
   - path: /doc/erro
     name: Erro
     caption: *proj-caption-erro
     url: https://github.com/streambinder/erro
-    icon: lang-latex
     type: doc
     content: docs/erro/docs
     parent: pages/project.html.j2
     description: *proj-caption-erro
-    image:
     alive: true
   - path: /doc/vpnc
     name: VPNC
     caption: &proj-caption-vpnc IPsec (Cisco/Juniper) VPN concentrator client
     url: https://github.com/streambinder/vpnc
-    icon: lang-c
     type: doc
     content: docs/vpnc/docs
     parent: pages/project.html.j2
     description: *proj-caption-vpnc
-    image:
     alive: true
-
-icons:
-  social-linkedin: fab fa-linkedin-in
-  social-github: fab fa-github
-  social-youtube: fab fa-youtube
-  social-spotify: fab fa-spotify
-  social-email: fas fa-envelope
-  social-resume: fas fa-graduation-cap
-  social-signature: fas fa-signature
-  project-code: fab fa-github
-  lang-go: devicon-go-plain
-  lang-python: fab fa-python
-  lang-c: devicon-c-plain
-  lang-infra: fas fa-cubes
-  lang-generic: fas fa-code
-  section-about: fas fa-question
-  section-installation: fas fa-cloud-download-alt
-  section-download: fas fa-cloud-download-alt
-  section-engineering: far fa-lightbulb
-  section-design: far fa-lightbulb
-  section-generic: fab fa-slack-hash

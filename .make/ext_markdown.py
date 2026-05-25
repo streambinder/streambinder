@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 
 import markdown
-from ext_html import icon, idfy
+from ext_html import idfy
 
 
 def _pre_parse_html(html: str) -> str:
@@ -26,7 +26,7 @@ def _parse_html(html: str) -> tuple[str, list[dict[str, str]]]:
             section_name = match.group(group + 1)
             section_id = idfy(section_name)
             html = html.replace(match.group(), f'<h2 id="{section_id}">{section_name}</h2>')
-            html_sections.append({"id": section_id, "name": section_name, "icon": icon(section_id)})
+            html_sections.append({"id": section_id, "name": section_name})
 
     return html, html_sections
 
