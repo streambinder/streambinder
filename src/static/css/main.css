@@ -282,6 +282,32 @@ ul.cards > li > a > span:first-of-type {
   grid-column: 1;
 }
 
+/* ============================================================ home ===== */
+
+main.home-intro {
+  max-width: 62ch;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: var(--dim);
+}
+
+main.home-intro p {
+  margin: 0;
+}
+
+main.home-intro a {
+  color: var(--text-strong);
+  text-decoration: underline;
+  text-decoration-color: var(--rule-strong);
+  text-underline-offset: 4px;
+}
+
+main.home-intro a:hover {
+  text-decoration-color: var(--accent);
+}
+
 /* =========================================================== footer ===== */
 
 footer {
