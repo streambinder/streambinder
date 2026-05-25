@@ -8,14 +8,15 @@ RUN uv sync --frozen && make
 
 FROM alpine:3
 RUN apk add --no-cache lighttpd && \
-    echo 'server.error-handler-404 = "/404"' >> /etc/lighttpd/lighttpd.conf && \
-    echo 'server.port = 8080' >> /etc/lighttpd/lighttpd.conf && \
-    sed -i 's|/run/lighttpd.pid|/tmp/lighttpd.pid|' /etc/lighttpd/lighttpd.conf && \
     adduser -S streambinder && \
-    chown -R streambinder /var/log/lighttpd
-USER streambinder
+    mkdir -p /tmp/lighttpd-deflate && \
+    chown -R streambinder /tmp/lighttpd-deflate /var/log/lighttpd
+COPY docker/lighttpd.conf /etc/lighttpd/lighttpd.conf
 COPY --from=builder /build/build /var/www/localhost/htdocs
-CMD ["lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
+RUN cp /var/www/localhost/htdocs/404/index.html /var/www/localhost/htdocs/status-404.html && \
+    cp /var/www/localhost/htdocs/500/index.html /var/www/localhost/htdocs/status-500.html
+USER streambinder
 EXPOSE 8080
-HEALTHCHECK CMD [ "/usr/bin/curl", "127.0.0.1" ]
+HEALTHCHECK CMD wget -q -O /dev/null http://127.0.0.1:8080/ || exit 1
+CMD ["lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
 LABEL org.opencontainers.image.source=https://github.com/streambinder/streambinder
