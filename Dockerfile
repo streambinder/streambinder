@@ -1,13 +1,10 @@
 FROM ghcr.io/astral-sh/uv:0.11.12 AS uv
 FROM alpine:3 AS builder
 WORKDIR /build
-RUN apk add --no-cache bash git make python3
+RUN apk add --no-cache bash git make minify python3
 COPY --from=uv /uv /usr/local/bin/uv
 COPY . .
-RUN uv sync --frozen && \
-    wget -q https://github.com/tdewolff/minify/releases/download/v2.9.10/minify_linux_amd64.tar.gz && \
-    tar -xvf minify*.tar.gz -C /bin && \
-    make
+RUN uv sync --frozen && make
 
 FROM alpine:3
 RUN apk add --no-cache lighttpd && \
