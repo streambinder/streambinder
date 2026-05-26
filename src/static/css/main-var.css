@@ -11,6 +11,15 @@ html {
   --rule-strong: #1f1f23;
   --accent: #6700ff;
 
+  /* type scale — single source of truth for every font-size in main.css */
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.875rem;
+  --text-md: 0.9375rem;
+  --text-lg: 1.2rem;
+  --text-xl: 1.375rem;
+  --text-xl-mobile: 1.25rem;
+
   /* legacy aliases — preserved so any unported selectors keep rendering */
   --color: var(--text);
   --color-softer: var(--dim);
