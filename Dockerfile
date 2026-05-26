@@ -1,4 +1,4 @@
-FROM ghcr.io/astral-sh/uv:0.11.12 AS uv
+FROM ghcr.io/astral-sh/uv:0.11.16 AS uv
 FROM alpine:3 AS builder
 WORKDIR /build
 RUN apk add --no-cache bash git make minify python3
