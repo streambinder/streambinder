@@ -45,13 +45,13 @@ pages:
     parent: pages/resume.html.j2
     description: &proj-caption-erro That cool thing to look interesting in the world of work
     variants:
-      - name: Personal 🇺🇸
+      - name: Personal english
         url: https://github.com/streambinder/erro/releases/latest/download/personal_en.pdf
-      - name: Personal 🇮🇹
+      - name: Personal italian
         url: https://github.com/streambinder/erro/releases/latest/download/personal_it.pdf
-      - name: EuroPass 🇺🇸
+      - name: EuroPass english
         url: https://github.com/streambinder/erro/releases/latest/download/europass_en.pdf
-      - name: EuroPass 🇮🇹
+      - name: EuroPass italian
         url: https://github.com/streambinder/erro/releases/latest/download/europass_it.pdf
   - path: /doc
     content: pages/projects.html.j2

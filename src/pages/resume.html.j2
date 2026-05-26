@@ -1,11 +1,12 @@
 <main class="page">
-  <ul class="cards">
-    {! for resume in page.variants !}
-    <li>
-      <a href="{{ resume.url }}">
-        <span>{{ resume.name }}</span>
-      </a>
-    </li>
+  <h2>Download</h2>
+  {! set groups = {} !}
+  {! for resume in page.variants !}
+  {! set _ = groups.setdefault(resume.name.split(' ')[0], []).append(resume) !}
+  {! endfor !}
+  <ul>
+    {! for kind, variants in groups.items() !}
+    <li>{{ kind }}: {! for resume in variants !}<a href="{{ resume.url }}">{{ resume.name.split(' ')[1] }}</a>{! if not loop.last !} · {! endif !}{! endfor !}</li>
     {! endfor !}
   </ul>
 
