@@ -9,7 +9,7 @@ html {
   --faint: #5c5c66;
   --rule: #18181b;
   --rule-strong: #1f1f23;
-  --accent: #6700ff;
+  --accent: #e8e1d4;
 
   /* type scale — single source of truth for every font-size in main.css */
   --text-xs: 0.75rem;
