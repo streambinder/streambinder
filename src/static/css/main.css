@@ -68,7 +68,7 @@ body > main {
 a {
   color: inherit;
   text-decoration: underline;
-  text-decoration-color: var(--rule-strong);
+  text-decoration-color: var(--dim);
   text-underline-offset: 4px;
   cursor: pointer;
   transition:
@@ -198,7 +198,7 @@ main.page em {
 
 main.page a {
   text-decoration: underline;
-  text-decoration-color: var(--rule-strong);
+  text-decoration-color: var(--dim);
   text-underline-offset: 4px;
 }
 
@@ -302,7 +302,7 @@ main.home-intro p {
 main.home-intro a {
   color: var(--text-strong);
   text-decoration: underline;
-  text-decoration-color: var(--rule-strong);
+  text-decoration-color: var(--dim);
   text-underline-offset: 4px;
 }
 
