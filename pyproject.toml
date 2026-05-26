@@ -8,6 +8,7 @@ license = { text = "GPL-3.0-or-later" }
 dependencies = [
   "Jinja2",
   "Markdown",
+  "Pygments",
   "PyYAML",
   "requests",
 ]
