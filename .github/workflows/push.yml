@@ -3,7 +3,13 @@ name: push
 on: # yamllint disable-line rule:truthy
   push: null
   pull_request: null
-  workflow_call: null
+  workflow_call:
+    inputs:
+      erro_tag:
+        description: "Erro release tag to embed; defaults to `latest` when empty"
+        type: string
+        required: false
+        default: ""
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -94,6 +100,8 @@ jobs:
           platforms: linux/arm64
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          build-args: |
+            ERRO_RELEASE_TAG=${{ inputs.erro_tag }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             ghcr.io/${{ github.repository }}:latest

@@ -42,9 +42,7 @@ def main() -> None:
             html_content = ""
             html_sections: list[dict[str, str]] = []
             doc_index = os.path.join(path_content, "README.md")
-            with subprocess.Popen(
-                ["grep", "-oE", r"[a-z_\-]+\.md", doc_index], stdout=subprocess.PIPE
-            ) as proc:
+            with subprocess.Popen(["grep", "-oE", r"[a-z_\-]+\.md", doc_index], stdout=subprocess.PIPE) as proc:
                 doc_index_entries, _ = proc.communicate()
             for doc_page in doc_index_entries.decode("utf-8").splitlines():
                 html_sub_content, html_sub_sections = markdown(os.path.join(path_content, doc_page))
@@ -68,17 +66,10 @@ def main() -> None:
             html_content = ""
             html_sections = []
             wiki_index = os.path.join(path_content, "Home.md")
-            with subprocess.Popen(
-                ["egrep", "-e", "\\([a-zA-Z]+\\)$", wiki_index], stdout=subprocess.PIPE
-            ) as proc:
+            with subprocess.Popen(["egrep", "-e", "\\([a-zA-Z]+\\)$", wiki_index], stdout=subprocess.PIPE) as proc:
                 wiki_index_entries, _ = proc.communicate()
-            for wiki_page in [
-                wp.split("(")[1][:-1] + ".md"
-                for wp in wiki_index_entries.decode("utf-8").splitlines()
-            ]:
-                html_sub_content, html_sub_sections = markdown(
-                    os.path.join(path_content, wiki_page)
-                )
+            for wiki_page in [wp.split("(")[1][:-1] + ".md" for wp in wiki_index_entries.decode("utf-8").splitlines()]:
+                html_sub_content, html_sub_sections = markdown(os.path.join(path_content, wiki_page))
                 html_content += html_sub_content
                 html_sections += html_sub_sections
 
@@ -93,9 +84,15 @@ def main() -> None:
             path_content = os.path.join("src", page["parent"])
         # prebuilt page
         elif page["type"] == "prefetch":
+            prefetch_url = page["content"]
+            # pin to a specific erro release when the tag is propagated through the dispatch payload,
+            # otherwise fall back to /latest/ which can serve stale content for ~5min after a release
+            erro_tag = os.environ.get("ERRO_RELEASE_TAG", "").strip()
+            if erro_tag:
+                prefetch_url = prefetch_url.replace("/releases/latest/download/", f"/releases/download/{erro_tag}/")
             page_config = {
                 **page_config,
-                "prefetch": requests.get(page["content"], timeout=30).content.decode("utf-8"),
+                "prefetch": requests.get(prefetch_url, timeout=30).content.decode("utf-8"),
             }
             path_content = os.path.join("src", page["parent"])
 
