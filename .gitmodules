@@ -19,3 +19,6 @@
 [submodule "src/docs/foedus"]
 	path = src/docs/foedus
 	url = https://github.com/streambinder/foedus.git
+[submodule "src/docs/serica"]
+	path = src/docs/serica
+	url = https://github.com/streambinder/serica.git

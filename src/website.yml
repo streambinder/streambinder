@@ -120,3 +120,12 @@ pages:
     parent: pages/project.html.j2
     description: *proj-caption-foedus
     alive: true
+  - path: /doc/serica
+    name: Serica
+    caption: &proj-caption-serica Lightweight self-hosted gallery server for photo and video collections
+    url: https://github.com/streambinder/serica
+    type: doc
+    content: docs/serica/docs
+    parent: pages/project.html.j2
+    description: *proj-caption-serica
+    alive: true
