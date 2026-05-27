@@ -128,4 +128,4 @@ pages:
     content: docs/serica/docs
     parent: pages/project.html.j2
     description: *proj-caption-serica
-    alive: true
+    alive: false
