@@ -20,6 +20,10 @@ permissions:
   security-events: none
   statuses: write
 
+concurrency:
+  group: doc-sync-master
+  cancel-in-progress: false
+
 env:
   doc_repo: "${{ github.event.client_payload.repo }}"
   doc_sha: "${{ github.event.client_payload.sha }}"
@@ -51,4 +55,4 @@ jobs:
           git --git-dir="${doc_module}/.git" checkout "${doc_sha}"
           git commit -m "docs(${doc_name}): sync (${doc_repo}@$(cut -c-7 <<< "${doc_sha}"))" "${doc_module}"
       - name: Push repository
-        run: git push
+        run: git pull --rebase && git push
