@@ -1,2 +1,12 @@
-/* IBM Plex Mono — single mono identity across nav, body, headings, code. */
+/* IBM Plex Mono handles prose/code; Departure Mono handles structural UI text. */
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&display=swap");
+
+@font-face {
+  font-family: "Departure Mono";
+  src: url("../fonts/departure-mono/DepartureMono-Regular.woff2")
+    format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  font-feature-settings: "locl";
+}

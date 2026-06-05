@@ -12,6 +12,12 @@ html {
   --accent: #e8e1d4;
 
   /* type scale — single source of truth for every font-size in main.css */
+  --font-copy:
+    "IBM Plex Mono", ui-monospace, "SFMono-Regular", "Menlo", monospace;
+  --font-structure:
+    "Departure Mono", "IBM Plex Mono", ui-monospace, "SFMono-Regular", "Menlo",
+    monospace;
+  --font-code: var(--font-copy);
   --text-xs: 0.75rem;
   --text-sm: 0.8125rem;
   --text-base: 0.875rem;
