@@ -161,9 +161,8 @@ body > main {
 
 a {
   color: inherit;
-  text-decoration: underline;
-  text-decoration-color: var(--dim);
-  text-underline-offset: 4px;
+  text-decoration: underline dotted var(--dim) 0.08em;
+  text-underline-offset: 0.22em;
   cursor: pointer;
   transition:
     color 150ms ease,
@@ -220,9 +219,8 @@ nav .nav-sep {
 
 nav a.active {
   color: var(--text-strong);
-  text-decoration: underline;
-  text-decoration-color: var(--accent);
-  text-underline-offset: 4px;
+  text-decoration: underline dotted var(--accent) 0.08em;
+  text-underline-offset: 0.22em;
 }
 
 /* ============================================================ prose ===== */
@@ -298,9 +296,8 @@ main.page em {
 }
 
 main.page a {
-  text-decoration: underline;
-  text-decoration-color: var(--dim);
-  text-underline-offset: 4px;
+  text-decoration: underline dotted var(--dim) 0.08em;
+  text-underline-offset: 0.22em;
 }
 
 main.page ul,
@@ -400,9 +397,8 @@ main.home-intro p {
 
 main.home-intro a {
   color: var(--text-strong);
-  text-decoration: underline;
-  text-decoration-color: var(--dim);
-  text-underline-offset: 4px;
+  text-decoration: underline dotted var(--dim) 0.08em;
+  text-underline-offset: 0.22em;
 }
 
 main.home-intro a:hover {
