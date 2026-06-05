@@ -32,6 +32,98 @@ body {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
+  isolation: isolate;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -18%;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(
+      circle at 14% 18%,
+      rgb(255 255 255 / 6%) 0 1px,
+      transparent 1.7px
+    ),
+    radial-gradient(
+      circle at 72% 24%,
+      rgb(255 255 255 / 4%) 0 1px,
+      transparent 1.7px
+    ),
+    url("/texture/noise.svg");
+  background-position:
+    0 0,
+    0 0,
+    center;
+  background-size:
+    180px 180px,
+    220px 220px,
+    160px 160px;
+  animation: noise-shift 700ms steps(1, end) infinite;
+  mix-blend-mode: screen;
+  opacity: 0.4;
+  will-change: transform;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at 50% 18%,
+      transparent 0 18rem,
+      rgb(0 0 0 / 8%) 46rem
+    ),
+    rgb(0 0 0 / 5%);
+}
+
+@keyframes noise-shift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  10% {
+    transform: translate3d(-4%, -7%, 0);
+  }
+
+  20% {
+    transform: translate3d(-11%, 5%, 0);
+  }
+
+  30% {
+    transform: translate3d(8%, -9%, 0);
+  }
+
+  40% {
+    transform: translate3d(13%, 3%, 0);
+  }
+
+  50% {
+    transform: translate3d(-6%, 11%, 0);
+  }
+
+  60% {
+    transform: translate3d(4%, 8%, 0);
+  }
+
+  70% {
+    transform: translate3d(11%, -3%, 0);
+  }
+
+  80% {
+    transform: translate3d(-9%, -12%, 0);
+  }
+
+  90% {
+    transform: translate3d(6%, 10%, 0);
+  }
 }
 
 ::selection {
@@ -56,7 +148,9 @@ body > footer {
   margin-right: auto;
   padding-left: 32px;
   padding-right: 32px;
+  position: relative;
   width: 100%;
+  z-index: 1;
 }
 
 body > main {
@@ -593,5 +687,9 @@ br {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  body::before {
+    animation: none !important;
   }
 }
