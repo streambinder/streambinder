@@ -11,7 +11,7 @@ COPY . .
 RUN make
 
 FROM alpine:3
-RUN apk add --no-cache lighttpd && \
+RUN apk add --no-cache brotli-libs lighttpd && \
     adduser -S -u 1000 streambinder && \
     mkdir -p /tmp/lighttpd-deflate && \
     chown -R streambinder /tmp/lighttpd-deflate /var/log/lighttpd

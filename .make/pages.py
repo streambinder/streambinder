@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import re
 import subprocess
 import sys
 from typing import Any
@@ -11,8 +12,28 @@ from urllib.parse import urlparse
 import requests
 from config import Config as config
 from ext_html import title
+from ext_markdown import collapse_heading_gaps
 from ext_markdown import extract as markdown
 from jinja_parser import get as parse
+
+
+def _aggregate_markdown(
+    path_content: str, index_file: str, index_cmd: list[str], dest: str
+) -> tuple[str, list[dict[str, str]]]:
+    """render markdown pages listed in an index file into concatenated html."""
+    page_assets = os.path.join(path_content, "assets")
+    if os.path.isdir(page_assets):
+        os.system(f"cp -rf {page_assets} {dest}")
+
+    html_content = ""
+    html_sections: list[dict[str, str]] = []
+    with subprocess.Popen(index_cmd + [index_file], stdout=subprocess.PIPE) as proc:
+        entries, _ = proc.communicate()
+    for doc_page in entries.decode("utf-8").splitlines():
+        sub_content, sub_sections = markdown(os.path.join(path_content, doc_page))
+        html_content += sub_content
+        html_sections += sub_sections
+    return collapse_heading_gaps(html_content), html_sections
 
 
 def main() -> None:
@@ -35,21 +56,12 @@ def main() -> None:
         os.makedirs(path, exist_ok=True)
 
         if os.path.isdir(path_content) and page["type"] == "doc":
-            page_assets = os.path.join(path_content, "assets")
-            if os.path.isdir(page_assets):
-                os.system(f"cp -rf {page_assets} {path}")
-
-            html_content = ""
-            html_sections: list[dict[str, str]] = []
-            doc_index = os.path.join(path_content, "README.md")
-            with subprocess.Popen(
-                ["grep", "-oE", r"[a-z_\-]+\.md", doc_index], stdout=subprocess.PIPE
-            ) as proc:
-                doc_index_entries, _ = proc.communicate()
-            for doc_page in doc_index_entries.decode("utf-8").splitlines():
-                html_sub_content, html_sub_sections = markdown(os.path.join(path_content, doc_page))
-                html_content += html_sub_content
-                html_sections += html_sub_sections
+            html_content, html_sections = _aggregate_markdown(
+                path_content,
+                os.path.join(path_content, "README.md"),
+                ["grep", "-oE", r"[a-z_\-]+\.md"],
+                path,
+            )
             page_config = {
                 **page_config,
                 "page": {
@@ -61,13 +73,14 @@ def main() -> None:
             path_content = os.path.join("src", page["parent"])
         # wiki page
         elif os.path.isdir(path_content) and page["type"] == "wiki":
+            # wiki index lines look like "- [Page](PageName)" — extract PageName
+            wiki_index = os.path.join(path_content, "Home.md")
             page_assets = os.path.join(path_content, "assets")
             if os.path.isdir(page_assets):
                 os.system(f"cp -rf {page_assets} {path}")
 
             html_content = ""
             html_sections = []
-            wiki_index = os.path.join(path_content, "Home.md")
             with subprocess.Popen(
                 ["egrep", "-e", "\\([a-zA-Z]+\\)$", wiki_index], stdout=subprocess.PIPE
             ) as proc:
@@ -76,17 +89,15 @@ def main() -> None:
                 wp.split("(")[1][:-1] + ".md"
                 for wp in wiki_index_entries.decode("utf-8").splitlines()
             ]:
-                html_sub_content, html_sub_sections = markdown(
-                    os.path.join(path_content, wiki_page)
-                )
-                html_content += html_sub_content
-                html_sections += html_sub_sections
+                sub_content, sub_sections = markdown(os.path.join(path_content, wiki_page))
+                html_content += sub_content
+                html_sections += sub_sections
 
             page_config = {
                 **page_config,
                 "page": {
                     **page_config["page"],
-                    "content": html_content,
+                    "content": collapse_heading_gaps(html_content),
                     "sections": html_sections,
                 },
             }
@@ -101,9 +112,12 @@ def main() -> None:
                 prefetch_url = prefetch_url.replace(
                     "/releases/latest/download/", f"/releases/download/{erro_tag}/"
                 )
+            # strip h1 from prefetched content — the page template provides its own
+            prefetch_html = requests.get(prefetch_url, timeout=30).content.decode("utf-8")
+            prefetch_html = re.sub(r"<h1[^>]*>.*?</h1>", "", prefetch_html, flags=re.DOTALL)
             page_config = {
                 **page_config,
-                "prefetch": requests.get(prefetch_url, timeout=30).content.decode("utf-8"),
+                "prefetch": prefetch_html,
             }
             path_content = os.path.join("src", page["parent"])
 

@@ -45,7 +45,7 @@
 </head>
 
 <body class="{{ page.path[1:] | replace('/', '-') }}">
-    <nav aria-label="Main">
+    <nav role="navigation" aria-label="Main">
         <a href="/" class="nav-brand" aria-label="Home">davide pucci</a>
         <span class="nav-links">
             <a href="/sig/" aria-label="PGP public key"{! if page.path.startswith('/sig') !} class="active"{! endif !}>pgp</a>
@@ -58,7 +58,7 @@
 
     {{ html.body }}
 
-    <footer>
+    <footer role="contentinfo">
         <span>davide pucci</span>
         <span class="footer-social">
             {! for entry in info.social if entry.name not in ['Resume', 'PGP'] !}

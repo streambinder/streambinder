@@ -1,4 +1,4 @@
-<main class="page">
+<main class="page" role="main">
   <h1>{{ page.name }}</h1>
   <ul class="cards">
     {! for entry in pages|selectattr("type", "in", "doc,wiki")|selectattr("alive") !}
