@@ -1,1 +1,4 @@
-<main class="page home-intro">{{ info.intro | markdown }}</main>
+<main class="page home-intro">
+  <h1 class="sr-only">{{ info.name }}</h1>
+  {{ info.intro | markdown }}
+</main>

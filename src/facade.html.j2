@@ -37,22 +37,22 @@
     <link rel="stylesheet" href="/css/main.css" />
 
     <!-- favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
 
 </head>
 
 <body class="{{ page.path[1:] | replace('/', '-') }}">
-    <nav>
-        <a href="/" class="nav-brand">davide pucci</a>
+    <nav aria-label="Main">
+        <a href="/" class="nav-brand" aria-label="Home">davide pucci</a>
         <span class="nav-links">
-            <a href="/sig"{! if page.path.startswith('/sig') !} class="active"{! endif !}>pgp</a>
+            <a href="/sig/" aria-label="PGP public key"{! if page.path.startswith('/sig') !} class="active"{! endif !}>pgp</a>
             <span class="nav-sep">·</span>
-            <a href="/doc"{! if page.path.startswith('/doc') !} class="active"{! endif !}>docs</a>
+            <a href="/doc/" aria-label="Projects documentation"{! if page.path.startswith('/doc') !} class="active"{! endif !}>docs</a>
             <span class="nav-sep">·</span>
-            <a href="/resume"{! if page.path.startswith('/resume') !} class="active"{! endif !}>resume</a>
+            <a href="/resume/"{! if page.path.startswith('/resume') !} class="active"{! endif !}>resume</a>
         </span>
     </nav>
 
@@ -62,7 +62,7 @@
         <span>davide pucci</span>
         <span class="footer-social">
             {! for entry in info.social if entry.name not in ['Resume', 'PGP'] !}
-            <a href="{{ entry.url }}">{{ entry.name | lower }}</a>
+            <a href="{{ entry.url }}" aria-label="{{ entry.name }}">{{ entry.name | lower }}</a>
             {! endfor !}
         </span>
     </footer>
