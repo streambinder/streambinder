@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import os
 import re
 import subprocess
@@ -15,6 +16,38 @@ from ext_html import title
 from ext_markdown import collapse_heading_gaps
 from ext_markdown import extract as markdown
 from jinja_parser import get as parse
+
+
+def _build_jsonld(page: dict[str, Any], info: dict[str, Any], url: str) -> str:
+    """build a JSON-LD object from the page's jsonld config and site info."""
+    jsonld_cfg = page.get("jsonld")
+    if not jsonld_cfg:
+        return ""
+
+    person = {"@type": "Person", "name": info["name"], "jobTitle": info["role"]}
+    schema_type = jsonld_cfg["type"]
+
+    if schema_type == "ProfilePage":
+        # sameAs only includes absolute urls (skip relative paths like /resume)
+        person["url"] = url
+        person["sameAs"] = [s["url"] for s in info.get("social", []) if s["url"].startswith("http")]
+        obj: dict[str, Any] = {"@type": "ProfilePage", "mainEntity": person}
+    elif schema_type == "Person":
+        person["url"] = url
+        obj = person
+    elif schema_type == "SoftwareSourceCode":
+        obj = {
+            "@type": "SoftwareSourceCode",
+            "name": page["name"],
+            "description": page["description"],
+            "url": url,
+            "codeRepository": page["url"],
+            "author": person,
+        }
+    else:
+        return ""
+
+    return json.dumps({"@context": "https://schema.org", **obj}, indent=4)
 
 
 def _aggregate_markdown(
@@ -123,6 +156,7 @@ def main() -> None:
 
         # parse and dump
         parse(template=path_content, output=path_html, config=page_config)
+        page_url = config_website.get("info", "website") + page["path"]
         config.dump_yaml(
             path_yaml,
             {
@@ -132,9 +166,10 @@ def main() -> None:
                         "metadata": {
                             "title": title(page["name"], config_website.get("info", "name")),
                             "description": page["description"],
-                            "url": "/".join([config_website.get("info", "website"), page["path"]]),
+                            "url": page_url,
                             "domain": urlparse(config_website.get("info", "website")).netloc,
                         },
+                        "jsonld": _build_jsonld(page, config_website.get("info"), page_url),
                     }
                 },
                 "page": page,

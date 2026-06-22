@@ -26,14 +26,18 @@ pages:
     content: pages/index.html.j2
     name: *info-name
     description: *info-role
+    jsonld:
+      type: ProfilePage
   - path: /404
     content: pages/404.html.j2
     name: "404"
     description: not found
+    noindex: true
   - path: /500
     content: pages/500.html.j2
     name: "500"
     description: server error
+    noindex: true
   - path: /sig
     content: pages/sig.html.j2
     name: PGP
@@ -44,6 +48,8 @@ pages:
     content: https://github.com/streambinder/erro/releases/latest/download/web_en.html
     parent: pages/resume.html.j2
     description: &proj-caption-erro That cool thing to look interesting in the world of work
+    jsonld:
+      type: Person
     variants:
       - name: Personal english
         url: https://github.com/streambinder/erro/releases/latest/download/personal_en.pdf
@@ -66,6 +72,8 @@ pages:
     parent: pages/project.html.j2
     description: *proj-caption-spotitube
     alive: true
+    jsonld:
+      type: SoftwareSourceCode
   - path: /doc/discindo
     name: Discindo
     caption: &proj-caption-discindo Share all-sizes files using reconstructable manifests
@@ -75,6 +83,8 @@ pages:
     parent: pages/project.html.j2
     description: *proj-caption-discindo
     alive: false
+    jsonld:
+      type: SoftwareSourceCode
   - path: /doc/nuntius
     name: Nuntius
     caption: &proj-caption-nuntius IMAP email checker and GTK notifier
@@ -84,6 +94,8 @@ pages:
     parent: pages/project.html.j2
     description: *proj-caption-nuntius
     alive: false
+    jsonld:
+      type: SoftwareSourceCode
   - path: /doc/theca
     name: Theca
     caption: &proj-caption-theca Private package repository
@@ -93,6 +105,8 @@ pages:
     parent: pages/project.html.j2
     description: *proj-caption-theca
     alive: false
+    jsonld:
+      type: SoftwareSourceCode
   - path: /doc/erro
     name: Erro
     caption: *proj-caption-erro
@@ -102,6 +116,8 @@ pages:
     parent: pages/project.html.j2
     description: *proj-caption-erro
     alive: true
+    jsonld:
+      type: SoftwareSourceCode
   - path: /doc/vpnc
     name: VPNC
     caption: &proj-caption-vpnc IPsec (Cisco/Juniper) VPN concentrator client
@@ -111,6 +127,8 @@ pages:
     parent: pages/project.html.j2
     description: *proj-caption-vpnc
     alive: true
+    jsonld:
+      type: SoftwareSourceCode
   - path: /doc/foedus
     name: Foedus
     caption: &proj-caption-foedus Self-hosted wedding landing site with guest management and RSVP collection
@@ -120,6 +138,8 @@ pages:
     parent: pages/project.html.j2
     description: *proj-caption-foedus
     alive: true
+    jsonld:
+      type: SoftwareSourceCode
   - path: /doc/serica
     name: Serica
     caption: &proj-caption-serica Lightweight self-hosted gallery server for photo and video collections
@@ -129,3 +149,5 @@ pages:
     parent: pages/project.html.j2
     description: *proj-caption-serica
     alive: false
+    jsonld:
+      type: SoftwareSourceCode

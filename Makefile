@@ -5,7 +5,7 @@ BUILD_DIR	:= $(ROOT_DIR)/build
 export BUILD_DIR
 
 .PHONY: generate
-generate: init pages facade strip assets minify
+generate: init pages facade strip assets sitemap minify
 
 .PHONY: init
 init:
@@ -35,6 +35,10 @@ strip: init
 		-not -name '*.png' \
 		-not -name '*.gif' \
 		-not -name '*.svg' -delete
+
+.PHONY: sitemap
+sitemap: init
+	@uv run python $(MAKE_DIR)/sitemap.py
 
 .PHONY: minify
 minify: facade strip assets
