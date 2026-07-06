@@ -52,7 +52,9 @@ jobs:
           VALIDATE_PYTHON_PYLINT: false
           # mypy runs in its own job so it can use the project's uv venv
           VALIDATE_PYTHON_MYPY: false
-          IGNORE_GITIGNORED_FILES: true
+          # IGNORE_GITIGNORED_FILES dropped: super-linter 8.7.0 appends an
+          # unsupported --gitignore flag to the jscpd/cpd binary when it's set,
+          # crashing JSCPD. Removing it keeps copy-paste detection working.
           SAVE_SUPER_LINTER_OUTPUT: false
           MULTI_STATUS: false
           LOG_LEVEL: WARN
