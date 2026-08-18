@@ -1,4 +1,4 @@
-FROM ghcr.io/astral-sh/uv:0.12.1 AS uv
+FROM ghcr.io/astral-sh/uv:0.12.3 AS uv
 FROM alpine:3 AS builder
 ARG ERRO_RELEASE_TAG=""
 ENV ERRO_RELEASE_TAG=$ERRO_RELEASE_TAG
