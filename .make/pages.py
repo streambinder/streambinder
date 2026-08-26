@@ -69,6 +69,22 @@ def _aggregate_markdown(
     return collapse_heading_gaps(html_content), html_sections
 
 
+def _dump_markdown_sibling(
+    path_content: str, index_file: str, index_cmd: list[str], dest: str
+) -> None:
+    """write the raw markdown sources of a page concatenated into a sibling index.md."""
+    with subprocess.Popen(index_cmd + [index_file], stdout=subprocess.PIPE) as proc:
+        entries, _ = proc.communicate()
+    md_concat = ""
+    for entry in entries.decode("utf-8").splitlines():
+        # doc index entries are plain filenames, wiki ones look like "- [Page](Name)"
+        md_page = entry.split("(")[1][:-1] + ".md" if "(" in entry else entry
+        with open(os.path.join(path_content, md_page), encoding="utf-8") as md_fd:
+            md_concat += md_fd.read().rstrip() + "\n\n"
+    with open(os.path.join(dest, "index.md"), "w", encoding="utf-8") as md_fd:
+        md_fd.write(md_concat.rstrip() + "\n")
+
+
 def main() -> None:
     config_website = config.new("src/website.yml")
     if config_website is None:
@@ -90,6 +106,12 @@ def main() -> None:
 
         if os.path.isdir(path_content) and page["type"] == "doc":
             html_content, html_sections = _aggregate_markdown(
+                path_content,
+                os.path.join(path_content, "README.md"),
+                ["grep", "-oE", r"[a-z_\-]+\.md"],
+                path,
+            )
+            _dump_markdown_sibling(
                 path_content,
                 os.path.join(path_content, "README.md"),
                 ["grep", "-oE", r"[a-z_\-]+\.md"],
@@ -125,6 +147,12 @@ def main() -> None:
                 sub_content, sub_sections = markdown(os.path.join(path_content, wiki_page))
                 html_content += sub_content
                 html_sections += sub_sections
+            _dump_markdown_sibling(
+                path_content,
+                wiki_index,
+                ["egrep", "-e", "\\([a-zA-Z]+\\)$"],
+                path,
+            )
 
             page_config = {
                 **page_config,

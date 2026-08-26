@@ -31,6 +31,7 @@ facade: init pages
 strip: init
 	@find $(BUILD_DIR) -type f \
 		-not -name 'index.html' \
+		-not -name 'index.md' \
 		-not -name '*.jpg' \
 		-not -name '*.png' \
 		-not -name '*.gif' \
