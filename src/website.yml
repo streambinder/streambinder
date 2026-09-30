@@ -42,6 +42,16 @@ pages:
     content: pages/sig.html.j2
     name: PGP
     description: PGP Public Key
+  - path: /tiro-finance-sync/privacy
+    content: pages/tiro-finance-sync-privacy.html.j2
+    name: Tiro Finance Sync Privacy
+    description: Privacy notice for the Tiro Finance Sync personal banking sync
+    noindex: true
+  - path: /tiro-finance-sync/terms
+    content: pages/tiro-finance-sync-terms.html.j2
+    name: Tiro Finance Sync Terms
+    description: Terms of use for the Tiro Finance Sync personal banking sync
+    noindex: true
   - path: /resume
     name: Resume
     type: prefetch
