@@ -468,9 +468,15 @@ pre {
   background: var(--rule);
   border: 1px solid var(--rule-strong);
   border-radius: 4px;
-  font-size: var(--text-sm);
-  line-height: 1.6;
+  font-size: var(--text-xs);
+  line-height: 1.5;
   color: var(--text-body);
+}
+
+@media (width <= 520px) {
+  pre {
+    font-size: var(--text-2xs);
+  }
 }
 
 code {
