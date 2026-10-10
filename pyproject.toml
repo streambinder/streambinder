@@ -16,6 +16,8 @@ dependencies = [
 [dependency-groups]
 dev = [
   "mypy",
+  "pytest",
+  "pytest-cov",
   "types-Markdown",
   "types-PyYAML",
   "types-requests",
@@ -27,3 +29,15 @@ package = false
 [tool.mypy]
 strict = true
 files = [".make"]
+
+[tool.pytest.ini_options]
+testpaths = [".make"]
+pythonpath = [".make"]
+
+[tool.coverage.run]
+source = [".make"]
+omit = [".make/conftest.py", ".make/test_*.py"]
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true
