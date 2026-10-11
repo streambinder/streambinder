@@ -18,6 +18,8 @@ def main() -> None:
     for page in site.get("pages"):
         if page["path"] in EXCLUDED_PATHS:
             continue
+        if page.get("type") == "link":
+            continue
         urls.append(base_url + page["path"])
 
     lines = ['<?xml version="1.0" encoding="UTF-8"?>']

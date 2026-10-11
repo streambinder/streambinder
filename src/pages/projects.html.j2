@@ -1,9 +1,13 @@
 <main class="page" role="main">
   <h1>{{ page.name }}</h1>
   <ul class="cards">
-    {! for entry in pages|selectattr("type", "in", "doc,wiki")|selectattr("alive") !}
+    {! for entry in pages|selectattr("type", "in", "doc,wiki,link")|selectattr("alive") !}
     <li>
+      {! if entry.type == "link" !}
+      <a href="{{ entry.url }}" target="_blank" rel="noopener">
+      {! else !}
       <a href="/doc/{{ entry.name.lower() }}">
+      {! endif !}
         <span>{{ entry.name }}</span>
         <p class="caption">{{ entry.caption }}</p>
       </a>
@@ -13,9 +17,13 @@
 
   <h2>Archived</h2>
   <ul class="cards">
-    {! for entry in pages|selectattr("type", "in", "doc,wiki")|rejectattr("alive") !}
+    {! for entry in pages|selectattr("type", "in", "doc,wiki,link")|rejectattr("alive") !}
     <li>
+      {! if entry.type == "link" !}
+      <a href="{{ entry.url }}" target="_blank" rel="noopener">
+      {! else !}
       <a href="/doc/{{ entry.name.lower() }}">
+      {! endif !}
         <span>{{ entry.name }}</span>
         <p class="caption">{{ entry.caption }}</p>
       </a>

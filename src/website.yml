@@ -14,6 +14,8 @@ info:
       url: https://url.davidepucci.it/youtube
     - name: LinkedIn
       url: https://url.davidepucci.it/linkedin
+    - name: Instagram
+      url: https://url.davidepucci.it/instagram
     - name: Resume
       url: /resume
     - name: Email
@@ -98,7 +100,7 @@ pages:
       type: SoftwareSourceCode
   - path: /doc/theca
     name: Theca
-    caption: &proj-caption-theca Private package repository
+    caption: &proj-caption-theca Solus-Project package repository
     url: https://github.com/streambinder/theca
     type: wiki
     content: wikis/theca
@@ -140,6 +142,13 @@ pages:
     alive: true
     jsonld:
       type: SoftwareSourceCode
+  - path: /doc/oiler
+    name: Oiler
+    caption: &proj-caption-oiler Educational platform for logic and mathematics riddles, puzzles and games
+    url: https://oiler.education
+    type: link
+    description: *proj-caption-oiler
+    alive: true
   - path: /doc/serica
     name: Serica
     caption: &proj-caption-serica Lightweight self-hosted gallery server for photo and video collections

@@ -94,6 +94,10 @@ def main() -> None:
         if "type" not in page:
             page["type"] = "generic"
 
+        # link pages point at an external site: no local page to build
+        if page["type"] == "link":
+            continue
+
         # config
         page_config: dict[str, Any] = {**config_website.raw(), **{"page": page}}
 
