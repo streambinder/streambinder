@@ -46,6 +46,34 @@ def test_main_excludes_error_pages(tmp_path: Path, monkeypatch: pytest.MonkeyPat
     assert sitemap.EXCLUDED_PATHS == {"/404", "/500"}
 
 
+_WEBSITE_YML_WITH_LINK = """\
+info:
+  name: Test Person
+  website: https://example.com
+pages:
+  - path: /
+  - path: /about
+  - path: /doc/ext
+    type: link
+"""
+
+
+def test_main_excludes_link_pages(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.chdir(tmp_path)
+    website = tmp_path / "src" / "website.yml"
+    website.parent.mkdir(parents=True)
+    website.write_text(_WEBSITE_YML_WITH_LINK, encoding="utf-8")
+    build_dir = tmp_path / "build"
+    build_dir.mkdir()
+    monkeypatch.setenv("BUILD_DIR", str(build_dir))
+
+    sitemap.main()
+
+    content = (build_dir / "sitemap.xml").read_text(encoding="utf-8")
+    assert "https://example.com/about" in content
+    assert "https://example.com/doc/ext" not in content
+
+
 def test_module_runs_as_main(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     dest = _prepare(tmp_path, monkeypatch)
 

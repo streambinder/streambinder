@@ -181,6 +181,28 @@ def test_main_generic_page(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> N
     assert dumped["page"]["type"] == "generic"
 
 
+def test_main_link_page_is_skipped(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    build_dir = _prepare_site(
+        tmp_path,
+        monkeypatch,
+        "  - path: /about\n"
+        "    content: pages/about.html.j2\n"
+        "    name: About\n"
+        "    description: about page\n"
+        "  - path: /doc/ext\n"
+        "    name: Ext\n"
+        "    type: link\n"
+        "    url: https://example.com/ext\n"
+        "    description: external project\n",
+    )
+    _write(tmp_path / "src" / "pages" / "about.html.j2", "About {{ page.name }} of {{ info.name }}")
+
+    pages.main()
+
+    assert (build_dir / "about" / "_index.html").exists()
+    assert not (build_dir / "doc" / "ext").exists()
+
+
 def test_main_doc_page(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     build_dir = _prepare_site(
         tmp_path,
