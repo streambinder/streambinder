@@ -65,14 +65,14 @@ pages:
     content: pages/projects.html.j2
     name: Projects
     description: Personal IT-related time suckers
-  - path: /doc/spotitube
-    name: Spotitube
-    caption: &proj-caption-spotitube Synchronize your Spotify collections downloading from external providers
-    url: https://github.com/streambinder/spotitube
+  - path: /doc/pango
+    name: Pango
+    caption: &proj-caption-pango Synchronize your Spotify collections downloading from external providers
+    url: https://github.com/streambinder/pango
     type: doc
-    content: docs/spotitube/docs
+    content: docs/pango/docs
     parent: pages/project.html.j2
-    description: *proj-caption-spotitube
+    description: *proj-caption-pango
     alive: true
     jsonld:
       type: SoftwareSourceCode

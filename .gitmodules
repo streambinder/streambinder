@@ -7,9 +7,9 @@
 [submodule "src/wikis/theca"]
 	path = src/wikis/theca
 	url = https://github.com/streambinder/theca.wiki.git
-[submodule "src/docs/spotitube"]
-	path = src/docs/spotitube
-	url = https://github.com/streambinder/spotitube.git
+[submodule "src/docs/pango"]
+	path = src/docs/pango
+	url = https://github.com/streambinder/pango.git
 [submodule "src/docs/erro"]
 	path = src/docs/erro
 	url = https://github.com/streambinder/erro.git
