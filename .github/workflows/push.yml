@@ -44,7 +44,10 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - run: mv -vf .github/linters/* ./
+      # Only these two configs are read from the repository root by
+      # their tools. actionlint.yml must stay in .github/linters:
+      # super-linter resolves it there and passes it to actionlint.
+      - run: mv -vf .github/linters/biome.json .github/linters/commitlint.config.js ./
       - uses: super-linter/super-linter/slim@4ce20838b8ab83717e78138c5b3a1407148e0918
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -128,3 +131,34 @@ jobs:
         run: echo "${STEPS_DOCKER_BUILD_OUTPUTS_DIGEST}"
         env:
           STEPS_DOCKER_BUILD_OUTPUTS_DIGEST: ${{ steps.docker_build.outputs.digest }}
+  deploy:
+    name: deploy
+    needs: [docker]
+    if: github.ref == 'refs/heads/master'
+    runs-on: [self-hosted, lobster]
+    environment: production
+    timeout-minutes: 10
+    env:
+      DOCKER_HOST: unix:///run/podman/podman.sock
+    steps:
+      - name: Pull the image and restart the service
+        run: |
+          docker run --rm --privileged --pid=host \
+            docker.io/library/alpine:3.22@sha256:5291449c3df73caf6ed85e649dec1b9e818b39a5d8c871e97afc13e9cd5e8fa8 \
+            nsenter -t 1 -m -u -i -n -p -- sh -euc '
+              podman pull ghcr.io/${{ github.repository }}:latest
+              systemctl restart streambinder.service
+            '
+      - name: Check the site answers
+        run: |
+          docker run --rm --privileged --pid=host \
+            docker.io/library/alpine:3.22@sha256:5291449c3df73caf6ed85e649dec1b9e818b39a5d8c871e97afc13e9cd5e8fa8 \
+            nsenter -t 1 -m -u -i -n -p -- sh -euc '
+              for attempt in $(seq 1 30); do
+                if curl -fsS -o /dev/null https://davidepucci.it/; then
+                  exit 0
+                fi
+                sleep 2
+              done
+              exit 1
+            '
