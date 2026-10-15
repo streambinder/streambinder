@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import os
 import re
-import subprocess
+import shutil
 import sys
 from typing import Any
 from urllib.parse import urlparse
@@ -51,35 +51,45 @@ def _build_jsonld(page: dict[str, Any], info: dict[str, Any], url: str) -> str:
     return json.dumps({"@context": "https://schema.org", **obj}, indent=4)
 
 
+def _doc_entries(index_file: str) -> list[str]:
+    """list the markdown files a doc index links to, in order of appearance."""
+    with open(index_file, encoding="utf-8") as fd:
+        return re.findall(r"[a-z_\-]+\.md", fd.read())
+
+
+def _wiki_entries(index_file: str) -> list[str]:
+    """list the link lines of a wiki index, in order of appearance."""
+    with open(index_file, encoding="utf-8") as fd:
+        return [line for line in fd.read().splitlines() if re.search(r"\([a-zA-Z]+\)$", line)]
+
+
+def _entry_pages(entries: list[str]) -> list[str]:
+    """map index entries to markdown filenames: doc entries are plain
+    filenames, wiki ones look like "- [Page](Name)"."""
+    return [entry.split("(")[1][:-1] + ".md" if "(" in entry else entry for entry in entries]
+
+
 def _aggregate_markdown(
-    path_content: str, index_file: str, index_cmd: list[str], dest: str
+    path_content: str, entries: list[str], dest: str
 ) -> tuple[str, list[dict[str, str]]]:
-    """render markdown pages listed in an index file into concatenated html."""
+    """render the markdown pages of an index into concatenated html."""
     page_assets = os.path.join(path_content, "assets")
     if os.path.isdir(page_assets):
-        os.system(f"cp -rf {page_assets} {dest}")
+        shutil.copytree(page_assets, os.path.join(dest, "assets"), dirs_exist_ok=True)
 
     html_content = ""
     html_sections: list[dict[str, str]] = []
-    with subprocess.Popen(index_cmd + [index_file], stdout=subprocess.PIPE) as proc:
-        entries, _ = proc.communicate()
-    for doc_page in entries.decode("utf-8").splitlines():
+    for doc_page in _entry_pages(entries):
         sub_content, sub_sections = markdown(os.path.join(path_content, doc_page))
         html_content += sub_content
         html_sections += sub_sections
     return collapse_heading_gaps(html_content), html_sections
 
 
-def _dump_markdown_sibling(
-    path_content: str, index_file: str, index_cmd: list[str], dest: str
-) -> None:
+def _dump_markdown_sibling(path_content: str, entries: list[str], dest: str) -> None:
     """write the raw markdown sources of a page concatenated into a sibling index.md."""
-    with subprocess.Popen(index_cmd + [index_file], stdout=subprocess.PIPE) as proc:
-        entries, _ = proc.communicate()
     md_concat = ""
-    for entry in entries.decode("utf-8").splitlines():
-        # doc index entries are plain filenames, wiki ones look like "- [Page](Name)"
-        md_page = entry.split("(")[1][:-1] + ".md" if "(" in entry else entry
+    for md_page in _entry_pages(entries):
         with open(os.path.join(path_content, md_page), encoding="utf-8") as md_fd:
             md_concat += md_fd.read().rstrip() + "\n\n"
     with open(os.path.join(dest, "index.md"), "w", encoding="utf-8") as md_fd:
@@ -110,18 +120,9 @@ def main() -> None:
         os.makedirs(path, exist_ok=True)
 
         if os.path.isdir(path_content) and page["type"] == "doc":
-            html_content, html_sections = _aggregate_markdown(
-                path_content,
-                os.path.join(path_content, "README.md"),
-                ["grep", "-oE", r"[a-z_\-]+\.md"],
-                path,
-            )
-            _dump_markdown_sibling(
-                path_content,
-                os.path.join(path_content, "README.md"),
-                ["grep", "-oE", r"[a-z_\-]+\.md"],
-                path,
-            )
+            entries = _doc_entries(os.path.join(path_content, "README.md"))
+            html_content, html_sections = _aggregate_markdown(path_content, entries, path)
+            _dump_markdown_sibling(path_content, entries, path)
             page_config = {
                 **page_config,
                 "page": {
@@ -133,37 +134,14 @@ def main() -> None:
             path_content = os.path.join("site", page["parent"])
         # wiki page
         elif os.path.isdir(path_content) and page["type"] == "wiki":
-            # wiki index lines look like "- [Page](PageName)" — extract PageName
-            wiki_index = os.path.join(path_content, "Home.md")
-            page_assets = os.path.join(path_content, "assets")
-            if os.path.isdir(page_assets):
-                os.system(f"cp -rf {page_assets} {path}")
-
-            html_content = ""
-            html_sections = []
-            with subprocess.Popen(
-                ["egrep", "-e", "\\([a-zA-Z]+\\)$", wiki_index], stdout=subprocess.PIPE
-            ) as proc:
-                wiki_index_entries, _ = proc.communicate()
-            for wiki_page in [
-                wp.split("(")[1][:-1] + ".md"
-                for wp in wiki_index_entries.decode("utf-8").splitlines()
-            ]:
-                sub_content, sub_sections = markdown(os.path.join(path_content, wiki_page))
-                html_content += sub_content
-                html_sections += sub_sections
-            _dump_markdown_sibling(
-                path_content,
-                wiki_index,
-                ["egrep", "-e", "\\([a-zA-Z]+\\)$"],
-                path,
-            )
-
+            entries = _wiki_entries(os.path.join(path_content, "Home.md"))
+            html_content, html_sections = _aggregate_markdown(path_content, entries, path)
+            _dump_markdown_sibling(path_content, entries, path)
             page_config = {
                 **page_config,
                 "page": {
                     **page_config["page"],
-                    "content": collapse_heading_gaps(html_content),
+                    "content": html_content,
                     "sections": html_sections,
                 },
             }

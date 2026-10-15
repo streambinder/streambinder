@@ -80,18 +80,29 @@ def test_build_jsonld_software_source_code() -> None:
     assert parsed["author"]["name"] == "Test Person"
 
 
+def test_doc_entries_extracts_filenames_in_order(tmp_path: Path) -> None:
+    index = tmp_path / "README.md"
+    _write(index, "# Docs\n\n- [Intro](intro.md)\n- [Guide](guide.md)\nSee https://x.test\n")
+
+    assert pages._doc_entries(str(index)) == ["intro.md", "guide.md"]
+
+
+def test_wiki_entries_keeps_link_lines_only(tmp_path: Path) -> None:
+    index = tmp_path / "Home.md"
+    _write(index, "# Home\n\n- [Intro](Intro)\nplain text (not-a-link)\n- [Guide](Guide)\n")
+
+    assert pages._wiki_entries(str(index)) == ["- [Intro](Intro)", "- [Guide](Guide)"]
+
+
 def test_aggregate_markdown_concatenates_pages(tmp_path: Path) -> None:
     content = tmp_path / "content"
-    _write(content / "index.txt", "alpha.md\nbeta.md\n")
     _write(content / "alpha.md", "# Alpha\n\nfirst\n")
     _write(content / "beta.md", "# Beta\n\nsecond\n")
     _write(content / "assets" / "asset.txt", "asset")
     dest = tmp_path / "build"
     dest.mkdir()
 
-    html, sections = pages._aggregate_markdown(
-        str(content), str(content / "index.txt"), ["cat"], str(dest)
-    )
+    html, sections = pages._aggregate_markdown(str(content), ["alpha.md", "beta.md"], str(dest))
 
     assert '<h2 id="alpha">Alpha</h2>' in html
     assert '<h2 id="beta">Beta</h2>' in html
@@ -104,12 +115,9 @@ def test_aggregate_markdown_concatenates_pages(tmp_path: Path) -> None:
 
 def test_aggregate_markdown_without_assets(tmp_path: Path) -> None:
     content = tmp_path / "content"
-    _write(content / "index.txt", "alpha.md\n")
     _write(content / "alpha.md", "# Alpha\n")
 
-    html, sections = pages._aggregate_markdown(
-        str(content), str(content / "index.txt"), ["cat"], str(tmp_path)
-    )
+    html, sections = pages._aggregate_markdown(str(content), ["alpha.md"], str(tmp_path))
 
     assert '<h2 id="alpha">Alpha</h2>' in html
     assert sections == [{"id": "alpha", "name": "Alpha"}]
@@ -117,25 +125,23 @@ def test_aggregate_markdown_without_assets(tmp_path: Path) -> None:
 
 def test_dump_markdown_sibling_plain_entries(tmp_path: Path) -> None:
     content = tmp_path / "content"
-    _write(content / "index.txt", "alpha.md\nbeta.md\n")
     _write(content / "alpha.md", "# Alpha\n")
     _write(content / "beta.md", "# Beta\n")
     dest = tmp_path / "build"
     dest.mkdir()
 
-    pages._dump_markdown_sibling(str(content), str(content / "index.txt"), ["cat"], str(dest))
+    pages._dump_markdown_sibling(str(content), ["alpha.md", "beta.md"], str(dest))
 
     assert (dest / "index.md").read_text(encoding="utf-8") == "# Alpha\n\n# Beta\n"
 
 
 def test_dump_markdown_sibling_wiki_entries(tmp_path: Path) -> None:
     content = tmp_path / "content"
-    _write(content / "index.txt", "- [Guide](Guide)\n")
     _write(content / "Guide.md", "# Guide\n")
     dest = tmp_path / "build"
     dest.mkdir()
 
-    pages._dump_markdown_sibling(str(content), str(content / "index.txt"), ["cat"], str(dest))
+    pages._dump_markdown_sibling(str(content), ["- [Guide](Guide)"], str(dest))
 
     assert (dest / "index.md").read_text(encoding="utf-8") == "# Guide\n"
 
