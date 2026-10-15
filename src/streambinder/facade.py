@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from pathlib import Path
 
 from streambinder.config import Config as config
 from streambinder.jinja_parser import get as parse
@@ -18,7 +19,7 @@ def main() -> None:
             fname_html = os.path.join(fdir, fname)
 
             with open(fname_html, "r", encoding="utf-8") as html_fd:
-                cfg = config.new(fname_html.replace("html", "yaml"))
+                cfg = config.new(str(Path(fname_html).with_suffix(".yaml")))
                 cfg.data["html"]["body"] = html_fd.read()
                 # hoist site-level info (social, etc.) into facade scope
                 cfg.data["info"] = site["info"]
