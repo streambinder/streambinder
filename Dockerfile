@@ -7,19 +7,7 @@ RUN apk add --no-cache minify
 COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-install-project
 COPY . .
-RUN mkdir -p $BUILD_DIR
-RUN uv run python -m streambinder.pages
-RUN uv run python -m streambinder.facade
-RUN find $BUILD_DIR -type f \
-    -not -name 'index.html' \
-    -not -name 'index.md' \
-    -not -name '*.jpg' \
-    -not -name '*.png' \
-    -not -name '*.gif' \
-    -not -name '*.svg' -delete
-RUN cp -rf site/static/* $BUILD_DIR/
-RUN uv run python -m streambinder.sitemap
-RUN uv run python -m streambinder.minify
+RUN uv run python -m streambinder.build
 
 FROM alpine:3
 RUN apk add --no-cache brotli-libs lighttpd && \
