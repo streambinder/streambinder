@@ -99,7 +99,7 @@ def main() -> None:
             continue
 
         # config
-        page_config: dict[str, Any] = {**config_website.raw(), **{"page": page}}
+        page_config: dict[str, Any] = {**config_website.raw(), "page": page}
 
         # paths
         path = os.path.join(os.environ["BUILD_DIR"], *page["path"].split("/"))

@@ -19,11 +19,11 @@ COPY docker/lighttpd.conf /etc/lighttpd/lighttpd.conf
 COPY --from=builder /build/build /var/www/localhost/htdocs
 RUN cp /var/www/localhost/htdocs/404/index.html /var/www/localhost/htdocs/status-404.html && \
     cp /var/www/localhost/htdocs/500/index.html /var/www/localhost/htdocs/status-500.html
-USER streambinder
+USER 1000
 EXPOSE 8080
 STOPSIGNAL SIGINT
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD wget -q -O /dev/null http://127.0.0.1:8080/ || exit 1
+    CMD ["wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/"]
 CMD ["lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
 LABEL org.opencontainers.image.source=https://github.com/streambinder/streambinder \
       org.opencontainers.image.title=streambinder \
