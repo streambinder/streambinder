@@ -10,6 +10,7 @@ from streambinder import facade
 _WEBSITE_YML = """\
 info:
   name: Test Person
+  role: Engineer
   website: https://example.com
   social:
     - name: GitHub

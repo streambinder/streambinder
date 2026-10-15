@@ -3,8 +3,9 @@ from __future__ import annotations
 from pathlib import Path
 
 import pytest
+from pydantic import ValidationError
 
-from streambinder.config import Config
+from streambinder.config import Config, load_site
 
 
 def _write(path: Path, content: str) -> None:
@@ -53,6 +54,53 @@ def test_dump_yaml_roundtrip(tmp_path: Path) -> None:
     Config.dump_yaml(str(path), data)
 
     assert Config.parse_yaml(str(path)) == data
+
+
+_SITE_YML = """\
+info:
+  name: Davide
+  role: Engineer
+  website: https://example.com
+  social:
+    - name: GitHub
+      url: https://example.com/gh
+pages:
+  - path: /
+    name: Home
+  - path: /doc/x
+    type: doc
+    jsonld:
+      type: SoftwareSourceCode
+"""
+
+
+def test_load_site_validates_and_defaults(tmp_path: Path) -> None:
+    path = tmp_path / "website.yml"
+    _write(path, _SITE_YML)
+
+    site = load_site(str(path))
+
+    assert site.info.name == "Davide"
+    assert site.info.social[0].url == "https://example.com/gh"
+    assert site.pages[0].type == "generic"
+    assert site.pages[1].jsonld is not None
+    assert site.pages[1].jsonld.type == "SoftwareSourceCode"
+
+
+def test_load_site_rejects_missing_info(tmp_path: Path) -> None:
+    path = tmp_path / "website.yml"
+    _write(path, "pages: []\n")
+
+    with pytest.raises(ValidationError):
+        load_site(str(path))
+
+
+def test_load_site_rejects_page_without_path(tmp_path: Path) -> None:
+    path = tmp_path / "website.yml"
+    _write(path, _SITE_YML + "  - name: NoPath\n")
+
+    with pytest.raises(ValidationError):
+        load_site(str(path))
 
 
 def test_new_caches_by_path(tmp_path: Path) -> None:

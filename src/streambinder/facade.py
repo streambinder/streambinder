@@ -6,11 +6,12 @@ import os
 from pathlib import Path
 
 from streambinder.config import Config as config
+from streambinder.config import load_site
 from streambinder.jinja_parser import get as parse
 
 
 def main() -> None:
-    site = config.new("site/website.yml").raw()
+    site_info = load_site("site/website.yml").info.model_dump()
     for fdir, _, fnames in os.walk(os.environ["BUILD_DIR"]):
         for fname in fnames:
             if fname != "_index.html":
@@ -22,7 +23,7 @@ def main() -> None:
                 cfg = config.new(str(Path(fname_html).with_suffix(".yaml")))
                 cfg.data["html"]["body"] = html_fd.read()
                 # hoist site-level info (social, etc.) into facade scope
-                cfg.data["info"] = site["info"]
+                cfg.data["info"] = site_info
                 parse(
                     template="site/facade.html.j2",
                     output=os.path.join(fdir, "index.html"),
