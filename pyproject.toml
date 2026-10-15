@@ -14,7 +14,6 @@ dependencies = [
   "Markdown",
   "Pygments",
   "PyYAML",
-  "requests",
 ]
 
 [dependency-groups]
@@ -24,7 +23,6 @@ dev = [
   "pytest-cov",
   "types-Markdown",
   "types-PyYAML",
-  "types-requests",
 ]
 
 [tool.isort]
