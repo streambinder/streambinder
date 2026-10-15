@@ -3,7 +3,7 @@ ARG ERRO_RELEASE_TAG=""
 ENV ERRO_RELEASE_TAG=$ERRO_RELEASE_TAG
 ENV BUILD_DIR=/build
 WORKDIR /app
-RUN apk add --no-cache bash minify
+RUN apk add --no-cache minify
 COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-install-project
 COPY . .
@@ -19,7 +19,7 @@ RUN find $BUILD_DIR -type f \
     -not -name '*.svg' -delete
 RUN cp -rf site/static/* $BUILD_DIR/
 RUN uv run python -m streambinder.sitemap
-RUN bash scripts/minify.sh
+RUN uv run python -m streambinder.minify
 
 FROM alpine:3
 RUN apk add --no-cache brotli-libs lighttpd && \
