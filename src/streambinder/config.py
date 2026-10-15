@@ -5,8 +5,58 @@ from __future__ import annotations
 from typing import Any
 
 import yaml
+from pydantic import BaseModel, ConfigDict
 
 _cache: dict[str, Config] = {}
+
+
+class Social(BaseModel):
+    model_config = ConfigDict(extra="allow")
+
+    name: str
+    url: str
+
+
+class Info(BaseModel):
+    model_config = ConfigDict(extra="allow")
+
+    name: str
+    role: str
+    website: str
+    intro: str = ""
+    social: list[Social] = []
+
+
+class JsonLd(BaseModel):
+    model_config = ConfigDict(extra="allow")
+
+    type: str
+
+
+class Page(BaseModel):
+    model_config = ConfigDict(extra="allow")
+
+    path: str
+    name: str = ""
+    description: str = ""
+    type: str = "generic"
+    content: str = ""
+    parent: str = ""
+    url: str = ""
+    noindex: bool = False
+    jsonld: JsonLd | None = None
+
+
+class Site(BaseModel):
+    model_config = ConfigDict(extra="allow")
+
+    info: Info
+    pages: list[Page]
+
+
+def load_site(path: str) -> Site:
+    """parse and validate a website configuration file."""
+    return Site.model_validate(Config.parse_yaml(path))
 
 
 class Config:

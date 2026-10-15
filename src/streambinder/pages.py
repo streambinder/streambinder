@@ -12,6 +12,7 @@ from urllib.parse import urlparse
 from urllib.request import urlopen
 
 from streambinder.config import Config as config
+from streambinder.config import load_site
 from streambinder.ext_html import title
 from streambinder.ext_markdown import collapse_heading_gaps
 from streambinder.ext_markdown import extract as markdown
@@ -99,6 +100,7 @@ def main() -> None:
     config_website = config.new("site/website.yml")
     if config_website is None:
         sys.exit("Unable to parse configuration file")
+    site = load_site("site/website.yml")
 
     for page in config_website.get("pages"):
         if "type" not in page:
@@ -167,20 +169,20 @@ def main() -> None:
 
         # parse and dump
         parse(template=path_content, output=path_html, config=page_config)
-        page_url = config_website.get("info", "website") + page["path"]
+        page_url = site.info.website + page["path"]
         config.dump_yaml(
             path_yaml,
             {
                 "html": {
                     "head": {
-                        "title": title(page["name"], config_website.get("info", "name")),
+                        "title": title(page["name"], site.info.name),
                         "metadata": {
-                            "title": title(page["name"], config_website.get("info", "name")),
+                            "title": title(page["name"], site.info.name),
                             "description": page["description"],
                             "url": page_url,
-                            "domain": urlparse(config_website.get("info", "website")).netloc,
+                            "domain": urlparse(site.info.website).netloc,
                         },
-                        "jsonld": _build_jsonld(page, config_website.get("info"), page_url),
+                        "jsonld": _build_jsonld(page, site.info.model_dump(), page_url),
                     }
                 },
                 "page": page,

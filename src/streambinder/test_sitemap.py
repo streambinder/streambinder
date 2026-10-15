@@ -10,6 +10,7 @@ from streambinder import sitemap
 _WEBSITE_YML = """\
 info:
   name: Test Person
+  role: Engineer
   website: https://example.com
 pages:
   - path: /
@@ -50,6 +51,7 @@ def test_main_excludes_error_pages(tmp_path: Path, monkeypatch: pytest.MonkeyPat
 _WEBSITE_YML_WITH_LINK = """\
 info:
   name: Test Person
+  role: Engineer
   website: https://example.com
 pages:
   - path: /

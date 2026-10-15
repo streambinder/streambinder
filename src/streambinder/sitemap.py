@@ -4,23 +4,23 @@ from __future__ import annotations
 
 import os
 
-from streambinder.config import Config as config
+from streambinder.config import load_site
 
 # pages that should never appear in the sitemap
 EXCLUDED_PATHS = {"/404", "/500"}
 
 
 def main() -> None:
-    site = config.new("site/website.yml")
-    base_url = site.get("info", "website")
+    site = load_site("site/website.yml")
+    base_url = site.info.website
 
     urls = []
-    for page in site.get("pages"):
-        if page["path"] in EXCLUDED_PATHS:
+    for page in site.pages:
+        if page.path in EXCLUDED_PATHS:
             continue
-        if page.get("type") == "link":
+        if page.type == "link":
             continue
-        urls.append(base_url + page["path"])
+        urls.append(base_url + page.path)
 
     lines = ['<?xml version="1.0" encoding="UTF-8"?>']
     lines.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
