@@ -3,10 +3,9 @@ from __future__ import annotations
 import json
 import runpy
 from pathlib import Path
-from typing import Any
+from typing import Any, Self
 
 import pytest
-import requests
 import yaml
 
 from streambinder import pages
@@ -284,7 +283,16 @@ def test_main_wiki_page(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None
 
 class _FakeResponse:
     def __init__(self, content: bytes) -> None:
-        self.content = content
+        self._content = content
+
+    def read(self) -> bytes:
+        return self._content
+
+    def __enter__(self) -> Self:
+        return self
+
+    def __exit__(self, *args: object) -> None:
+        return None
 
 
 def test_main_prefetch_page(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
@@ -300,10 +308,10 @@ def test_main_prefetch_page(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> 
     )
     _write(tmp_path / "site" / "pages" / "resume.html.j2", "Resume: {{ prefetch }}")
 
-    def fake_get(url: str, timeout: int = 0) -> _FakeResponse:
+    def fake_urlopen(url: str, timeout: int = 0) -> _FakeResponse:
         return _FakeResponse(b"<h1>Hidden Title</h1><p>kept body</p>")
 
-    monkeypatch.setattr(requests, "get", fake_get)
+    monkeypatch.setattr(pages, "urlopen", fake_urlopen)
 
     pages.main()
 
@@ -328,11 +336,11 @@ def test_main_prefetch_page_with_release_tag(
     monkeypatch.setenv("ERRO_RELEASE_TAG", "v1.2.3")
     requested: list[str] = []
 
-    def fake_get(url: str, timeout: int = 0) -> _FakeResponse:
+    def fake_urlopen(url: str, timeout: int = 0) -> _FakeResponse:
         requested.append(url)
         return _FakeResponse(b"<p>body</p>")
 
-    monkeypatch.setattr(requests, "get", fake_get)
+    monkeypatch.setattr(pages, "urlopen", fake_urlopen)
 
     pages.main()
 
