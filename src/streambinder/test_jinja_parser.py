@@ -3,7 +3,8 @@ from __future__ import annotations
 from pathlib import Path
 
 import pytest
-from jinja_parser import get
+
+from streambinder.jinja_parser import get
 
 
 def _render(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, template: str, **config: str) -> str:

@@ -2,8 +2,9 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 
-import config
 import pytest
+
+from streambinder import config
 
 
 @pytest.fixture(autouse=True)

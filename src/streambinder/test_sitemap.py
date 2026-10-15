@@ -4,7 +4,8 @@ import runpy
 from pathlib import Path
 
 import pytest
-import sitemap
+
+from streambinder import sitemap
 
 _WEBSITE_YML = """\
 info:
@@ -28,7 +29,7 @@ _EXPECTED = (
 
 def _prepare(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     monkeypatch.chdir(tmp_path)
-    website = tmp_path / "src" / "website.yml"
+    website = tmp_path / "site" / "website.yml"
     website.parent.mkdir(parents=True)
     website.write_text(_WEBSITE_YML, encoding="utf-8")
     build_dir = tmp_path / "build"
@@ -60,7 +61,7 @@ pages:
 
 def test_main_excludes_link_pages(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.chdir(tmp_path)
-    website = tmp_path / "src" / "website.yml"
+    website = tmp_path / "site" / "website.yml"
     website.parent.mkdir(parents=True)
     website.write_text(_WEBSITE_YML_WITH_LINK, encoding="utf-8")
     build_dir = tmp_path / "build"
@@ -77,6 +78,6 @@ def test_main_excludes_link_pages(tmp_path: Path, monkeypatch: pytest.MonkeyPatc
 def test_module_runs_as_main(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     dest = _prepare(tmp_path, monkeypatch)
 
-    runpy.run_module("sitemap", run_name="__main__")
+    runpy.run_module("streambinder.sitemap", run_name="__main__")
 
     assert dest.read_text(encoding="utf-8") == _EXPECTED

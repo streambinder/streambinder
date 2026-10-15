@@ -5,7 +5,8 @@ from __future__ import annotations
 import re
 
 import markdown
-from ext_html import idfy
+
+from streambinder.ext_html import idfy
 
 
 def _shift_headings(html: str) -> str:

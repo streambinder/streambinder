@@ -5,10 +5,11 @@ import runpy
 from pathlib import Path
 from typing import Any
 
-import pages
 import pytest
 import requests
 import yaml
+
+from streambinder import pages
 
 _INFO: dict[str, Any] = {
     "name": "Test Person",
@@ -143,7 +144,7 @@ def _prepare_site(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, pages_yaml: s
     monkeypatch.chdir(tmp_path)
     website = "info:\n  name: Test Person\n  role: Engineer\n"
     website += "  website: https://example.com\npages:\n" + pages_yaml
-    _write(tmp_path / "src" / "website.yml", website)
+    _write(tmp_path / "site" / "website.yml", website)
     build_dir = tmp_path / "build"
     build_dir.mkdir()
     monkeypatch.setenv("BUILD_DIR", str(build_dir))
@@ -165,7 +166,9 @@ def test_main_generic_page(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> N
         "    name: About\n"
         "    description: about page\n",
     )
-    _write(tmp_path / "src" / "pages" / "about.html.j2", "About {{ page.name }} of {{ info.name }}")
+    _write(
+        tmp_path / "site" / "pages" / "about.html.j2", "About {{ page.name }} of {{ info.name }}"
+    )
 
     pages.main()
 
@@ -195,7 +198,9 @@ def test_main_link_page_is_skipped(tmp_path: Path, monkeypatch: pytest.MonkeyPat
         "    url: https://example.com/ext\n"
         "    description: external project\n",
     )
-    _write(tmp_path / "src" / "pages" / "about.html.j2", "About {{ page.name }} of {{ info.name }}")
+    _write(
+        tmp_path / "site" / "pages" / "about.html.j2", "About {{ page.name }} of {{ info.name }}"
+    )
 
     pages.main()
 
@@ -217,13 +222,13 @@ def test_main_doc_page(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
         "    jsonld:\n"
         "      type: SoftwareSourceCode\n",
     )
-    docs = tmp_path / "src" / "docs" / "proj" / "docs"
+    docs = tmp_path / "site" / "docs" / "proj" / "docs"
     _write(docs / "README.md", "- [Intro](intro.md)\n- [Guide](guide.md)\n")
     _write(docs / "intro.md", "# Intro\n\nintro body\n")
     _write(docs / "guide.md", "# Guide\n\nguide body\n")
     _write(docs / "assets" / "asset.txt", "asset")
     _write(
-        tmp_path / "src" / "pages" / "project.html.j2", "Doc {{ page.name }}: {{ page.content }}"
+        tmp_path / "site" / "pages" / "project.html.j2", "Doc {{ page.name }}: {{ page.content }}"
     )
 
     pages.main()
@@ -251,13 +256,13 @@ def test_main_wiki_page(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None
         "    parent: pages/project.html.j2\n"
         "    description: wiki page\n",
     )
-    wiki = tmp_path / "src" / "wikis" / "wiki"
+    wiki = tmp_path / "site" / "wikis" / "wiki"
     _write(wiki / "Home.md", "- [Intro](Intro)\n- [Guide](Guide)\n")
     _write(wiki / "Intro.md", "# Wiki Intro\n\nintro body\n")
     _write(wiki / "Guide.md", "# Wiki Guide\n\nguide body\n")
     _write(wiki / "assets" / "asset.txt", "asset")
     _write(
-        tmp_path / "src" / "pages" / "project.html.j2", "Wiki {{ page.name }}: {{ page.content }}"
+        tmp_path / "site" / "pages" / "project.html.j2", "Wiki {{ page.name }}: {{ page.content }}"
     )
 
     pages.main()
@@ -287,7 +292,7 @@ def test_main_prefetch_page(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> 
         "    parent: pages/resume.html.j2\n"
         "    description: resume page\n",
     )
-    _write(tmp_path / "src" / "pages" / "resume.html.j2", "Resume: {{ prefetch }}")
+    _write(tmp_path / "site" / "pages" / "resume.html.j2", "Resume: {{ prefetch }}")
 
     def fake_get(url: str, timeout: int = 0) -> _FakeResponse:
         return _FakeResponse(b"<h1>Hidden Title</h1><p>kept body</p>")
@@ -313,7 +318,7 @@ def test_main_prefetch_page_with_release_tag(
         "    parent: pages/resume.html.j2\n"
         "    description: resume page\n",
     )
-    _write(tmp_path / "src" / "pages" / "resume.html.j2", "Resume: {{ prefetch }}")
+    _write(tmp_path / "site" / "pages" / "resume.html.j2", "Resume: {{ prefetch }}")
     monkeypatch.setenv("ERRO_RELEASE_TAG", "v1.2.3")
     requested: list[str] = []
 
@@ -339,8 +344,8 @@ def test_module_runs_as_main(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) ->
         "    name: About\n"
         "    description: about page\n",
     )
-    _write(tmp_path / "src" / "pages" / "about.html.j2", "About {{ page.name }}")
+    _write(tmp_path / "site" / "pages" / "about.html.j2", "About {{ page.name }}")
 
-    runpy.run_module("pages", run_name="__main__")
+    runpy.run_module("streambinder.pages", run_name="__main__")
 
     assert (build_dir / "about" / "_index.html").exists()

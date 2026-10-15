@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from ext_markdown import _parse_html, _shift_headings, collapse_heading_gaps, extract
+from streambinder.ext_markdown import _parse_html, _shift_headings, collapse_heading_gaps, extract
 
 
 def test_shift_headings_moves_each_level_down() -> None:

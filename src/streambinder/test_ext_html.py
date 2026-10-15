@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from ext_html import idfy, title
+from streambinder.ext_html import idfy, title
 
 
 def test_title_prefixes_page_name() -> None:
