@@ -9,8 +9,7 @@ import shutil
 import sys
 from typing import Any
 from urllib.parse import urlparse
-
-import requests
+from urllib.request import urlopen
 
 from streambinder.config import Config as config
 from streambinder.ext_html import title
@@ -157,7 +156,8 @@ def main() -> None:
                     "/releases/latest/download/", f"/releases/download/{erro_tag}/"
                 )
             # strip h1 from prefetched content — the page template provides its own
-            prefetch_html = requests.get(prefetch_url, timeout=30).content.decode("utf-8")
+            with urlopen(prefetch_url, timeout=30) as response:
+                prefetch_html = response.read().decode("utf-8")
             prefetch_html = re.sub(r"<h1[^>]*>.*?</h1>", "", prefetch_html, flags=re.DOTALL)
             page_config = {
                 **page_config,
