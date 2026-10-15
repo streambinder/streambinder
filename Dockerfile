@@ -1,10 +1,8 @@
-FROM ghcr.io/astral-sh/uv:0.13.1 AS uv
-FROM alpine:3 AS builder
+FROM ghcr.io/astral-sh/uv:0.13.1-python3.13-alpine3.23 AS builder
 ARG ERRO_RELEASE_TAG=""
 ENV ERRO_RELEASE_TAG=$ERRO_RELEASE_TAG
 WORKDIR /build
-RUN apk add --no-cache bash git make minify python3
-COPY --from=uv /uv /usr/local/bin/uv
+RUN apk add --no-cache bash make minify
 COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen
 COPY . .
