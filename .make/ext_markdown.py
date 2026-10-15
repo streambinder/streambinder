@@ -57,7 +57,7 @@ def _parse_html(html: str) -> tuple[str, list[dict[str, str]]]:
 
     matches = re.finditer(r"<h2>(.*)</h2>", html, re.MULTILINE)
     for _, match in enumerate(matches, start=1):
-        for group in range(0, len(match.groups())):
+        for group in range(len(match.groups())):
             section_name = match.group(group + 1)
             section_id = idfy(section_name)
             html = html.replace(match.group(), f'<h2 id="{section_id}">{section_name}</h2>')

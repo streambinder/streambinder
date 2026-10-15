@@ -6,7 +6,7 @@ from typing import Any
 
 import yaml
 
-_cache: dict[str, "Config"] = {}
+_cache: dict[str, Config] = {}
 
 
 class Config:
