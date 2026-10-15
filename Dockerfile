@@ -1,12 +1,25 @@
 FROM ghcr.io/astral-sh/uv:0.13.1-python3.13-alpine3.23 AS builder
 ARG ERRO_RELEASE_TAG=""
 ENV ERRO_RELEASE_TAG=$ERRO_RELEASE_TAG
-WORKDIR /build
-RUN apk add --no-cache bash make minify
+ENV BUILD_DIR=/build
+WORKDIR /app
+RUN apk add --no-cache bash minify
 COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen
 COPY . .
-RUN make
+RUN mkdir -p $BUILD_DIR
+RUN uv run python -m streambinder.pages
+RUN uv run python -m streambinder.facade
+RUN find $BUILD_DIR -type f \
+    -not -name 'index.html' \
+    -not -name 'index.md' \
+    -not -name '*.jpg' \
+    -not -name '*.png' \
+    -not -name '*.gif' \
+    -not -name '*.svg' -delete
+RUN cp -rf site/static/* $BUILD_DIR/
+RUN uv run python -m streambinder.sitemap
+RUN bash scripts/minify.sh
 
 FROM alpine:3
 RUN apk add --no-cache brotli-libs lighttpd && \
@@ -14,7 +27,7 @@ RUN apk add --no-cache brotli-libs lighttpd && \
     mkdir -p /tmp/lighttpd-deflate && \
     chown -R streambinder /tmp/lighttpd-deflate /var/log/lighttpd
 COPY docker/lighttpd.conf /etc/lighttpd/lighttpd.conf
-COPY --from=builder /build/build /var/www/localhost/htdocs
+COPY --from=builder /build /var/www/localhost/htdocs
 RUN cp /var/www/localhost/htdocs/404/index.html /var/www/localhost/htdocs/status-404.html && \
     cp /var/www/localhost/htdocs/500/index.html /var/www/localhost/htdocs/status-500.html
 USER 1000
