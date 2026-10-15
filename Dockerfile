@@ -5,7 +5,7 @@ ENV BUILD_DIR=/build
 WORKDIR /app
 RUN apk add --no-cache bash minify
 COPY pyproject.toml uv.lock ./
-RUN uv sync --frozen
+RUN uv sync --frozen --no-install-project
 COPY . .
 RUN mkdir -p $BUILD_DIR
 RUN uv run python -m streambinder.pages
