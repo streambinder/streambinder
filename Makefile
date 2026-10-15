@@ -1,5 +1,4 @@
 ROOT_DIR	:= $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
-MAKE_DIR	:= $(ROOT_DIR)/.make
 BUILD_DIR	:= $(ROOT_DIR)/build
 
 export BUILD_DIR
@@ -13,7 +12,7 @@ init:
 
 .PHONY: assets
 assets: init
-	@cp -rf src/static/* $(BUILD_DIR)/
+	@cp -rf site/static/* $(BUILD_DIR)/
 
 .PHONY: wikis
 wikis:
@@ -21,11 +20,11 @@ wikis:
 
 .PHONY: pages
 pages: init
-	@uv run python $(MAKE_DIR)/pages.py
+	@uv run python -m streambinder.pages
 
 .PHONY: facade
 facade: init pages
-	@uv run python $(MAKE_DIR)/facade.py
+	@uv run python -m streambinder.facade
 
 .PHONY: strip
 strip: init
@@ -39,15 +38,15 @@ strip: init
 
 .PHONY: sitemap
 sitemap: init
-	@uv run python $(MAKE_DIR)/sitemap.py
+	@uv run python -m streambinder.sitemap
 
 .PHONY: minify
 minify: facade strip assets
-	@bash $(MAKE_DIR)/minify.sh
+	@bash scripts/minify.sh
 
 .PHONY: docker
 docker:
-	@bash $(MAKE_DIR)/docker.sh
+	@bash scripts/docker.sh
 
 .PHONY: clean
 clean:

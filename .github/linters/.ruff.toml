@@ -1,5 +1,3 @@
 line-length = 100
 
-# src/ holds site content, not Python sources. Keep ruff from
-# resolving module names (pages) against the content tree.
-src = ["."]
+src = ["src"]

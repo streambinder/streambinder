@@ -1,3 +1,7 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
 name = "streambinder"
 version = "0.1.0"
@@ -23,20 +27,20 @@ dev = [
   "types-requests",
 ]
 
-[tool.uv]
-package = false
+[tool.isort]
+known_first_party = ["streambinder"]
+line_length = 100
 
 [tool.mypy]
 strict = true
-files = [".make"]
+files = ["src/streambinder"]
 
 [tool.pytest.ini_options]
-testpaths = [".make"]
-pythonpath = [".make"]
+testpaths = ["src/streambinder"]
 
 [tool.coverage.run]
-source = [".make"]
-omit = [".make/conftest.py", ".make/test_*.py"]
+source = ["src/streambinder"]
+omit = ["src/streambinder/conftest.py", "src/streambinder/test_*.py"]
 
 [tool.coverage.report]
 fail_under = 90

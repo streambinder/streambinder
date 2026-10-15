@@ -1,24 +1,24 @@
-[submodule "src/wikis/discindo"]
-	path = src/wikis/discindo
+[submodule "site/wikis/discindo"]
+	path = site/wikis/discindo
 	url = https://github.com/streambinder/discindo.wiki.git
-[submodule "src/wikis/nuntius"]
-	path = src/wikis/nuntius
+[submodule "site/wikis/nuntius"]
+	path = site/wikis/nuntius
 	url = https://github.com/streambinder/nuntius.wiki.git
-[submodule "src/wikis/theca"]
-	path = src/wikis/theca
+[submodule "site/wikis/theca"]
+	path = site/wikis/theca
 	url = https://github.com/streambinder/theca.wiki.git
-[submodule "src/docs/pango"]
-	path = src/docs/pango
+[submodule "site/docs/pango"]
+	path = site/docs/pango
 	url = https://github.com/streambinder/pango.git
-[submodule "src/docs/erro"]
-	path = src/docs/erro
+[submodule "site/docs/erro"]
+	path = site/docs/erro
 	url = https://github.com/streambinder/erro.git
-[submodule "src/docs/vpnc"]
-	path = src/docs/vpnc
+[submodule "site/docs/vpnc"]
+	path = site/docs/vpnc
 	url = https://github.com/streambinder/vpnc.git
-[submodule "src/docs/foedus"]
-	path = src/docs/foedus
+[submodule "site/docs/foedus"]
+	path = site/docs/foedus
 	url = https://github.com/streambinder/foedus.git
-[submodule "src/docs/serica"]
-	path = src/docs/serica
+[submodule "site/docs/serica"]
+	path = site/docs/serica
 	url = https://github.com/streambinder/serica.git

@@ -11,11 +11,12 @@ from typing import Any
 from urllib.parse import urlparse
 
 import requests
-from config import Config as config
-from ext_html import title
-from ext_markdown import collapse_heading_gaps
-from ext_markdown import extract as markdown
-from jinja_parser import get as parse
+
+from streambinder.config import Config as config
+from streambinder.ext_html import title
+from streambinder.ext_markdown import collapse_heading_gaps
+from streambinder.ext_markdown import extract as markdown
+from streambinder.jinja_parser import get as parse
 
 
 def _build_jsonld(page: dict[str, Any], info: dict[str, Any], url: str) -> str:
@@ -86,7 +87,7 @@ def _dump_markdown_sibling(
 
 
 def main() -> None:
-    config_website = config.new("src/website.yml")
+    config_website = config.new("site/website.yml")
     if config_website is None:
         sys.exit("Unable to parse configuration file")
 
@@ -105,7 +106,7 @@ def main() -> None:
         path = os.path.join(os.environ["BUILD_DIR"], *page["path"].split("/"))
         path_html = os.path.join(path, "_index.html")
         path_yaml = os.path.join(path, "_index.yaml")
-        path_content = os.path.join("src", page["content"])
+        path_content = os.path.join("site", page["content"])
         os.makedirs(path, exist_ok=True)
 
         if os.path.isdir(path_content) and page["type"] == "doc":
@@ -129,7 +130,7 @@ def main() -> None:
                     "sections": html_sections,
                 },
             }
-            path_content = os.path.join("src", page["parent"])
+            path_content = os.path.join("site", page["parent"])
         # wiki page
         elif os.path.isdir(path_content) and page["type"] == "wiki":
             # wiki index lines look like "- [Page](PageName)" — extract PageName
@@ -166,7 +167,7 @@ def main() -> None:
                     "sections": html_sections,
                 },
             }
-            path_content = os.path.join("src", page["parent"])
+            path_content = os.path.join("site", page["parent"])
         # prebuilt page
         elif page["type"] == "prefetch":
             prefetch_url = page["content"]
@@ -184,7 +185,7 @@ def main() -> None:
                 **page_config,
                 "prefetch": prefetch_html,
             }
-            path_content = os.path.join("src", page["parent"])
+            path_content = os.path.join("site", page["parent"])
 
         # parse and dump
         parse(template=path_content, output=path_html, config=page_config)

@@ -3,8 +3,9 @@ from __future__ import annotations
 import runpy
 from pathlib import Path
 
-import facade
 import pytest
+
+from streambinder import facade
 
 _WEBSITE_YML = """\
 info:
@@ -26,8 +27,8 @@ def _write(path: Path, content: str) -> None:
 
 def _prepare(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     monkeypatch.chdir(tmp_path)
-    _write(tmp_path / "src" / "website.yml", _WEBSITE_YML)
-    _write(tmp_path / "src" / "facade.html.j2", _TEMPLATE)
+    _write(tmp_path / "site" / "website.yml", _WEBSITE_YML)
+    _write(tmp_path / "site" / "facade.html.j2", _TEMPLATE)
 
     build_dir = tmp_path / "build"
     _write(build_dir / "page" / "_index.html", "PAGE BODY")
@@ -56,6 +57,6 @@ def test_main_wraps_each_fragment(tmp_path: Path, monkeypatch: pytest.MonkeyPatc
 def test_module_runs_as_main(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     build_dir = _prepare(tmp_path, monkeypatch)
 
-    runpy.run_module("facade", run_name="__main__")
+    runpy.run_module("streambinder.facade", run_name="__main__")
 
     assert (build_dir / "page" / "index.html").exists()

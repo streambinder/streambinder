@@ -4,12 +4,12 @@ from __future__ import annotations
 
 import os
 
-from config import Config as config
-from jinja_parser import get as parse
+from streambinder.config import Config as config
+from streambinder.jinja_parser import get as parse
 
 
 def main() -> None:
-    site = config.new("src/website.yml").raw()
+    site = config.new("site/website.yml").raw()
     for fdir, _, fnames in os.walk(os.environ["BUILD_DIR"]):
         for fname in fnames:
             if fname != "_index.html":
@@ -23,7 +23,7 @@ def main() -> None:
                 # hoist site-level info (social, etc.) into facade scope
                 cfg.data["info"] = site["info"]
                 parse(
-                    template="src/facade.html.j2",
+                    template="site/facade.html.j2",
                     output=os.path.join(fdir, "index.html"),
                     config=cfg.data,
                 )

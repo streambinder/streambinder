@@ -3,7 +3,8 @@ from __future__ import annotations
 from pathlib import Path
 
 import pytest
-from config import Config
+
+from streambinder.config import Config
 
 
 def _write(path: Path, content: str) -> None:
