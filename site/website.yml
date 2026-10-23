@@ -133,7 +133,7 @@ pages:
       type: SoftwareSourceCode
   - path: /doc/foedus
     name: Foedus
-    caption: &proj-caption-foedus Self-hosted wedding landing site with guest management and RSVP collection
+    caption: &proj-caption-foedus Self-hosted wedding site with guest management and RSVP
     url: https://github.com/streambinder/foedus
     type: doc
     content: docs/foedus/docs
