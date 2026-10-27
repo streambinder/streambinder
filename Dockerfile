@@ -1,4 +1,4 @@
-FROM ghcr.io/astral-sh/uv:0.13.4-python3.13-alpine3.23 AS builder
+FROM ghcr.io/astral-sh/uv:0.13.6-python3.13-alpine3.23 AS builder
 ARG ERRO_RELEASE_TAG=""
 ENV ERRO_RELEASE_TAG=$ERRO_RELEASE_TAG
 ENV BUILD_DIR=/build
