@@ -53,6 +53,42 @@ jobs:
           doc_module="site/docs/${doc_name}"
           git submodule update --init "${doc_module}"
           git --git-dir="${doc_module}/.git" checkout "${doc_sha}"
-          git commit -m "docs(${doc_name}): sync (${doc_repo}@$(cut -c-7 <<< "${doc_sha}"))" "${doc_module}"
+          git add "${doc_module}"
+          if git diff --cached --quiet; then
+            echo "No submodule change to commit"
+            exit 0
+          fi
+          git commit -m "docs(${doc_name}): sync (${doc_repo}@$(cut -c-7 <<< "${doc_sha}"))"
       - name: Push repository
-        run: git pull --rebase && git push
+        run: |
+          doc_name="$(awk -F'/' '{print $2}' <<< "${doc_repo}")"
+          doc_module="site/docs/${doc_name}"
+          TARGET="${doc_sha}"
+          for attempt in 1 2 3 4 5; do
+            if git push origin master; then
+              echo "Push succeeded on attempt ${attempt}"
+              exit 0
+            fi
+            echo "Push rejected on attempt ${attempt}: realigning to origin/master"
+            git fetch --depth 50 origin master
+            git reset --hard FETCH_HEAD
+            CURRENT="$(git ls-tree HEAD "${doc_module}" | awk '{print $3}')"
+            if [ "${CURRENT}" = "${TARGET}" ]; then
+              echo "origin/master already points at ${TARGET}; nothing to push"
+              exit 0
+            fi
+            git --git-dir="${doc_module}/.git" fetch --depth 50 origin master || true
+            if git --git-dir="${doc_module}/.git" merge-base --is-ancestor "${TARGET}" "${CURRENT}"; then
+              echo "origin/master already includes ${TARGET}; nothing to push"
+              exit 0
+            fi
+            git --git-dir="${doc_module}/.git" checkout "${TARGET}"
+            git add "${doc_module}"
+            if git diff --cached --quiet; then
+              echo "No submodule change to commit"
+              exit 0
+            fi
+            git commit -m "docs(${doc_name}): sync (${doc_repo}@$(cut -c-7 <<< "${TARGET}"))"
+          done
+          echo "Push failed after 5 attempts" >&2
+          exit 1
