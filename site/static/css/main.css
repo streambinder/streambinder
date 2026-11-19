@@ -361,6 +361,7 @@ ul.cards > li > a:hover {
 }
 
 ul.cards > li > a > span {
+  font-family: var(--font-structure);
   color: var(--text);
   font-weight: 500;
   font-size: var(--text-sm);
