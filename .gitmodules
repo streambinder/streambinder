@@ -22,3 +22,6 @@
 [submodule "site/docs/serica"]
 	path = site/docs/serica
 	url = https://github.com/streambinder/serica.git
+[submodule "site/docs/limen"]
+	path = site/docs/limen
+	url = https://github.com/streambinder/limen.git

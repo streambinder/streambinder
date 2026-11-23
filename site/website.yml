@@ -160,3 +160,14 @@ pages:
     alive: false
     jsonld:
       type: SoftwareSourceCode
+  - path: /doc/limen
+    name: Limen
+    caption: &proj-caption-limen Serve Muse through OpenAI-compatible API
+    url: https://github.com/streambinder/limen
+    type: doc
+    content: docs/limen/docs
+    parent: pages/project.html.j2
+    description: *proj-caption-limen
+    alive: true
+    jsonld:
+      type: SoftwareSourceCode
